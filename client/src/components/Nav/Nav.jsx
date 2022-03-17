@@ -10,12 +10,13 @@ function Nav(props) {
           <div className="nav-wrapper">
           <div className="nav-logo-wrapper">
             <Link to="/" className="nav-logo">Let It Flow</Link>
+            <div>доставка приятных впечатлений*</div>
           </div>
           <ul className="nav-list">
           <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
           <li className="nav-item"><Link className="nav-item-link" to="/logout">Выход</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/login">Вход в личный кабинет</Link></li>
-            <li className="nav-item"><Link className="nav-item-link" to="/registration">Регистрация</Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/signup">Регистрация</Link></li>
           </ul>
         </div>
         </div>
