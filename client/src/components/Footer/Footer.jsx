@@ -1,11 +1,9 @@
-import React from "react";
+import './Footer.css'
 import { Link } from "react-router-dom";
-import "./Nav.css";
 
-function Nav(props) {
+function Footer(props) {
   return (
-    <>
-      <nav className="nav-container">
+    <nav className="footer-container">
         <div className="container">
           <div className="nav-wrapper">
           <div className="nav-logo-wrapper">
@@ -20,8 +18,7 @@ function Nav(props) {
         </div>
         </div>
       </nav>
-    </>
   );
 }
 
-export default Nav;
+export default Footer;
