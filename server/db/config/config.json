@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "process.env.DB_NAME",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "LET-IT-FLOW",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
