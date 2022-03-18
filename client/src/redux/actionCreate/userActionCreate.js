@@ -1,9 +1,12 @@
-import { LOGIN } from "../actionType/userActionType"
+import { LOGIN, SIGNUP } from "../actionType/userActionType"
 
-export const login = (user) => {
+export const login = (user) => ({
+  type: LOGIN,
+  payload: user
+})
 
-  return {
-    type: LOGIN,
-    payload: user
-  }
-}
+export const signup = (user) => ({
+  type: SIGNUP,
+  payload: user
+})
+
