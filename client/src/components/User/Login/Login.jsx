@@ -6,7 +6,7 @@ import { login } from '../../../redux/actionCreate/userActionCreate';
 
 
 export default function Login(props) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 	const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -20,7 +20,7 @@ export default function Login(props) {
     axios.post('http://localhost:4000/login', payload)
     .then(({ data }) => {
       console.log(data)
-			// dispatch(login(data))
+			dispatch(login(data))
 			navigate('/');
 		})
     .catch(console.error());
