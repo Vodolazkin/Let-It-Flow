@@ -15,6 +15,8 @@ const regRouter = require('./routes/reg.routes');
 const loginRouter = require('./routes/login.routes');
 const logoutRouter = require('./routes/logout.routes');
 const cartRouter = require('./routes/cart.routes');
+const categoryRoutes = require('./routes/category.routes');
+const bouquetListMainRouter = require('./routes/bouquet_list_main.routes');
 
 //* config
 app.use(logger('dev'));
@@ -31,6 +33,8 @@ app.use('/signup', regRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/cart', cartRouter);
+app.use('/categories', categoryRoutes);
+app.use('/bouquets', bouquetListMainRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

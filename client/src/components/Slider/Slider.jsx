@@ -38,7 +38,6 @@ function Slider(props) {
       </div>
     </>
   );
-  // `url(${slide.image})`
 }
 
 export default Slider;

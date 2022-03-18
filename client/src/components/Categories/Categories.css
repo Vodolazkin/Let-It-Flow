@@ -1,0 +1,23 @@
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.category-link {
+  text-decoration: none;
+  color: #292929;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.category-cart-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid grey;
+}
+
+
+
