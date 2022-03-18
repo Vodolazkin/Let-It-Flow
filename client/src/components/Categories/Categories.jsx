@@ -30,8 +30,8 @@ function Categories(props) {
       { categoriesR.map((category) =>
       <div className="category-cart-wrapper">
         <Link to="/" className='category-link'>
+          <img className='category-img' width="30" height="30" src={`http://localhost:4000${category.icon}`} alt="icons" />
           <h3 className='category-name' >{category.name}</h3>
-            <img className='category-img' width="100" height="100" src={`http://localhost:4000${category.icon}`} alt="icons" /> 
           </Link>
       </div>
       )}
