@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-
-function Card(props) {
-  // const { bouquetsRe } = useSelector((state) => state)
-  
+import Card from "../Card/Card"
+import  './BouquetListMain.css'
+function BouquetListMain(props) {
+  const { bouquetsRe } = useSelector((state) => state)
   const dispatch = useDispatch()
-useEffect(() =>{
-fetch('http://localhost:4000/bouquets')
-.then(res => res.json())
-// .then(data => dispatch({ type: 'INIT_BOUQUETS', payload: data}))
-.then(data => console.log(data))
-.catch(err=>console.log(err));
-},[])
+
+   useEffect(() =>{
+   fetch('http://localhost:4000/bouquets')
+   .then(res => res.json())
+   .then(data => dispatch({ type: 'INIT_BOUQUETS', payload: data}))
+   .catch(err=>console.log(err));
+},[dispatch])
+
   return (
     <div>
-     {/* {bouquetsRe.map(bouquet => (
-
-     ))} */}
+     {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
     </div>
   );
 }
 
-export default Card;
+export default BouquetListMain;
+
