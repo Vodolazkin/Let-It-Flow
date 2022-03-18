@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Cart extends Model {
 
     static associate({ Bouquet, User, Cart_order }) {
-      this.hasMany(Bouquet, { foreignKey: 'bouquet_id' })
+      this.belongsToMany(Bouquet, { through:'Cart_order' })
       this.belongsTo(User, { foreignKey: 'user_id' })
       this.hasOne(Cart_order, { foreignKey: 'cart_id' })
     }
