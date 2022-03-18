@@ -4,7 +4,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import thunk from 'redux-thunk'
 
 const initialStore = {
+  user: {},
   categoriesR: [],
+  bouquetsRe: []
 }
  
 export const store = createStore(rootReducer, initialStore, composeWithDevTools(applyMiddleware()))
