@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
+const { userLogout } = require('./../controllers/user.controller');
 
+router.route('/')
+  .post(userLogout);
 
 module.exports = router;

@@ -38,15 +38,15 @@ function Signup() {
     <form onSubmit={handleSubmit}>
       <div className="card-input">
         <label for="first_name" className="card-input__label">Имя</label>
-        <input type="text" name="first_name" id="first_name" className="card-input__input" autocomplete="off" />
+        <input type="text" name="first_name" id="first_name" className="card-input__input"  />
       </div>
       <div className="card-input">
         <label for="last_name" className="card-input__label">Фамилия</label>
-        <input type="text" name="last_name" id="last_name" className="card-input__input" autocomplete="off" />
+        <input type="text" name="last_name" id="last_name" className="card-input__input" />
       </div>
       <div className="card-input">
           <label for="email" class="card-input__label">Email</label>
-          <input type="email" id="email" class="card-input__input" autocomplete="off" />
+          <input type="email" id="email" class="card-input__input" />
         </div>
       <div className="card-input">
         <label for="password" className="card-input__label">Пароль</label>

@@ -16,8 +16,6 @@ function App() {
         <Nav />
       </header>
         <main>
-        <Slider />
-
           <Routes>
             <Route path="/" element={<Main />}/>
             <Route path="/login" element={<Login />}/>
