@@ -1,0 +1,72 @@
+h1 {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+}
+h2 {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+}
+
+
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btn {
+  height: 70px;
+  color: #f7f7f8;
+  font-weight: 500;
+  text-decoration: none;
+  background-color: #292929;
+  font-size: 20px;
+  font-family: 'Jost', sans-serif;
+}
+
+.card-input__input {
+  background-color: #f7f7f8;
+  height: 60px;
+  padding-left: 20px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.card-input__label {
+  margin-bottom: 10px;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+form {
+  margin: 20px 0;
+}
+
+.divider {
+  padding: 60px 0;;
+}

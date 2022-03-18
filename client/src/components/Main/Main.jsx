@@ -3,9 +3,9 @@ import Slider from '../Slider/Slider';
 
 function Main(props) {
   return (
-    <div>
+    <>
       <Slider />
-    </div>
+    </>
   );
 }
 
