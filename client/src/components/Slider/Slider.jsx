@@ -1,22 +1,44 @@
-import React from 'react';
+import React from "react";
+import "./Slider.css";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
+
+import Slide1 from './../../img/Slide1.webp'; 
+import Slide2 from "./../../img/Slide2.webp";
+import Slide3 from "./../../img/Slide3.webp";
+import Slide4 from "./../../img/Slide4.webp";
+
+
 
 function Slider(props) {
 
-  const images = ["https://images.unsplash.com/photo-1647003810228-ba8324796acf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", "https://images.unsplash.com/photo-1647003613495-b5f9a858365b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", "https://images.unsplash.com/photo-1615758043606-084300e6439b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80", "https://images.unsplash.com/photo-1638913976954-8f7b612867c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", "https://images.unsplash.com/photo-1646991838618-7d7147658f37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", "https://images.unsplash.com/photo-1646988423425-bc236bc449bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", "https://images.unsplash.com/photo-1646928998297-5fb2a10aca27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" ];
+  const images = [{id: 1, image: Slide1}, {id: 2, image: Slide2}, {id: 3, image: Slide3}, {id: 4,image: Slide4} ];
+
+
+  console.log(images);
+
+  const [slideSate, setSlideState] = useState(false);
+  const [state_id, setState_id] = useState(0);
+  
+
+  const handlerClickSlider = (event) => {
+    setSlideState(!slideSate);
+  }
 
   return (
-    <div>
-    {/* //   <div className="container">
-    //   { 
-    //   images.forEach((slide, index) =>{ 
-    //     {images.map((el) => <img className="slide active" width="640" height="480" key="el.id" src={`${images[index]`}} alt="cat"/>)}
+    <>
+      <div className="container-slider">
+    
+      {images.map((slide, id) => 
+      
+      <div onClick={() => setState_id(id)} id={id} key={uuidv4()} className={state_id === id ? "slide active" : "slide"} style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover' }}>
+        <h3></h3>
+      </div>)}
 
-        
-    //   })
-
-    //   </div> */}
-    </div>
+      </div>
+    </>
   );
+  // `url(${slide.image})`
 }
 
 export default Slider;

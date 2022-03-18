@@ -15,13 +15,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   Token.init({
     refresh_tokes: DataTypes.STRING,
-    user_id: {
+    user_id:{
       type: DataTypes.INTEGER,
       references: {
         model: 'User',
         key: 'id'
       }
-     }
+    } 
   }, {
     sequelize,
     modelName: 'Token',
