@@ -1,7 +1,11 @@
+const { generateTokens, saveToken } = require('./token.controller')
+const { User } = require('../db/models');
+const bcrypt = require('bcrypt');
+
 const userRegister = async (req, res) => {
   try {
     const {
-      name, email, password, confirmPassword,
+      first_name, last_name, email, phone, password,
     } = req.body;
     const isUserExist = await User.findOne({
       where: { email },
@@ -11,10 +15,21 @@ const userRegister = async (req, res) => {
     }
  
     const hashPassword = await bcrypt.hash(password, 3);
-    const user = await User.create({ name, email, password: hashPassword });
-    req.session.user = user;
-    req.session.isSession = true;
-    res.json({ success: true, id: user.id, name: user.name });
+    const user = await User.create({ first_name, last_name, email, phone, password: hashPassword });
+    
+    // delete user.dataValues['password'] //удаляем из объекта пароль
+    console.log(user)
+
+    const tokens = generateTokens({...user}) // получаем jwt
+    console.log(tokens.refreshToken)
+
+    await saveToken(user.id, tokens.refreshToken)
+
+    // req.session.user = user;
+    // req.session.isSession = true;
+    // res.json({ success: true, id: user.id, name: user.name });
+
+    return {...tokens, user}
     
   } catch (error) {
     console.log(error.message);

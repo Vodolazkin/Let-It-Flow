@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 function Remind(props) {
   return (
-    <div className="container">
+    <div className="container divider">
       <div className="form-wrapper">
-      <h1>Воcстановить пароль</h1>
+      <h2>Воcстановить пароль</h2>
       <p>Введите свой email для восстановления пароля</p>
       <form>
         <div className="card-input">

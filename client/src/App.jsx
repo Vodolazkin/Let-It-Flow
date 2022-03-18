@@ -6,8 +6,7 @@ import Slider from './components/Slider/Slider';
 import Login from './components/User/Login/Login';
 import Remind from './components/User/Remind/Remind';
 import Footer from './components/Footer/Footer';
-
-
+import Signup from './components/User/Signup/Signup';
 
 function App() {
   return (
@@ -22,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}/>
             <Route path="/login" element={<Login />}/>
+            <Route path="/signup" element={<Signup />}/>
             <Route path="/remind" element={<Remind />}/>
           </Routes>
         </main>

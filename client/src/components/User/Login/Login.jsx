@@ -27,13 +27,13 @@ export default function Login(props) {
 
 
   return (
-    <div className="container">
+    <div className="container divider">
       <div className="form-wrapper">
-      <h1>Войти</h1>
+      <h2>Войти</h2>
       <form onSubmit={handleSubmit}>
         <div className="card-input">
-          <label for="name" className="card-input__label">Логин</label>
-          <input type="text" id="name" className="card-input__input" autocomplete="off" />
+          <label for="email" class="card-input__label">Email</label>
+          <input type="email" id="email" class="card-input__input" autocomplete="off" />
         </div>
         <div className="card-input">
           <label for="password" className="card-input__label">Пароль</label>
