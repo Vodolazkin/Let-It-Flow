@@ -19,7 +19,7 @@ module.exports = {
         name: 'Авторские букеты', createdAt: new Date(), updatedAt: new Date(),
       },
       {
-        name: 'Цветы в корзине', createdAt: new Date(), updatedAt: new Date(),
+        name: 'Горшечные растения', createdAt: new Date(), updatedAt: new Date(),
       },
     ]);
   },
