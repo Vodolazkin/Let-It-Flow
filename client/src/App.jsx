@@ -13,10 +13,10 @@ function App() {
 
       <header>
         <Nav />
-        <Slider />
-
       </header>
         <main>
+        <Slider />
+
           <Routes>
             <Route path="/" element={<Main />}/>
           </Routes>
