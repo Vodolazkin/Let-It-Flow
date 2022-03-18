@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Nav from "./components/Nav/Nav";
-import Main from "./components/Main/Main";
-import Slider from './components/Slider/Slider';
+import Main from "./components//Main/Main";
+import Slider from "./components/Slider/Slider";
 
 
 
@@ -13,7 +13,6 @@ function App() {
 
       <header>
         <Nav />
-        <Slider />
 
       </header>
         <main>
