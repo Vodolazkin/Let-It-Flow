@@ -22,7 +22,7 @@ function Categories(props) {
   
   return (
     <div>
-      {res}
+      {'res'}
     </div>
   );
 }
