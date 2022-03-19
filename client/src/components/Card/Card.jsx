@@ -6,7 +6,7 @@ function Card({ bouquet }) {
   const [state, setState] = useState(false)
   return (
     <div className="positionRel" onMouseLeave={() => setState(!state)} onMouseEnter={() => setState(!state)}>
-      <img src={bouquet.img} alt="b-main"></img>
+      <img src={`http://localhost:4000/${bouquet.img}` }alt="b-main"></img>
       <p>{bouquet.title}</p>
       <h4>{bouquet.description}</h4>
        <p>{bouquet.price}</p>
