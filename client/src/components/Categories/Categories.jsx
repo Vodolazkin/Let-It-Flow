@@ -16,22 +16,25 @@ function Categories(props) {
       payload: result
     }))
     .catch(err=>console.log(err));
-  },[dispatch])
+  },[])
   
   return (
     <>
       <div className='category-container'>
-        { categoriesR.map((category) =>
-        <div className="category-cart-wrapper">
-          <Link to="/" className='category-link'>
-            <img className='category-img' width="30" height="30" src={`http://localhost:4000${category.icon}`} alt="icons" />
-            <h3 className='category-name' >{category.name}</h3>
-          </Link>
-        </div>
-        )}
-      </div>
+      { categoriesR.map((category) =>
+      <Link to={`/categories/${category.id}`}>
+    <div className="category-cart-wrapper">
+        <h3 className='category-name'>{category.name}</h3>
+        <img className='category-img' width="100" height="100" src={`http://localhost:4000${category.icon}`} alt="icons" />
+        
+    </div></Link>
+      )}
+    </div>
+
     </>
   )
 }
 
 export default Categories;
+
+// onClick={() => <Link to={`/category/:${id}`}></Link>
