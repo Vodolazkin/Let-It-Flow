@@ -15,9 +15,11 @@ function BouquetListMain(props) {
   
  
   return (
-    <div>
+    <>
+    <div className="card-container">
      {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>).slice(0,4)}
     </div>
+    </>
   );
 }
 
