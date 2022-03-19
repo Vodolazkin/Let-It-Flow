@@ -19,7 +19,6 @@ export default function Login(props) {
 
     axios.post('http://localhost:4000/login', payload)
     .then(({ data }) => {
-      console.log(data)
 			dispatch(login(data))
 			navigate('/');
 		})

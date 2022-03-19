@@ -7,7 +7,7 @@ import { userReducer } from "./user.reducer";
 
 const rootReducer = combineReducers({
   categoriesR: categoriesReducer,
-  bouquetsRe : bouquetsReducer,
+  bouquetsRe: bouquetsReducer,
   user: userReducer,
 });
 

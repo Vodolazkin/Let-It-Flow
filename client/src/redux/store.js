@@ -4,7 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import thunk from 'redux-thunk'
 
 const initialStore = {
-  user: {},
+  user: {
+    first_name: 'Артем',
+    last_name: 'Тарасов',
+    email: "tarasov@mail.ru", 
+    phone: "7812654246"
+  },
   categoriesR: [],
   bouquetsRe: []
 }

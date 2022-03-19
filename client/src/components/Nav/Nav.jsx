@@ -7,18 +7,18 @@ import { LOGOUT } from "../../redux/actionType/userActionType";
 
 function Nav() {
 
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const logout = () => {
-    console.log('dsfsdfsdf')
+  const logout = async () => {
 
-    // axios.post('http://localhost:4000/logout')
+   await axios.post('http://localhost:4000/logout');
     // .then(() => {
-		// 	// dispatch({
-    //   //   type: LOGOUT,
-    //   // })
+		// 	dispatch({
+    //     type: LOGOUT,
+    //   })
 		// 	navigate('/');
+    window.location.reload();
 		// })
     // .catch(console.error());
   };
@@ -36,7 +36,7 @@ function Nav() {
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/login">Вход в личный кабинет</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/signup">Регистрация</Link></li>
-            <li className="nav-item"><Link onClick={logout} className="nav-item-link" to="/logout">Выход</Link></li>
+            <li className="nav-item" onClick={logout}></li>
           </ul>
         </div>
         </div>

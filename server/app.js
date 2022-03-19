@@ -10,7 +10,7 @@ const app = express();
 
 //* Импорт роутов
 const indexRouter = require('./routes/index.routes');
-const usersRouter = require('./routes/users.routes');
+const usersRouter = require('./routes/user.routes');
 const regRouter = require('./routes/reg.routes');
 const loginRouter = require('./routes/login.routes');
 const logoutRouter = require('./routes/logout.routes');
