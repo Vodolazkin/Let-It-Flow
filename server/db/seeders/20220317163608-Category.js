@@ -19,7 +19,7 @@ module.exports = {
         name: 'Авторские букеты', icon: '/img/icons/plumeria.png', createdAt: new Date(), updatedAt: new Date(),
       },
       {
-        name: 'Цветы в корзине', icon: '/img/icons/daisy.png', createdAt: new Date(), updatedAt: new Date(),
+        name: 'Горшечные растения', icon: '/img/icons/daisy.png', createdAt: new Date(), updatedAt: new Date(),
       },
     ]);
   },
