@@ -8,6 +8,7 @@ import Remind from './components/User/Remind/Remind';
 import Footer from './components/Footer/Footer';
 import Signup from './components/User/Signup/Signup';
 import Categories from './components/Categories/Categories';
+import Category from './components/Category/Category'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/signup" element={<Signup />}/>
             <Route path="/remind" element={<Remind />}/>
             <Route path="/categories" element={<Categories />}/>
+            <Route path="/categories/:id" element={<Category />}/>
           </Routes>
         </main>
       <footer>

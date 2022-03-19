@@ -4,8 +4,8 @@ const { Bouquet } = require('../db/models')
 
 router.get('/', async (req, res) => {
   const card = await Bouquet.findAll();
-  console.log(card);
-  res.send(card)
+  res.json(card)
 })
+
 
 module.exports = router;
