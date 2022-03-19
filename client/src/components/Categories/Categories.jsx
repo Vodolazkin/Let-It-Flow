@@ -5,15 +5,8 @@ import { Link } from 'react-router-dom';
 import './Categories.css';
 
 function Categories(props) {
-
-  // const icons = [{id: 1, image: Icon1}, {id: 2, image: Icon2}, {id: 3, image: Icon3}, {id: 4,image: Icon4}, {id: 5,image: Icon5}, {id: 6, image: Icon6} ];
-
-
   const dispatch = useDispatch();
   const { categoriesR } = useSelector(state => state);
-
-  console.log('state', categoriesR);
-
   
   useEffect(() => {
     fetch('http://localhost:4000/categories')
@@ -22,6 +15,7 @@ function Categories(props) {
       type: 'INIT_CATEGORIES',
       payload: result
     }))
+    .catch(err=>console.log(err));
   },[])
   
   return (
@@ -36,6 +30,7 @@ function Categories(props) {
     </div></Link>
       )}
     </div>
+
     </>
   )
 }
