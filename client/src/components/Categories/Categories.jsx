@@ -16,24 +16,24 @@ function Categories(props) {
       payload: result
     }))
     .catch(err=>console.log(err));
-  },[dispatch])
+  },[])
   
   return (
     <>
       <div className='category-container'>
         <div className='container'>
-        <div className='category-box'>
-        { categoriesR.map((category) =>
-        <div className="category-cart-wrapper">
-          <Link to="/" className='category-link'>
-            <img className='category-img' width="30" height="30" src={`http://localhost:4000${category.icon}`} alt="icons" />
-            <h3 className='category-name' >{category.name}</h3>
-          </Link>
+          <div className='category-box'>
+            { categoriesR.map((category) =>
+            <Link className='category-link' to={`/categories/${category.id}`}>
+              <div className="category-cart-wrapper">
+                  <img className='category-img' width="30" height="30" src={`http://localhost:4000${category.icon}`} alt="icons" />
+                  <h3 className='category-name'>{category.name}</h3>
+              </div>
+            </Link>
+            )}
+          </div>
         </div>
-        )}
-        </div>
-        </div>
-      </div>
+    </div>
     </>
   )
 }
