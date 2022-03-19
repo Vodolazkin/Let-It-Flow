@@ -6,14 +6,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 
+
 const app = express();
 
 //* Импорт роутов
 const indexRouter = require('./routes/index.routes');
-const usersRouter = require('./routes/user.routes');
-const regRouter = require('./routes/reg.routes');
-const loginRouter = require('./routes/login.routes');
-const logoutRouter = require('./routes/logout.routes');
+// const usersRouter = require('./routes/user.routes');
 const cartRouter = require('./routes/cart.routes');
 const categoryRoutes = require('./routes/category.routes');
 const bouquetListMainRouter = require('./routes/bouquet_list_main.routes');
@@ -28,10 +26,7 @@ app.use(cors());
 
 //* use routes
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/signup', regRouter);
-app.use('/login', loginRouter);
-app.use('/logout', logoutRouter);
+// app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/categories', categoryRoutes);
 app.use('/bouquets', bouquetListMainRouter);

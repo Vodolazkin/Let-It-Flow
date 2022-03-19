@@ -2,7 +2,7 @@ const { generateTokens, saveToken, removeToken } = require('./token.controller')
 const { User } = require('../db/models');
 const bcrypt = require('bcrypt');
 const { userObj } = require('./userObj.controller')
-const { login, logout } = require('./../service/user.service')
+const { login, logout, refresh } = require('./../service/user.service')
 
 const userRegister = async (req, res, next) => {
   try {
@@ -79,37 +79,21 @@ const userLogout = async (req, res, next) => {
 };
 
 
-// const refreshUser = async (req, res, next) => {
-//   try {
-//     const { refreshToken } = req.cookies
-//     const { email, password } = req.body;
-//     const user = await User.findOne({
-//       where: { email },
-//     });
-
-//     if (!user) {
-//       return res.json({ success: false, errors: `Пользователь с ${email} не зарегистрирован!` });
-//     }
-//     const validPassword = await bcrypt.compare(password, user.password);
-//     if (!validPassword) {
-//       return res.json({ success: false, errors: 'Пароль неверный' });
-//     }
-
-//     const userToken = userObj(user)
-
-//     const tokens = generateTokens({...userToken}) // получаем jwt
-//     await saveToken(userToken.id, tokens.refreshToken)
-
-//     res.cookie('refreshToken', tokens.refreshToken, { maxAge: 30 * 24 * 60 * 1000, httpOnly: true })
-//     return res.json({userToken, 
-//       message: "Авторизация прошла успешно"})
-//   } catch (error) {
-//     res.status(401)
-//       .json({
-//         message: error.message,
-//       }).end();
-//   }
-// };
+async function userRefresh(req, res) {
+  try {
+    // достаем из кук токен
+    const { refreshToken } = req.cookies;
+    const userData = await refresh(refreshToken);
+    // установим рефреш куки
+    res.cookie("refreshToken", userData.refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+    });
+    return res.json(userData);
+  } catch (error) {
+    next(error);
+  }
+}
 
 
-module.exports = { userRegister, userLogin, userLogout };
+module.exports = { userRegister, userLogin, userLogout, userRefresh };

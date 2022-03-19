@@ -1,6 +1,6 @@
 const { User } = require('../db/models');
 const { userObj } = require('./../controllers/userObj.controller')
-const { generateTokens, saveToken, removeToken } = require('../service/token.service')
+const { generateTokens, saveToken, removeToken, validateRefreshToken } = require('../service/token.service')
 const bcrypt = require('bcrypt')
 
 
@@ -48,16 +48,16 @@ async function logout(refreshToken) {
 
 async function refresh(refreshToken) {
   // проверяем токен
-  if (!refreshToken) {
-    throw ApiError.UnaurhorizedError();
-  }
+  // if (!refreshToken) {
+  //   throw ApiError.UnaurhorizedError();
+  // }
   // валидируем (проверяем) токен
-  const userData = tokenService.validateRefreshToken(refreshToken);
+  const userData = validateRefreshToken(refreshToken);
   // отправляем токен в функцию, которая найдет его в бд
-  const tokenFromDB = await tokenService.findToken(refreshToken);
+  const tokenFromDB = await findToken(refreshToken);
 
   if (!userData || !tokenFromDB) {
-    throw ApiError.UnaurhorizedError();
+    throw Error;
   }
 
   const currentUser = await User.findOne({
@@ -66,14 +66,14 @@ async function refresh(refreshToken) {
     },
   });
   // генерируем новую dto
-  const userDto = new UserDto(currentUser);
+  const userToken = userObj(currentUser);
   // генерируем пару токенов
-  const tokens = tokenService.generateTokens({ ...userDto });
+  const tokens = generateTokens({ ...userToken });
   // сохраняем рефреш токены в бд
-  await tokenService.saveToken(userDto.id, tokens.refreshToken);
+  await saveToken(userToken.id, tokens.refreshToken);
   return {
     ...tokens,
-    user: userDto,
+    user: userToken,
   };
 }
 

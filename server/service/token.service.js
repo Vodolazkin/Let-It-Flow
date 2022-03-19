@@ -12,6 +12,27 @@ const generateTokens = (payload) => {
   }
 }
 
+
+// валидация токенов
+const validateAccessToken = (token) => {
+  try {
+    const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+    return userData;
+  } catch (error) {
+    return null;
+  }
+}
+
+
+const validateRefreshToken = (token) => {
+  try {
+    const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+    return userData;
+  } catch (error) {
+    return null;
+  }
+}
+
  async function saveToken(userId, refreshToken) {
 
     const tokenData = await Token.findOne({
@@ -54,4 +75,11 @@ async function removeToken(refreshToken) {
   }
 
 
-module.exports = { generateTokens, saveToken, removeToken, findToken };
+module.exports = { 
+  generateTokens, 
+  saveToken, 
+  removeToken, 
+  findToken, 
+  validateAccessToken, 
+  validateRefreshToken 
+};

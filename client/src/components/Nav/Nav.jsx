@@ -11,7 +11,6 @@ function Nav() {
   // const dispatch = useDispatch();
 
   const { user } = useSelector(state => state)
-  console.log(user)
 
 
   // const logout = () => {
@@ -46,8 +45,7 @@ function Nav() {
             <>
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
             <li className="nav-item">Выход</li>
-            <p>Привет, </p>
-            <li className="nav-item">{user.userData.user.first_name}</li>
+            <li className="nav-item"><Link className="nav-item-link" to="/profile">Профиль</Link></li>
             </>
             }
           </ul>
