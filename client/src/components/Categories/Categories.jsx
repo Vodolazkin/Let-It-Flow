@@ -21,6 +21,8 @@ function Categories(props) {
   return (
     <>
       <div className='category-container'>
+        <div className='container'>
+        <div className='category-box'>
         { categoriesR.map((category) =>
         <div className="category-cart-wrapper">
           <Link to="/" className='category-link'>
@@ -29,6 +31,8 @@ function Categories(props) {
           </Link>
         </div>
         )}
+        </div>
+        </div>
       </div>
     </>
   )
