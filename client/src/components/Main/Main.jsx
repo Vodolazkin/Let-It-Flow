@@ -9,8 +9,8 @@ function Main(props) {
     <>
       <Slider />
       <Categories />
-      <YandexMap />
       <BouquetListMain />
+      <YandexMap />
     </>
   );
 }

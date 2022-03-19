@@ -15,6 +15,7 @@ function Categories(props) {
       type: 'INIT_CATEGORIES',
       payload: result
     }))
+    .catch(err=>console.log(err));
   },[dispatch])
   
   return (
