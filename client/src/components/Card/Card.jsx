@@ -7,7 +7,7 @@ function Card({ bouquet }) {
   return (
     <div className="card-wrapper positionRel" onMouseLeave={() => setState(!state)} onMouseEnter={() => setState(!state)}>
       <div className="card-box-img">
-        <img className="card-img" width="100%" height="100%" className="card-img" src={`http://localhost:4000/${bouquet.img}` }alt="b-main"></img>
+        <img className="card-img" width="100%" height="100%" src={`http://localhost:4000/${bouquet.img}` }alt="b-main"></img>
       </div>
       <p className="card-title">{bouquet.title}</p>
       <h4 className="card-description">{bouquet.description}</h4>

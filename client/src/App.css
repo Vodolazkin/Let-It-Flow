@@ -27,6 +27,7 @@ body {
 
 main {
   flex-grow: 1;
+  padding-top: 150px;
 }
 
 .container {

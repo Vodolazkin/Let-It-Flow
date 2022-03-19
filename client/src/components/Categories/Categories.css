@@ -1,4 +1,4 @@
-.category-container {
+.category-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -28,6 +28,7 @@
 
 .category-name {
   text-align: center;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -35,5 +36,9 @@
   margin-bottom: 10px;
 }
 
-
+.category-link {
+  text-decoration: none;
+  color: #292929;
+  font-weight: 300;
+}
 
