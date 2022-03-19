@@ -3,6 +3,6 @@ const router = express.Router();
 const { userLogout } = require('./../controllers/user.controller');
 
 router.route('/')
-  .post(userLogout);
+  .get(userLogout);
 
 module.exports = router;

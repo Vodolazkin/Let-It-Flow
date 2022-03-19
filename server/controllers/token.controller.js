@@ -35,8 +35,8 @@ const removeToken = async (refreshToken) => {
   const tokenData = await Token.destroy({
     where: {
       refresh_tokes: refreshToken,
-    }
-  })
+    },
+  });
   return tokenData
 }
 

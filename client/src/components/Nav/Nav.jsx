@@ -1,27 +1,30 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import "./Nav.css";
-import axios from 'axios'
-import { LOGOUT } from "../../redux/actionType/userActionType";
+// import axios from 'axios'
+// import { LOGOUT } from "../../redux/actionType/userActionType";
 
 function Nav() {
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
-  const logout = async () => {
+  const { user } = useSelector(state => state)
+  console.log(user)
 
-   await axios.post('http://localhost:4000/logout');
-    // .then(() => {
-		// 	dispatch({
-    //     type: LOGOUT,
-    //   })
-		// 	navigate('/');
-    window.location.reload();
-		// })
-    // .catch(console.error());
-  };
+
+  // const logout = () => {
+  //  axios('http://localhost:4000/logout')
+  //   .then(() => {
+	// 		dispatch({
+  //       type: LOGOUT,
+  //     })
+	// 		navigate('/')
+  //   // window.location.reload();
+	// 	})
+  //   .catch(console.error());
+  // }
 
   return (
     <>
@@ -33,10 +36,20 @@ function Nav() {
             <div>доставка приятных впечатлений*</div>
           </div>
           <ul className="nav-list">
+            {!user ?
+            <>
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/login">Вход в личный кабинет</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/signup">Регистрация</Link></li>
-            <li className="nav-item" onClick={logout}></li>
+            </>
+            :
+            <>
+            <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
+            <li className="nav-item">Выход</li>
+            <p>Привет, </p>
+            <li className="nav-item">{user.userData.user.first_name}</li>
+            </>
+            }
           </ul>
         </div>
         </div>
