@@ -3,7 +3,9 @@ import ButtonBuy from '../ButtonBuy/ButtonBuy'
 import "./Card.css"
 
 function Card({ bouquet }) {
-  const [state, setState] = useState(false)
+  const [state, setState] = useState(false);
+  const [count, setCount] = useState(1);
+
   return (
     <div className="card-wrapper positionRel" onMouseLeave={() => setState(!state)} onMouseEnter={() => setState(!state)}>
       <div className="card-box-img">
@@ -11,9 +13,17 @@ function Card({ bouquet }) {
       </div>
       <p className="card-title">{bouquet.title}</p>
       <h4 className="card-description">{bouquet.description}</h4>
-       <p className="card-price">{bouquet.price} руб.</p>
+      <p className="card-price">{bouquet.price} руб.</p>
       <div className="card-button-wrapper positionAbs">
         {state &&  <ButtonBuy key={bouquet.id} bouquet={bouquet} />}
+      </div>
+      <div className="add_cont">
+        <div data-min="1" className="counter">
+          <button type="button" onClick={() => setCount(count - 1)} className="minus"></button>
+            <input className="counter_input-fild" value={count} id="item_count_1579" />
+          <button onClick={() => setCount(count + 1)} className="plus"></button>
+        </div>
+          <button type="button" className="card-btns" onclick="$.fn.SHOP('buy',1579)">В корзину</button>
       </div>
     </div>
   );
