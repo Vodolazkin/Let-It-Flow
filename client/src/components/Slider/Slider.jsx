@@ -9,13 +9,13 @@ import Slide3 from "./../../img/Slide3.webp";
 import Slide4 from "./../../img/Slide4.webp";
 
 
-function Slider(props) {
+function Slider() {
 
   const images = [{id: 1, image: Slide1}, {id: 2, image: Slide2}, {id: 3, image: Slide3}, {id: 4,image: Slide4} ];
 
 
   const [slideSate, setSlideState] = useState(false);
-
+  const [state_id, setState_id] = useState(0)
   
 
   return (

@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT } from "../actionType/userActionType"
+import { LOGIN, SIGNUP, LOGOUT, REFRESH_TOKEN } from "../actionType/userActionType"
 
 export const login = (user) => ({
   type: LOGIN,
@@ -14,6 +14,14 @@ export const logout = () => ({
   type: LOGOUT,
   payload: null
 })
+
+export const refreshToken = (accessToken) => (dispatch) => {
+  dispatch({
+    type: REFRESH_TOKEN,
+    payload: accessToken,
+  })
+}
+
 
 
 

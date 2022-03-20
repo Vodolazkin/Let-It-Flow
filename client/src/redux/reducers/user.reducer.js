@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT } from './../actionType/userActionType'
+import { LOGIN, SIGNUP, LOGOUT, REFRESH_TOKEN } from './../actionType/userActionType'
 
 
 export const userReducer = (state = {}, action) => {
@@ -14,6 +14,14 @@ export const userReducer = (state = {}, action) => {
     case LOGOUT: {
       return null
     }
+
+    case REFRESH_TOKEN: {
+      return state
+    }
+      // return {
+      //   // ...state,
+      //   // user: { ...user, accessToken: payload },
+      // };
     
     default:{
       return state
