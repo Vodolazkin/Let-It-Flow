@@ -22,12 +22,11 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-
 }
 
 main {
   flex-grow: 1;
-  padding-top: 150px;
+  padding-top: 100px;
 }
 
 .container {
@@ -36,7 +35,7 @@ main {
 }
 
 .btn {
-  height: 70px;
+  height: 60px;
   color: #f7f7f8;
   font-weight: 500;
   text-decoration: none;
@@ -47,10 +46,12 @@ main {
 
 .card-input__input {
   background-color: #f7f7f8;
-  height: 60px;
+  height: 50px;
   padding-left: 20px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
 }
 
 .card-input__label {
@@ -70,4 +71,11 @@ form {
 
 .divider {
   padding: 60px 0;;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
