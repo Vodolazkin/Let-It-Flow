@@ -1,11 +1,14 @@
 import { 
-  LOGIN, SIGNUP, 
+  LOGIN,
+  SIGNUP, 
   ADD_ITEM_CART, 
   DELETE_ITEM_CART, 
   INCREMENT_ITEM_COUNT_CART, 
   DECREMENT_ITEM_COUNT_CART,
   CLEAR_CART,
-  INIT_CART } from "../actionType/userActionType"
+  INIT_CART,
+  LOGOUT } from "../actionType/userActionType"
+// import { LOGIN, SIGNUP, LOGOUT } from "../actionType/userActionType"
 
 export const login = (user) => ({
   type: LOGIN,
@@ -50,4 +53,10 @@ export const decrementItemToCart = (id) => ({
 export const clearCart = () => ({
   type: CLEAR_CART,
 })
+export const logout = () => ({
+  type: LOGOUT,
+  payload: null
+})
+
+
 

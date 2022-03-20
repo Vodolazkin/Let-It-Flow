@@ -1,6 +1,7 @@
 import React from 'react';
 import Categories from '../Categories/Categories';
 import Slider from '../Slider/Slider';
+import YandexMap from '../YandexMap/YandexMap';
 import BouquetListMain from '../BouquetListMain/BouquetListMain'
 
 import { useSelector } from 'react-redux'
@@ -18,6 +19,7 @@ function Main(props) {
       <Slider />
       <Categories />
       <BouquetListMain />
+      <YandexMap />
     </>
   );
 }

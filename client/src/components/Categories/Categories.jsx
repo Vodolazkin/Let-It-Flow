@@ -6,10 +6,6 @@ import { v4 as uuidv4 } from "uuid"
 import './Categories.css';
 
 function Categories(props) {
-
-  // const icons = [{id: 1, image: Icon1}, {id: 2, image: Icon2}, {id: 3, image: Icon3}, {id: 4,image: Icon4}, {id: 5,image: Icon5}, {id: 6, image: Icon6} ];
-
-
   const dispatch = useDispatch();
   const { categoriesR } = useSelector(state => state.categoriesR);
 
