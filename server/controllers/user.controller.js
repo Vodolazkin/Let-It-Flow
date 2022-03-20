@@ -1,30 +1,20 @@
-const { generateTokens, saveToken, removeToken } = require('./token.controller')
-const { User } = require('../db/models');
-const bcrypt = require('bcrypt');
-const { userObj } = require('./userObj.controller')
-const { login, logout, refresh } = require('./../service/user.service')
+const { login, logout, refresh, signup } = require('./../service/user.service')
 
 const userRegister = async (req, res, next) => {
   try {
     const { first_name, last_name, email, phone, password } = req.body;
-    const isUserExist = await User.findOne({
-      where: { email },
+    const userData = await signup(first_name, last_name, email, phone, password);
+
+    res.cookie("refreshToken", userData.refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
     });
-    if (isUserExist) {
-      return res.json({ success: false, errors: `Пользователь с ${email} уже зарегистрирован!` });
-    }
- 
-    const hashPassword = await bcrypt.hash(password, 3);
-    const user = await User.create({ first_name, last_name, email, phone, password: hashPassword });
 
-    const userToken = userObj(user)
-
-    const tokens = generateTokens({...userToken}) // получаем jwt
-
-    await saveToken(userToken.id, tokens.refreshToken)
-
-    res.cookie('refreshToken', tokens.refreshToken, { maxAge: 30 * 24 * 60 * 1000, httpOnly: true })
-    return res.json({...tokens, userToken})
+    return res.json({
+      userData,
+      success: true,
+      message: "Регистрация прошла успешно",
+    })
     
   } catch (error) {
     res.status(401)

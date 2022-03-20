@@ -4,6 +4,32 @@ const { generateTokens, saveToken, removeToken, validateRefreshToken } = require
 const bcrypt = require('bcrypt')
 
 
+// Регистрация
+async function signup(first_name, last_name, email, phone, password) {
+  // ищем пользователя в базе
+  const isUserExist = await User.findOne({
+    where: { email },
+  });
+  if (isUserExist) {
+    return res.json({ success: false, errors: `Пользователь с ${email} уже зарегистрирован!` });
+  }
+
+  const hashPassword = await bcrypt.hash(password, 3);
+  const user = await User.create({ first_name, last_name, email, phone, password: hashPassword });
+
+  const userToken = userObj(user)
+
+  const tokens = generateTokens({...userToken}) // получаем jwt
+
+  await saveToken(userToken.id, tokens.refreshToken)
+
+  return {
+    ...tokens,
+    user: userToken,
+  };
+}
+
+
 // Логин
 async function login(email, password) {
   // ищем пользователя в базе
@@ -79,4 +105,4 @@ async function refresh(refreshToken) {
 
 
 
-module.exports = { login, logout, refresh };
+module.exports = { login, logout, refresh, signup };

@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Calendar from 'react-awesome-calendar';
 import "./Profile.css";
 import axios from 'axios';
-import Remind from './../Remind/Remind'
+import { initEvents, addEvent } from '../../../redux/actionCreate/eventActionCreate'
 
-export default function Profile(props) {
+export default function Profile() {
 
-  const { user: {userData: { user }} } = useSelector(state => state)
-
+  const { user: {userData: { user }}, events } = useSelector(state => state)
   const [title, setTitle] = useState()
 
-  const [events, setEvents] = useState()
+  const dispatch = useDispatch()
 
-
-    useEffect(() => {
-      axios(`http://localhost:4000/profile/${user.id}`)
-      .then(({data}) => {
-        setEvents(data)
-      })
-    }, [])
+  useEffect(() => {
+    axios(`http://localhost:4000/profile/${user.id}`)
+    .then(({data}) => {
+      dispatch(initEvents(data))
+    })
+  }, [])
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,6 +29,9 @@ export default function Profile(props) {
 		};
 
     axios.post('http://localhost:4000/profile/event', payload)
+    .then(({data}) => {
+      dispatch(addEvent(data))
+    })
     .catch(console.error());
     setTitle('')
 	};

@@ -12,7 +12,7 @@ export const userReducer = (state = {}, action) => {
     }
 
     case LOGOUT: {
-      return action.payload
+      return null
     }
     
     default:{

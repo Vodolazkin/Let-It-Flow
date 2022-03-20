@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
-import { signup } from './../../../redux/actionCreate/userActionCreate'
+import { signup } from '../../../redux/actionCreate/userActionCreate'
 
 function Signup() {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
 	const navigate = useNavigate();
 
@@ -23,8 +23,7 @@ function Signup() {
 		axios
 			.post('http://localhost:4000/signup', payload)
 			.then(({ data }) => {
-        console.log(data)
-				// dispatch(signup(data));
+				dispatch(signup(data));
 				navigate('/');
 			})
 			.catch(console.error());

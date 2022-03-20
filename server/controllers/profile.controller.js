@@ -5,7 +5,8 @@ const eventPost = async (req, res) => {
   try {
     const { date, title, user_id } = req.body;
  
-    await Event.create({ date, title, user_id });
+    const event = await Event.create({ date, title, user_id });
+    return res.json(event)
     
   } catch (error) {
     res.status(401)
@@ -18,13 +19,11 @@ const eventPost = async (req, res) => {
 const eventInit = async (req, res) => {
   try {
     const { id } = req.params
-    console.log(id)
     const events = await Event.findAll({
       where: {
         user_id: id,
       }
     });
-console.log(events)
     return res.json(events)
     
   } catch (error) {
