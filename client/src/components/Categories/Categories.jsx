@@ -2,11 +2,15 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from "uuid"
 import './Categories.css';
 
 function Categories(props) {
   const dispatch = useDispatch();
-  const { categoriesR } = useSelector(state => state);
+  const { categoriesR } = useSelector(state => state.categoriesR);
+
+  console.log('state', categoriesR);
+
   
   useEffect(() => {
     fetch('http://localhost:4000/categories')
@@ -15,8 +19,8 @@ function Categories(props) {
       type: 'INIT_CATEGORIES',
       payload: result
     }))
-    .catch(err=>console.log(err));
-  },[])
+    .catch(err => console.log(err))
+  },[dispatch])
   
   return (
     <>
@@ -24,7 +28,7 @@ function Categories(props) {
         <div className='container'>
           <div className='category-box'>
             { categoriesR.map((category) =>
-            <Link className='category-link' to={`/categories/${category.id}`}>
+            <Link key={uuidv4()} className='category-link' to={`/categories/${category.id}`}>
               <div className="category-cart-wrapper">
                   <img className='category-img' width="30" height="30" src={`http://localhost:4000${category.icon}`} alt="icons" />
                   <h3 className='category-name'>{category.name}</h3>
@@ -34,7 +38,7 @@ function Categories(props) {
           </div>
         </div>
     </div>
-    </>
+   </>
   )
 }
 

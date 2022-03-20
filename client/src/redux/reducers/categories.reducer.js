@@ -1,8 +1,12 @@
-export const categoriesReducer = (state = [], action) => {
+const initialState = {
+  categoriesR: [],
+}
+
+export const categoriesReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case 'INIT_CATEGORIES':{
-      return [...action.payload];
+      return {...state, categoriesR: action.payload}
     }
    
     default:

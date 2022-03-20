@@ -16,12 +16,12 @@ function Nav() {
   // const logout = () => {
   //  axios('http://localhost:4000/logout')
   //   .then(() => {
-	// 		dispatch({
+ //   dispatch({
   //       type: LOGOUT,
   //     })
-	// 		navigate('/')
+ //   navigate('/')
   //   // window.location.reload();
-	// 	})
+ //  })
   //   .catch(console.error());
   // }
 
@@ -35,6 +35,7 @@ function Nav() {
             <div>доставка приятных впечатлений*</div>
           </div>
           <ul className="nav-list">
+            <li className="nav-item"><Link className="nav-item-link" to="/cart">Корзина</Link></li>
             {!user ?
             <>
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
