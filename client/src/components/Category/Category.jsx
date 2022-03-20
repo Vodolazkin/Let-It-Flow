@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 import Card from "../Card/Card"
 
 function Category(props) {
-const { bouquetsRe } = useSelector((state) => state)
+const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
 const dispatch = useDispatch()
 const { id } = useParams()
 console.log(id)
+console.log('bouquetsRe', bouquetsRe);
 
   useEffect(() =>{
   fetch(`http://localhost:4000/categories/${id}`)
@@ -25,7 +26,7 @@ console.log(id)
 
   return (
       <div>
-     {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
+     { bouquetsRe && bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
     </div>
   );
 }

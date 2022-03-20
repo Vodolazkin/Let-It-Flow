@@ -15,7 +15,8 @@ function Slider() {
 
 
   const [slideSate, setSlideState] = useState(false);
-  const [state_id, setState_id] = useState(0)
+  const [slidId, setSlideStateID] = useState(0)
+
   
 
   return (
@@ -24,7 +25,7 @@ function Slider() {
     
       {images.map((slide, id) => 
       
-      <div onClick={() => setState_id(id)} id={id} key={uuidv4()} className={state_id === id ? "slide active" : "slide"} style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover' }}>
+      <div onClick={() => setSlideStateID(id)} id={id} key={uuidv4()} className={slidId === id ? "slide active" : "slide"} style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover' }}>
       </div>)}
 
       </div>
