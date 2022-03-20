@@ -1,0 +1,9 @@
+.container-delivery {
+  margin: 10px;
+}
+.container-method {
+  max-width: 400px;
+  display: flex;
+  justify-content: space-around;
+  margin: 40px;
+}
