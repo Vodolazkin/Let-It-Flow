@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP } from "../actionType/userActionType"
+import { LOGIN, SIGNUP, LOGOUT } from "../actionType/userActionType"
 
 export const login = (user) => ({
   type: LOGIN,
@@ -9,4 +9,11 @@ export const signup = (user) => ({
   type: SIGNUP,
   payload: user
 })
+
+export const logout = () => ({
+  type: LOGOUT,
+  payload: null
+})
+
+
 

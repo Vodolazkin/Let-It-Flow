@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Signup from './components/User/Signup/Signup';
 import Categories from './components/Categories/Categories';
 import Category from './components/Category/Category'
+import Profile from './components/User/Profile/Profile'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/remind" element={<Remind />}/>
             <Route path="/categories" element={<Categories />}/>
             <Route path="/categories/:id" element={<Category />}/>
+            <Route path="/profile" element={<Profile />}/>
           </Routes>
         </main>
       <footer>

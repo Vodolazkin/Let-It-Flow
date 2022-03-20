@@ -1,38 +1,22 @@
-const { generateTokens, saveToken } = require('./token.controller')
-const { User } = require('../db/models');
-const bcrypt = require('bcrypt');
+const { login, logout, refresh, signup } = require('./../service/user.service')
 
-const userRegister = async (req, res) => {
+const userRegister = async (req, res, next) => {
   try {
-    const {
-      first_name, last_name, email, phone, password,
-    } = req.body;
-    const isUserExist = await User.findOne({
-      where: { email },
+    const { first_name, last_name, email, phone, password } = req.body;
+    const userData = await signup(first_name, last_name, email, phone, password);
+
+    res.cookie("refreshToken", userData.refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
     });
-    if (isUserExist) {
-      return res.json({ success: false, errors: `Пользователь с ${email} уже зарегистрирован!` });
-    }
- 
-    const hashPassword = await bcrypt.hash(password, 3);
-    const user = await User.create({ first_name, last_name, email, phone, password: hashPassword });
-    
-    // delete user.dataValues['password'] //удаляем из объекта пароль
-    console.log(user)
 
-    const tokens = generateTokens({...user}) // получаем jwt
-    console.log(tokens.refreshToken)
-
-    await saveToken(user.id, tokens.refreshToken)
-
-    // req.session.user = user;
-    // req.session.isSession = true;
-    // res.json({ success: true, id: user.id, name: user.name });
-
-    return {...tokens, user}
+    return res.json({
+      userData,
+      success: true,
+      message: "Регистрация прошла успешно",
+    })
     
   } catch (error) {
-    console.log(error.message);
     res.status(401)
       .json({
         message: error.message,
@@ -40,4 +24,66 @@ const userRegister = async (req, res) => {
   }
 };
 
-module.exports = { userRegister };
+
+const userLogin = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const userData = await login(email, password);
+
+    res.cookie("refreshToken", userData.refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+    });
+
+    return res.json({
+      userData,
+      success: true,
+      message: "Авторизация прошла успешно",
+    })
+    
+  } catch (error) {
+    res.status(401)
+      .json({
+        message: error.message,
+      }).end();
+  }
+};
+
+
+const userLogout = async (req, res, next) => {
+  try {
+    // вытаскиваем рефреш токен
+    const { refreshToken } = req.cookies;
+    // передаем в сервис рефрешнутый токен
+    const token = await logout(refreshToken);
+    // в ответе удаляем куку
+    res.clearCookie("refreshToken");
+    return res.json(token);
+
+  } catch (error) {
+    res.status(401)
+      .json({
+        message: error.message,
+      }).end();
+  }
+};
+
+
+async function userRefresh(req, res) {
+  try {
+    // достаем из кук токен
+    const { refreshToken } = req.cookies;
+    const userData = await refresh(refreshToken);
+    // установим рефреш куки
+    res.cookie("refreshToken", userData.refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+    });
+    return res.json(userData);
+  } catch (error) {
+    next(error);
+  }
+}
+
+
+module.exports = { userRegister, userLogin, userLogout, userRefresh };
