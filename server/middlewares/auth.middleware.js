@@ -1,66 +1,18 @@
 const { validateAccessToken } = require('../service/token.service')
 
-
-module.exports = function (req, res, next) {
+function auth(req, res, next) {
   try {
-    // в заголовке запроса указывваем Authorization: bearer access_token
-    const authorizationHeader = req.headers.authorization;
-    if (!authorizationHeader) {
-      return res.status(403).json({
-        message: "No token provided!"
-      });
-    }
-    // достаем access_token как второй параметр по пробелу
-    const [tokenType, accessToken] = authorizationHeader.split(' ');
-    if (!accessToken) {
-      return res.status(403).json({
-        message: "No token provided!"
-      });
-    }
-
-    // функция валдиции токена
-    const userData = validateAccessToken(accessToken);
-    if (!userData) {
-      return res.redirect('/login')
-    }
-    req.user = userData;
+  const token = req.headers.authorization.split(' ')[1];
+  if (!token) {
+    return res.status(401).json("Вы не авторизованы");
+  } 
+    const decoded = validateAccessToken(token);
+    req.user = decoded;
     next();
-  } catch (error) {
-    return res.redirect('/login')
+  } catch (ex) {
+    res.status(400).send("Invalid auth token...");
   }
-};
+}
 
 
-// verifyToken = (req, res, next) => {
-//   let token = req.headers["x-access-token"];
-//   if (!token) {
-//     return res.status(403).send({
-//       message: "No token provided!"
-//     });
-//   }
-//   jwt.verify(token, config.secret, (err, decoded) => {
-//     if (err) {
-//       return res.status(401).send({
-//         message: "Unauthorized!"
-//       });
-//     }
-//     req.userId = decoded.id;
-//     next();
-//   });
-// };
-// isAdmin = (req, res, next) => {
-//   User.findByPk(req.userId).then(user => {
-//     user.getRoles().then(roles => {
-//       for (let i = 0; i < roles.length; i++) {
-//         if (roles[i].name === "admin") {
-//           next();
-//           return;
-//         }
-//       }
-//       res.status(403).send({
-//         message: "Require Admin Role!"
-//       });
-//       return;
-//     });
-//   });
-// };
+module.exports = auth;
