@@ -1,26 +1,32 @@
 .card-wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 200px;
-  min-height: 400px;
+  width: 220px;
+  min-height: 370px;
   margin-bottom: 20px;
-  margin-right: 10px;
-  padding: 10px;
+  padding: 20px;
+}
+
+.card-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.card-button-wrapper {
+  display: none;
+  justify-content: center;
 }
 
 .card-wrapper:hover {
   border: 0.5px solid rgba(41,41,41,0.4);
   box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
-  max-width: 199px;
-  /* min-height: 399px; */
+  padding: 19.5px;
 }
 
-.add_cont {
-  display: none;
-  flex-direction: column;
-}
-
-.card-wrapper:hover .add_cont {
+.card-wrapper:hover .card-button-wrapper {
   display: flex;
 }
 
@@ -28,6 +34,10 @@
   height: 150px;
   width: 100%;
   position: relative;
+}
+
+.card-info-content {
+  flex-grow: 3;
 }
 
 .card-img {
@@ -51,6 +61,7 @@
   color: #292929;
   font-weight: 300;
   margin: 0;
+  margin-bottom: 10px;
   padding: 0;
 }
 
@@ -75,6 +86,7 @@
   border-top: 0.5px solid rgba(41,41,41,0.4);
   text-align: center;
   height: 30px;
+  width: 100%;
   padding: 0;
 }
 
@@ -83,7 +95,7 @@
   width: 30px;
   height: 30px;
   background-color: #ffffff;
-  position: relative;
+  /* position: relative; */
   border-top: 0.5px solid rgba(41,41,41,0.4);
   border-left: 0.5px solid rgba(41,41,41,0.4);
   padding: 0;
@@ -94,54 +106,18 @@
   opacity: 0;
 } */
 
-.minus::after {
-  content: " ";
-  position: absolute;
-  display: block;
-  background-color:grey;
-  height: 1px;
-  margin-top: -5px;
-  top: 17px;
-  left: 5px;
-  right: 5px;
-  z-index: 2;
-}
-
 .plus {
   border-style: none;
   width: 30px;
   height: 30px;
   background-color: #ffffff;
-  position: relative;
+  /* position: relative; */
   border-top: 0.5px solid rgba(41,41,41,0.4);
   border-right: 0.5px solid rgba(41,41,41,0.4);
   padding: 0;
   margin: 0;
 }
 
-.plus::after {
-  content: " ";
-  position: absolute;
-  display: block;
-  background-color:grey;
-  height: 1px;
-  top: 14px;
-  left: 5px;
-  right: 5px;
-  z-index: 2;
-}
-
-.plus::before {
-  content: " ";
-  position: absolute;
-  display: block;
-  background-color: grey;
-  width: 1px;
-  left: 14px;
-  top: 5px;
-  bottom: 5px;
-  z-index: 2;
-}
 
 .card-btns {
   width: 100%;
