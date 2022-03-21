@@ -35,12 +35,8 @@ function Nav() {
             <div>доставка приятных впечатлений*</div>
           </div>
           <ul className="nav-list">
-<<<<<<< HEAD
             <li className="nav-item"><Link className="nav-item-link" to="/cart">Корзина</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/order">Заказ(ы)</Link></li>
-=======
-            <li className="nav-item"><Link className="nav-item-link" to="/cart">Корзина</Link>{cart.cart.length}</li>
->>>>>>> 42cfe37fc8620c215a70c67ad06f92ab81f15483
             {!user ?
             <>
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
