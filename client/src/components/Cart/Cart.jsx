@@ -20,8 +20,10 @@ function Cart() {
 
   const [method, setMethod] = useState(false)
   const { cart } = useSelector((state) => state.cart)
-  const { user } = useSelector((state) => state.user)
+  // const { user } = useSelector((state) => state.user)
   const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
+  const user = useSelector((state) => state.user)
+
 
   //* Синхронизация состояния корзины и localStorage
   useEffect(() => {
@@ -41,7 +43,7 @@ function Cart() {
         street: inputStreet.current.value,
         house: inputHouse.current.value,
         apartment: inputApartment.current.value,
-        user_id: user.userData.user.id
+        // user_id: user.userData.user.id
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +56,7 @@ function Cart() {
       body: JSON.stringify({
         time: inputTime.current.value,
         date: inputDate.current.value,
-        user_id: user.userData.user.id
+        // user_id: user.userData.user.id
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -69,9 +71,10 @@ function Cart() {
 
   //* заполняем таблицу Cart, по каждому айтему в корзине
   const orderFormation = () => {
-    cart.map(item => fetch('http://localhost:4000/cart/', {
+    cart.map(item => fetch('http://localhost:4000/cart', {
       method: 'POST',
       body: JSON.stringify({ item, id: user.userData.user.id }),
+      // body: JSON.stringify({ item, id: user.userData.user.id }),
       headers: {
         'Content-Type': 'application/json',
       }

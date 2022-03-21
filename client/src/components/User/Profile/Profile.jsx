@@ -24,7 +24,7 @@ export default function Profile() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    axios(`http://localhost:4000/profile/${user.id}`, config)
+    axios(`http://localhost:4000/profile/${user.id}`)
     .then(({data}) => {
       dispatch(initEvents(data))
     })

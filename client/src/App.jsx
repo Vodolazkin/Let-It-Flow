@@ -11,7 +11,11 @@ import Categories from './components/Categories/Categories';
 import Cart from  './components/Cart/Cart'
 import Category from './components/Category/Category'
 import Profile from './components/User/Profile/Profile'
+<<<<<<< HEAD
+import Order from './components/Order/Order';
+=======
 import CardPage from './components/CardPage/CardPage';
+>>>>>>> 42cfe37fc8620c215a70c67ad06f92ab81f15483
 import { useEffect } from 'react';
 import axios from 'axios'
 import { login } from './redux/actionCreate/userActionCreate';
@@ -46,7 +50,11 @@ function App() {
             <Route path="/cart" element={<Cart />}/>
             <Route path="/categories/:id" element={<Category />}/>
             <Route path="/profile" element={<Profile />}/>
+<<<<<<< HEAD
+            <Route path="/order" element={<Order />}/>
+=======
             <Route path="/card/:id" element={<CardPage />}/>
+>>>>>>> 42cfe37fc8620c215a70c67ad06f92ab81f15483
           </Routes>
         </main>
       <footer>

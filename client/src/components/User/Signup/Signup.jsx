@@ -21,7 +21,9 @@ function Signup() {
 		};
 
 		axios
-			.post('http://localhost:4000/signup', payload)
+			.post('http://localhost:4000/signup', payload, {
+        withCredentials: true,
+      })
 			.then(({ data }) => {
 				dispatch(signup(data));
 				navigate('/');

@@ -5,7 +5,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
-
+const { Event, User } = require('./db/models')
+const { default: axios } = require('axios');
 
 const app = express();
 
@@ -15,6 +16,7 @@ const indexRouter = require('./routes/index.routes');
 const cartRouter = require('./routes/cart.routes');
 const categoryRoutes = require('./routes/category.routes');
 const bouquetListMainRouter = require('./routes/bouquet_list_main.routes');
+const orderRouter = require('./routes/order.routes');
 const cardRouter = require('./routes/card.routes');
 
 //* config
@@ -38,6 +40,7 @@ app.use('/', indexRouter);
 app.use('/cart', cartRouter);
 app.use('/categories', categoryRoutes);
 app.use('/bouquets', bouquetListMainRouter);
+app.use('/order', orderRouter);
 app.use('/card', cardRouter);
 
 
@@ -47,6 +50,39 @@ app.use('/card', cardRouter);
 // });
 
 // error handler
+
+//* Функция для 
+
+
+// //* Функция для проверки событий и отправки смс
+// setInterval(SMS, 86400)
+
+async function SMS() {
+  const dateEvent = await Event.findAll()
+  console.log(dateEvent[0].user_id);
+  const day = new Date()
+  for (let i = 0; i < dateEvent.length; i++) {
+    if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[1].date)){
+      const user = await User.findOne({where: {id: dateEvent[i].user_id}})
+      console.log(user.phone);
+      const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send'
+      user.isActiveDelivery = true
+      axios({
+        url,
+        number: user.phone,
+        text: `Привет, ты не забыл про ${dateEvent[1].title}? Можешь выбрать подходящий букет на нашем сайте.`,
+        sign: 'SMS Aero'
+      })
+    }
+  }
+  // console.log(new Date() < new Date(date[1].date) && new Date(day.setDate(day.getDate() + 2)) >= new Date(date[1].date));
+  // console.log(day.getDate());
+  // console.log(day.setDate(day.getDate() + 2));
+  // console.log(new Date(day.setDate(day.getDate() + 5))); 
+}
+
+
+
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;

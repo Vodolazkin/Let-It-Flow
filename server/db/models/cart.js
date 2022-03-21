@@ -5,10 +5,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Cart extends Model {
 
-    static associate({ Bouquet, User, Cart_order }) {
+    static associate({ Bouquet, User, Order }) {
       this.belongsToMany(Bouquet, { through:'Cart_order' })
       this.belongsTo(User, { foreignKey: 'user_id' })
-      this.hasOne(Cart_order, { foreignKey: 'cart_id' })
+      this.belongsToMany(Order, { through: 'Cart_order' })
     }
   }
   Cart.init({
