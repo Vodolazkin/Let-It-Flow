@@ -22,7 +22,7 @@ export default function Login(props) {
       withCredentials: true,
     })
     .then(({ data }) => {
-      localStorage.setItem('id', data.userData.user.id)
+      // localStorage.setItem('id', data.userData.user.id)
 			dispatch(login(data))
 			navigate('/');
 		})
