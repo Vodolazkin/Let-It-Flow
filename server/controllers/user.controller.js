@@ -52,11 +52,11 @@ const userLogin = async (req, res, next) => {
 
 const userLogout = async (req, res, next) => {
   try {
-    // вытаскиваем рефреш токен
+    // вытаскиваем refresh токен
     const { refreshToken } = req.cookies;
-    // передаем в сервис рефрешнутый токен
+    // передаем в сервис refresh токен
     const token = await logout(refreshToken);
-    // в ответе удаляем куку
+    // в ответе удаляем cookie
     res.clearCookie("refreshToken");
     return res.json(token);
 
@@ -81,7 +81,6 @@ async function userRefresh(req, res) {
     });
     return res.json(userData);
   } catch (error) {
-    next(error);
   }
 }
 

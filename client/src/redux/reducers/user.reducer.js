@@ -1,7 +1,7 @@
 import { LOGIN, SIGNUP, LOGOUT, REFRESH_TOKEN } from './../actionType/userActionType'
 
 
-export const userReducer = (state = {}, action) => {
+export const userReducer = (state = null, action) => {
   switch (action.type) {
     case LOGIN: {
         return action.payload

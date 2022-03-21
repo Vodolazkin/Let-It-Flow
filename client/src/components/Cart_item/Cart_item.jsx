@@ -34,13 +34,24 @@ function Cart_item({ item }) {
 
   return (
     <div className='cart-item-card'>
-      <img src={item.bouquet.img} alt="bouquet" />/
-      <div>Цена букета: {item.bouquet.price}$</div>
-      <div>название: {item.bouquet.title}</div>
-      <div>id товара: {item.bouquet.id}</div>
-      <button onClick={() => incrementItem(stateId)}>+</button>
-      <input value={item.count} readonly />
-      <button onClick={() => decrementItem(stateId)}>-</button>
+
+      <div className='cart-item-card-img-box'>
+        <img className='cart-item-card-img' src={`http://localhost:4000/${item.bouquet.img}`} alt="bouquet" />
+      </div>
+
+      <div className='cart-item-card-content'>
+        <div className='cart-item-card--name'>{item.bouquet.title}</div>
+        <div className='cart-item-card--price'>{item.bouquet.price}$</div>
+        <div className='cart-item-card--id'>id товара: {item.bouquet.id}</div>
+
+        <div className='cart-item-btn-box'>
+          <button className='cart-item-btn--minus' onClick={() => decrementItem(stateId)}></button>
+          <input className='cart-item-btn--input' value={item.count} readonly />
+          <button className='cart-item-btn--plus' onClick={() => incrementItem(stateId)}></button>
+        </div>
+
+      </div>
+
       <button onClick={() => deleteItem(stateId)}>Удалить</button>
     </div>
   );
