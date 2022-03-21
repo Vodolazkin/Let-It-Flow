@@ -36,6 +36,7 @@ function Nav() {
           </div>
           <ul className="nav-list">
             <li className="nav-item"><Link className="nav-item-link" to="/cart">Корзина</Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/order">Заказ(ы)</Link></li>
             {!user ?
             <>
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>

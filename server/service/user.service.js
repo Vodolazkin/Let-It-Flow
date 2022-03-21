@@ -22,6 +22,10 @@ async function signup(first_name, last_name, email, phone, password) {
   const tokens = generateTokens({...userToken}) // получаем jwt
 
   await saveToken(userToken.id, tokens.refreshToken)
+  console.log({
+    ...tokens,
+    user: userToken,
+  })
 
   return {
     ...tokens,

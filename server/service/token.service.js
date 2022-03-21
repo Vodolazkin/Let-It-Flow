@@ -40,18 +40,22 @@ const validateRefreshToken = (token) => {
         user_id: userId,
       },
     });
-
+    
     if (tokenData) {
       tokenData.refreshToken = refreshToken;
       return tokenData.save();
+    } else {
+      console.log('NOOOOOOOOO')
+      const token = await Token.create({
+        user_id: userId,
+        refresh_tokes: refreshToken,
+      });
+
+      console.log(token, 'kkkkkkkkkkkkkkkk')
+  
+      return token;
     }
 
-    const token = await Token.create({
-      user_id: userId,
-      refresh_tokes: refreshToken,
-    });
-
-    return token;
   }
 
 async function removeToken(refreshToken) {
