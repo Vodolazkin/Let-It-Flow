@@ -27,11 +27,11 @@ function ButtonBuy({ bouquet }) {
   return (
     <div>
       <div data-min="1" className="counter">
-        <button type="button" onClick={() => ( count >= 2 ? setCount(count - 1) : setCount(count))} className="minus"></button>
+        <button className="minus" type="button" onClick={() => ( count >= 2 ? setCount(count - 1) : setCount(count))}></button>
           <input className="counter_input-fild" ref={inputValue} value={count} id="item_count_1579" />
-        <button onClick={() => setCount(count + 1)} className="plus"></button>
+        <button className="plus" type="button" onClick={() => setCount(count + 1)}></button>
       </div>
-      <button onClick={() => handleCart()}>В корзину</button>
+      <button className="card-btns" onClick={() => handleCart()}>В корзину</button>
     </div>
   );
 }

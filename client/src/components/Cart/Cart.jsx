@@ -40,7 +40,9 @@ function Cart() {
 
   return (
     <div>
-      <div>
+      <div className='cart-header'>Ваша корзина</div>
+      <div>Проверим наличие цветов, на выбранную дату.</div>
+      <div className='cart_item-list'>
         {cart ? cart.map((elem) => <Cart_item key={elem.bouquet.id} item={elem}/>) : 'Корзина пуста'}
       </div>
       { cart.length >= 1 ?

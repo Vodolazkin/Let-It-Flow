@@ -1,0 +1,8 @@
+.cart_item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-header {
+  font-family: "Wermut-italic";
+}
