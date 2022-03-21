@@ -7,8 +7,6 @@ function Category(props) {
 const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
 const dispatch = useDispatch()
 const { id } = useParams()
-console.log(id)
-console.log('bouquetsRe', bouquetsRe);
 
   useEffect(() =>{
   fetch(`http://localhost:4000/categories/${id}`)

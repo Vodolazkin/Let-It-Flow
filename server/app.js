@@ -15,6 +15,7 @@ const indexRouter = require('./routes/index.routes');
 const cartRouter = require('./routes/cart.routes');
 const categoryRoutes = require('./routes/category.routes');
 const bouquetListMainRouter = require('./routes/bouquet_list_main.routes');
+const cardRouter = require('./routes/card.routes');
 
 //* config
 app.use(logger('dev'));
@@ -37,6 +38,8 @@ app.use('/', indexRouter);
 app.use('/cart', cartRouter);
 app.use('/categories', categoryRoutes);
 app.use('/bouquets', bouquetListMainRouter);
+app.use('/card', cardRouter);
+
 
 // // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
