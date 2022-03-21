@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 import Card from "../Card/Card"
 
 function Category(props) {
-const { bouquetsRe } = useSelector((state) => state)
+const { bouquetsRe, categoriesR  } = useSelector((state) => state)
+
 const dispatch = useDispatch()
 const { id } = useParams()
-console.log(id)
+
 
   useEffect(() =>{
   fetch(`http://localhost:4000/categories/${id}`)
@@ -17,14 +18,10 @@ console.log(id)
  },[])
 
 
-//  useEffect(() =>{
-//   fetch(`http://localhost:4000/categories/${id}`)
-//   .then(data => console.log(data));
-//  },[])
-
 
   return (
       <div>
+        <h2>{categoriesR.filter((category) => category.name)}</h2>
      {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
     </div>
   );
