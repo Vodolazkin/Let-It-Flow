@@ -21,7 +21,7 @@ function ButtonBuy({ bouquet }) {
       }
     ))
   }
-  console.log('price',bouquet.price);
+  // console.log('price',bouquet.price);
 
 
   return (

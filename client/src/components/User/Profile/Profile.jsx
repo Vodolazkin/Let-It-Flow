@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import Calendar from 'react-awesome-calendar';
+import Calendar from 'react-awesome-calendar'
+import { useNavigate } from 'react-router-dom';
 import "./Profile.css";
 import axios from 'axios';
 import { initEvents, addEvent } from '../../../redux/actionCreate/eventActionCreate'
 
 export default function Profile() {
 
+  // const state = useSelector(state => state)
+  // const navigate = useNavigate()
+  // console.log(state)
+
+  // if (state.user === null) {
+  //   navigate('/signup')
+  // }
+  
   const { user: {userData: { user }}, events } = useSelector(state => state)
+  
   const [title, setTitle] = useState()
 
   const dispatch = useDispatch()
