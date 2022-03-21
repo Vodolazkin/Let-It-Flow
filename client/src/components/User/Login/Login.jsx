@@ -5,6 +5,7 @@ import axios from 'axios';
 import { login } from '../../../redux/actionCreate/userActionCreate';
 
 
+
 export default function Login(props) {
   const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -17,8 +18,11 @@ export default function Login(props) {
 			password: event.target.password.value
 		};
 
-    axios.post('http://localhost:4000/login', payload)
+    axios.post('http://localhost:4000/login', payload, {
+      withCredentials: true,
+    })
     .then(({ data }) => {
+      localStorage.setItem('id', data.userData.user.id)
 			dispatch(login(data))
 			navigate('/');
 		})

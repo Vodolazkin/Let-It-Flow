@@ -1,29 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import "./Nav.css";
-// import axios from 'axios'
-// import { LOGOUT } from "../../redux/actionType/userActionType";
+import axios from 'axios'
+import { LOGOUT } from "../../redux/actionType/userActionType";
 
 function Nav() {
 
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const transport = axios.create({
+    withCredentials: true
+  })
+  
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { user } = useSelector(state => state)
 
 
-  // const logout = () => {
-  //  axios('http://localhost:4000/logout')
-  //   .then(() => {
- //   dispatch({
-  //       type: LOGOUT,
-  //     })
- //   navigate('/')
-  //   // window.location.reload();
- //  })
-  //   .catch(console.error());
-  // }
+  const logout = async () => {    
+    await transport('http://localhost:4000/logout')
+    dispatch({
+        type: LOGOUT,
+    })
+  }
 
   return (
     <>
@@ -45,8 +45,8 @@ function Nav() {
             :
             <>
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
-            <li className="nav-item">Выход</li>
             <li className="nav-item"><Link className="nav-item-link" to="/profile">Профиль</Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/" onClick={logout}>Выход</Link></li>
             </>
             }
           </ul>

@@ -4,7 +4,8 @@ import Calendar from 'react-awesome-calendar'
 import { useNavigate } from 'react-router-dom';
 import "./Profile.css";
 import axios from 'axios';
-import { initEvents, addEvent } from '../../../redux/actionCreate/eventActionCreate'
+import { initEvents, addEvent } from '../../../redux/actionCreate/eventActionCreate';
+import { config } from '../../../utils/index'
 
 export default function Profile() {
 
@@ -23,7 +24,7 @@ export default function Profile() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    axios(`http://localhost:4000/profile/${user.id}`)
+    axios(`http://localhost:4000/profile/${user.id}`, config)
     .then(({data}) => {
       dispatch(initEvents(data))
     })
@@ -60,11 +61,11 @@ export default function Profile() {
       <div className="wrapper">
         <div>
           <h2>Привет, {user.first_name} {user.last_name}</h2>
-          <div>
+            <div>
             <h3>Контакты</h3>
             <p>{user.email}</p>
-            <p>{user.phone}</p>
-          </div>
+            {/* <p>{user.phone}</p> */}
+            </div>
           <p>В своем личном кабинете ты можешь отметить дни, в которые ты бы хотел получать букеты цветов</p>
           <form onSubmit={handleSubmit}>
             <div className="card-input">
