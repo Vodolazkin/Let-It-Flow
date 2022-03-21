@@ -1,6 +1,6 @@
 const { User } = require('../db/models');
 const { userObj } = require('./../controllers/userObj.controller')
-const { generateTokens, saveToken, removeToken, validateRefreshToken } = require('../service/token.service')
+const { generateTokens, saveToken, removeToken, validateAccessToken, validateRefreshToken, findToken } = require('../service/token.service')
 const bcrypt = require('bcrypt')
 
 
@@ -75,14 +75,15 @@ async function logout(refreshToken) {
 async function refresh(refreshToken) {
   // проверяем токен
   // if (!refreshToken) {
-  //   throw ApiError.UnaurhorizedError();
+  //   // throw ApiError.UnaurhorizedError();
+  //   console.log('nooo token')
   // }
   // валидируем (проверяем) токен
   const userData = validateRefreshToken(refreshToken);
   // отправляем токен в функцию, которая найдет его в бд
   const tokenFromDB = await findToken(refreshToken);
-
   if (!userData || !tokenFromDB) {
+    console.log(tokenFromDB,'tokenFromDB', '----------',userData, 'userData' )
     throw Error;
   }
 
