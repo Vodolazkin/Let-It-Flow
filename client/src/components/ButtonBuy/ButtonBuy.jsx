@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../redux/actionCreate/userActionCreate'
+// import "./ButtonBuy.css";
 
 function ButtonBuy({ bouquet }) {
 
@@ -13,7 +14,6 @@ function ButtonBuy({ bouquet }) {
   const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
 
   const handleCart = () => {
-    // console.log('brnBuy', bouquet);
 
     dispatch(addItemToCart({
        bouquet,
@@ -21,15 +21,14 @@ function ButtonBuy({ bouquet }) {
       }
     ))
   }
-  // console.log('price',bouquet.price);
 
 
   return (
     <div>
       <div data-min="1" className="counter">
-        <button className="minus" type="button" onClick={() => ( count >= 2 ? setCount(count - 1) : setCount(count))}></button>
+        <button className="minus" type="button" onClick={() => ( count >= 2 ? setCount(count - 1) : setCount(count))}>-</button>
           <input className="counter_input-fild" ref={inputValue} value={count} id="item_count_1579" />
-        <button className="plus" type="button" onClick={() => setCount(count + 1)}></button>
+        <button className="plus" type="button" onClick={() => setCount(count + 1)}>+</button>
       </div>
       <button className="card-btns" onClick={() => handleCart()}>В корзину</button>
     </div>
