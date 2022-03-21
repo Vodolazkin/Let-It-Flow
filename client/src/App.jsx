@@ -8,9 +8,27 @@ import Remind from './components/User/Remind/Remind';
 import Footer from './components/Footer/Footer';
 import Signup from './components/User/Signup/Signup';
 import Categories from './components/Categories/Categories';
+import Cart from  './components/Cart/Cart'
 import Category from './components/Category/Category'
+import Profile from './components/User/Profile/Profile'
+import { useEffect } from 'react';
+import axios from 'axios'
+import { login } from './redux/actionCreate/userActionCreate';
+import { useDispatch } from 'react-redux';
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    axios('http://localhost:4000/refresh',{
+      withCredentials: true,
+    })
+    .then(({ data }) => {
+      dispatch(login(data))
+    })
+  }, [])
+
   return (
     <BrowserRouter>
 
@@ -24,7 +42,9 @@ function App() {
             <Route path="/signup" element={<Signup />}/>
             <Route path="/remind" element={<Remind />}/>
             <Route path="/categories" element={<Categories />}/>
+            <Route path="/cart" element={<Cart />}/>
             <Route path="/categories/:id" element={<Category />}/>
+            <Route path="/profile" element={<Profile />}/>
           </Routes>
         </main>
       <footer>

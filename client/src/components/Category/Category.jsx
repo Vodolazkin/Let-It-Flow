@@ -21,8 +21,7 @@ const { id } = useParams()
 
   return (
       <div>
-        <h2>{categoriesR.filter((category) => category.name)}</h2>
-     {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
+     { bouquetsRe && bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
     </div>
   );
 }

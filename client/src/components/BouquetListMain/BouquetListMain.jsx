@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Card from "../Card/Card"
 import  './BouquetListMain.css'
 function BouquetListMain(props) {
-  const { bouquetsRe } = useSelector((state) => state)
+  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
+  console.log('1111111',bouquetsRe);
   const dispatch = useDispatch()
   
    useEffect(() =>{
@@ -15,9 +16,18 @@ function BouquetListMain(props) {
   
  
   return (
-    <div>
-     {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>).slice(0,4)}
-    </div>
+    // <div>
+    //  {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
+    // </div>
+    <>
+      <div className="card-container">
+        <div className="container">
+          <div className='card-box'>
+            {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>).slice(0,4)}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

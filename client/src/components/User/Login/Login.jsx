@@ -1,14 +1,14 @@
 import './Login.css'
-import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import { login } from '../../../redux/actionCreate/userActionCreate';
 
 
+
 export default function Login(props) {
-  // const dispatch = useDispatch();
-	// const navigate = useNavigate();
+  const dispatch = useDispatch();
+	const navigate = useNavigate();
 
   const handleSubmit = (event) => {
 		event.preventDefault();
@@ -18,11 +18,15 @@ export default function Login(props) {
 			password: event.target.password.value
 		};
 
-		// axios.post('http://localhost:3000/login', payload).then(({ data }) => {
-		// 	dispatch(login(data))
-		// 	navigate('/');
-		// })
-    // .catch(console.error());
+    axios.post('http://localhost:4000/login', payload, {
+      withCredentials: true,
+    })
+    .then(({ data }) => {
+      localStorage.setItem('id', data.userData.user.id)
+			dispatch(login(data))
+			navigate('/');
+		})
+    .catch(console.error());
 	};
 
 
@@ -33,7 +37,7 @@ export default function Login(props) {
       <form onSubmit={handleSubmit}>
         <div className="card-input">
           <label for="email" class="card-input__label">Email</label>
-          <input type="email" id="email" class="card-input__input" autocomplete="off" />
+          <input type="email" id="email" class="card-input__input" />
         </div>
         <div className="card-input">
           <label for="password" className="card-input__label">Пароль</label>

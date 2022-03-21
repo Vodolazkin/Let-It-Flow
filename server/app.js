@@ -6,14 +6,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 
+
 const app = express();
 
 //* Импорт роутов
 const indexRouter = require('./routes/index.routes');
-const usersRouter = require('./routes/users.routes');
-const regRouter = require('./routes/reg.routes');
-const loginRouter = require('./routes/login.routes');
-const logoutRouter = require('./routes/logout.routes');
+// const usersRouter = require('./routes/user.routes');
 const cartRouter = require('./routes/cart.routes');
 const categoryRoutes = require('./routes/category.routes');
 const bouquetListMainRouter = require('./routes/bouquet_list_main.routes');
@@ -24,22 +22,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+
+const corsConfig = {
+  origin: true,
+  credentials: true,
+};
+
+app.use(cors(corsConfig));
+app.options('*', cors(corsConfig));
 
 //* use routes
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/signup', regRouter);
-app.use('/login', loginRouter);
-app.use('/logout', logoutRouter);
+// app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/categories', categoryRoutes);
 app.use('/bouquets', bouquetListMainRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// // catch 404 and forward to error handler
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {
