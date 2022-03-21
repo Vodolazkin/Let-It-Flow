@@ -12,7 +12,6 @@ router.route('/')
     const bouquetCategory = await Bouquet.findAll({
   where: { category_id: id }
     });
-    console.log(bouquetCategory)
     res.json(bouquetCategory)
   })
 

@@ -80,47 +80,55 @@ function Cart() {
 
 
   return (
-    <div>
-      <div className='cart-header'>Ваша корзина</div>
-      <div>Проверим наличие цветов, на выбранную дату.</div>
-      <div className='cart_item-list'>
-        {cart ? cart.map((elem) => <Cart_item key={elem.bouquet.id} item={elem}/>) : 'Корзина пуста'}
-      </div>
-      { cart.length >= 1 ?
-      <div>
-        {/* <select onClick={({target}) => setMethod(target.value)} name="method-delivery">
-          <option value="pickup">Самовывоз</option>
-          <option value="delivery">Доставка</option>
-        </select> */}
-      <div className="container-method">
-        <div onClick={() => setMethod(0)}>Доставка</div>
-        <div onClick={() => setMethod(1)}>Самовывоз</div>
-      </div>
-        
-      {method === 0 && 
-      <div className="container-delivery">
-        <input ref={inputTime} de type="time" />
-        <input ref={inputDate} type="date" />
-        <button onClick={() => console.log()}>[ log ]</button>
+    <div className='container divider'>
+      <h2>Ваша корзина { !cart.length && 'пуста'}</h2>
+      <div className='wrapper'>
         <div>
-          <label htmlFor="street">Улица</label>
-          <input ref={inputStreet} placeholder="" name="street"/>
+          <div className='cart_item-list'>
+            {cart ? cart.map((elem) => <Cart_item key={elem.bouquet.id} item={elem}/>) : 'Корзина пуста'}
+          </div>
         </div>
+
+        { cart.length >= 1 &&
+             
         <div>
-          <label htmlFor="street">Дом</label>
-          <input ref={inputHouse} placeholder="" name="house"/>
+             <h3>Выберите способ доставки</h3>
+          {/* <select onClick={({target}) => setMethod(target.value)} name="method-delivery">
+            <option value="pickup">Самовывоз</option>
+            <option value="delivery">Доставка</option>
+          </select> */}
+        <div className="container-method">
+          <div onClick={() => setMethod(0)}>Доставка</div>
+          <div onClick={() => setMethod(1)}>Самовывоз</div>
         </div>
-        <div>
-          <label htmlFor="street">Квартира</label>
-          <input ref={inputApartment} placeholder="" name="apartment"/>
+          
+        {method === 0 && 
+        <div className="container-delivery">
+          <input ref={inputTime} type="time" />
+          <input ref={inputDate} type="date" />
+          <div className="card-input">
+            <label htmlFor="street" className="card-input__label">Улица</label>
+            <input className='card-input__input ' ref={inputStreet} placeholder="" name="street" />
+          </div>
+          <div className="card-input">
+            <label htmlFor="street" className="card-input__label">Дом</label>
+            <input className='card-input__input ' ref={inputStreet} placeholder="" name="street" />
+            <input ref={inputHouse} placeholder="" name="house" className="card-input__input" />
+          </div>
+          <div>
+            <label htmlFor="street">Квартира</label>
+            <input ref={inputApartment} placeholder="" name="apartment"/>
+          </div>
         </div>
-      </div>
-      }
-        <div>Total cost: {total}$</div>
-        <button onClick={() => deleteCart()}>Очистить корзину</button>
-        <button onClick={() => orderFormation()}>Оплатить</button>
-      </div> : 'Корзина пуста'
-      }
+        }
+        <div>Сумма заказа</div>
+        <h3>{total}$</h3>
+        <div className='nowrapper'>
+          <button className="white-btn" onClick={() => deleteCart()}>Очистить корзину</button>
+          <button  className="btn" onClick={() => orderFormation()}>Оплатить</button>
+        </div>
+      </div>}
+     </div>
     </div>
   );
 }

@@ -58,12 +58,12 @@ export default function Profile() {
 
   return (
     <div className="container divider">
-      <div className="wrapper">
+      <div className="nowrapper">
         <div>
-          <h2>Привет, {user.first_name} {user.last_name}</h2>
+          <h2>Привет, {user && user.first_name} {user && user.last_name}</h2>
             <div>
             <h3>Контакты</h3>
-            <p>{user.email}</p>
+            <p>{user && user.email}</p>
             {/* <p>{user.phone}</p> */}
             </div>
           <p>В своем личном кабинете ты можешь отметить дни, в которые ты бы хотел получать букеты цветов</p>

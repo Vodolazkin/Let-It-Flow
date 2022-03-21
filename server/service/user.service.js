@@ -83,7 +83,6 @@ async function refresh(refreshToken) {
   // отправляем токен в функцию, которая найдет его в бд
   const tokenFromDB = await findToken(refreshToken);
   if (!userData || !tokenFromDB) {
-    console.log(tokenFromDB,'tokenFromDB', '----------',userData, 'userData' )
     throw Error;
   }
 
