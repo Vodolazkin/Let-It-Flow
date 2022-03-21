@@ -80,7 +80,6 @@
 
 .minus {
   border-style: none;
-  opacity: 0.5;
   width: 30px;
   height: 30px;
   background-color: #ffffff;
@@ -105,7 +104,7 @@
   top: 17px;
   left: 5px;
   right: 5px;
-  z-index: 9;
+  z-index: 2;
 }
 
 .plus {
@@ -129,7 +128,7 @@
   top: 14px;
   left: 5px;
   right: 5px;
-  z-index: 9;
+  z-index: 2;
 }
 
 .plus::before {
@@ -141,7 +140,7 @@
   left: 14px;
   top: 5px;
   bottom: 5px;
-  z-index: 9;
+  z-index: 2;
 }
 
 .card-btns {

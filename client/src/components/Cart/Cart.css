@@ -1,6 +1,16 @@
+.cart_item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-header {
+  font-family: "Wermut-italic";
+}
+
 .container-delivery {
   margin: 10px;
 }
+
 .container-method {
   max-width: 400px;
   display: flex;
