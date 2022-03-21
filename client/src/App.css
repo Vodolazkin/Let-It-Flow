@@ -11,6 +11,11 @@ h2 {
   font-size: 36px;
 }
 
+h3 {
+  font-family: 'Jost', sans-serif;
+  font-size: 24px;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -46,6 +51,17 @@ main {
   font-family: 'Jost', sans-serif;
 }
 
+.white-btn {
+  height: 60px;
+  color: #292929;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px solid #292929;
+  font-size: 20px;
+  font-family: 'Jost', sans-serif;
+}
+
+
 .card-input__input {
   background-color: #f7f7f8;
   height: 50px;
@@ -60,12 +76,12 @@ main {
   margin-bottom: 10px;
 }
 
-.flex-wrapper {
+/* .flex-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-}
+} */
 
 form {
   margin: 20px 0;
@@ -76,6 +92,13 @@ form {
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.nowrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
