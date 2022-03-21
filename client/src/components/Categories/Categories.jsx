@@ -8,9 +8,6 @@ import './Categories.css';
 function Categories(props) {
   const dispatch = useDispatch();
   const { categoriesR } = useSelector(state => state.categoriesR);
-
-  console.log('state', categoriesR);
-
   
   useEffect(() => {
     fetch('http://localhost:4000/categories')

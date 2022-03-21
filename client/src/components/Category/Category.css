@@ -1,7 +1,6 @@
-.card-box {
+.category-box {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
 }

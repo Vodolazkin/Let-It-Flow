@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'Wermut';
-    src: local('Wermut Italic'), local('Wermut-Italic'),
-        url('./Wermut-Italic.woff') format('woff2'),
-        url('./Wermut-Italic.woff2') format('woff'),
-        url('./Wermut-Italic.woff') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-  }
