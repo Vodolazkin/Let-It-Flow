@@ -8,10 +8,9 @@ import "./CardPage.css"
 
 function CardPage({ bouquet }) {
   const [state, setState] = useState(false);
-  // const [count, setCount] = useState(1);
 
   const dispatch = useDispatch();
-  const {id} = useParams()
+  const {id} = useParams();
 
   const { cardR } = useSelector((state) => state.cardR);
 
@@ -22,16 +21,25 @@ function CardPage({ bouquet }) {
     .catch(err=>console.log(err));
  },[dispatch])
 
+ 
   return (
-    <div className="card-wrapper">
-      <div className="card-box-img">
-        <img className="card-img" width="100%" height="100%" src={`http://localhost:4000/${cardR.img}`} alt="b-main"></img>
-      </div>
-      <p className="card-title">{cardR.title}</p>
-      <h4 className="card-description">{cardR.description}</h4>
-      <p className="card-price">{cardR.price} руб.</p>
-      <div className="card-button-wrapper">
-        {state &&  <ButtonBuy key={bouquet.id} bouquet={bouquet} />}
+    <div className='card-container'>
+      <div className='container'>
+          <div className="cardPage-wrapper">
+            <div className="cardPage-box-img">
+              <img className="cardPage-img" width="100%" height="100%" src={`http://localhost:4000/${cardR.img}`} alt="b-main"></img>
+            </div>
+            <div className="cardPage-info-content">
+              <p className="cardPage-title">{cardR.title}</p>
+              <p className="cardPage-price">{cardR.price} руб.</p>
+              <p className='cardPage-description-title'>Описание</p>
+              <h4 className="cardPage-description">{cardR.description}</h4>
+              <button className='cardPage-description-instruction'>Инструкция свежести</button>
+              <div className="cardPage-button-wrapper">
+                {state &&  <ButtonBuy key={bouquet.id} bouquet={bouquet} />}
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   );
