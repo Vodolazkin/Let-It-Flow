@@ -7,15 +7,14 @@ router.get('/', async (req, res) => {
     // const carts = await Cart.findAll({ where: { 
     //   user_id: 2, 
     //   isActive: true,
-    //   include: [{ 
+    //   through: [{ 
     //     model: Bouquet,
-    //     where: {
-    //       id: bouquet_id
-    //     }
+    //     where: { id: 1 },
+    //     // attributes: [bouquet_id]
     //    }]
     // }})
     const carts = await Cart.findAll({ where: { 
-      user_id: 2, 
+      user_id: 1, 
       isActive: true,
     }})
     res.json(carts)
@@ -26,12 +25,23 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.post('/bouquet', async (req, res) => {
+  try {
+    console.log('666', req.body);
+    const { id } = req.body
+    const bouquet = await Bouquet.findOne({ where : { id }})
+    res.json({ bouquet })
+  } catch (error) {
+    res.status(401)
+    .json({ message: error.message})
+    .end() 
+  }
+})
+
 router.post('/', async (req, res) => {
   try {
     const { item, id } = req.body
-    console.log(req.body);
     const recordCartItem = await Cart.create({ bouquet_id: item.bouquet.id, count: item.count, user_id: id })
-    console.log('000',recordCartItem);
     return res.json({recordCartItem})
   } catch (error) {
     res.status(401)

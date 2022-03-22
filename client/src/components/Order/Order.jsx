@@ -4,6 +4,7 @@ import OrderList from './OrderList/OrderList'
 import CartOrderList from './CartOrderList/CartOrderList';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import './Order.css'
 
 function Order() {
 
@@ -20,24 +21,31 @@ function Order() {
     //     'Content-Type': 'application/json',
     //   }
     // })
+
+    //**? Сервер возвращает заказы по id (hardcode id)
     axios('http://localhost:4000/order/')
-    // .then(res => res.json())
     // .then(({data}) => console.log('эээ',data))
     .then(({data}) => setOrder(data))
 
+    //**? Сервер возвращает корзину по id (hardcode id)
     axios('http://localhost:4000/cart/')
     .then(({data}) => setOrderCart(data))
-    // .then(({data}) => setOrderCart(data))
+    // .then(({data}) => console.log(data))
   }, [])
+
   return (
-    <div>
+    <div className='container-order'>
+      <div>
       Ваши заказы:
-      <div></div>
-      <>------------------------------------------</>
-      {orderCart.map(el => <CartOrderList cart={el} />)}
       <br />
-      <>------------------------------------------</>
-      {order.map(el => <OrderList order={el} />)}
+        <>------------------------------------------</>
+        {orderCart.map(el => <CartOrderList cart={el} />)}
+      </div>
+
+      <div>
+        <>------------------------------------------</>
+        {order.map(el => <OrderList order={el} />)}
+      </div>
     </div>
   );
 }
