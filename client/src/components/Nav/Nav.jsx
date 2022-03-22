@@ -35,8 +35,6 @@ function Nav() {
             <div>доставка приятных впечатлений*</div>
           </div>
           <ul className="nav-list">
-            {/* <li className="nav-item"><Link className="nav-item-link" to="/cart">Корзина</Link>{cart[0].count}</li>
-            <li className="nav-item"><Link className="nav-item-link" to="/order">Заказ(ы)</Link></li> */}
             {!user ?
             <>
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
@@ -45,7 +43,6 @@ function Nav() {
             </>
             :
             <>
-            {/* <li className="nav-item"><Link className="nav-item-link" to="/order">Заказ(ы)</Link></li> */}
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
             <li className="nav-item">
               <Link className="nav-item-link" to="/profile">
