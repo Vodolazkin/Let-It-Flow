@@ -6,7 +6,7 @@ import { login } from '../../../redux/actionCreate/userActionCreate';
 
 
 
-export default function Login(props) {
+export default function Login() {
   const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -22,7 +22,6 @@ export default function Login(props) {
       withCredentials: true,
     })
     .then(({ data }) => {
-      // localStorage.setItem('id', data.userData.user.id)
 			dispatch(login(data))
 			navigate('/');
 		})
