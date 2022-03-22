@@ -23,7 +23,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    axios('http://localhost:4000/refresh',{
+    axios('http://localhost:4000/access',{
       withCredentials: true,
     })
     .then(({ data }) => {

@@ -3,14 +3,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
-
+import AccordionList from '../Accordion/AccordionList';
 import "./CardPage.css"
 
-function CardPage({ bouquet }) {
-  const [state, setState] = useState(false);
+function CardPage() {
+  // const [state, setState] = useState(false);
 
   const dispatch = useDispatch();
   const {id} = useParams();
+  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
+  const bouquet = bouquetsRe.find((el) => el.id == id);
 
   const { cardR } = useSelector((state) => state.cardR);
 
@@ -34,9 +36,10 @@ function CardPage({ bouquet }) {
               <p className="cardPage-price">{cardR.price} руб.</p>
               <p className='cardPage-description-title'>Описание</p>
               <h4 className="cardPage-description">{cardR.description}</h4>
-              <button className='cardPage-description-instruction'>Инструкция свежести</button>
+              <p className='cardPage-description-instruction'>Инструкция свежести</p>
+              <AccordionList />
               <div className="cardPage-button-wrapper">
-                {state &&  <ButtonBuy key={bouquet.id} bouquet={bouquet} />}
+              <ButtonBuy key={bouquet.id} bouquet={bouquet} />
               </div>
             </div>
           </div>

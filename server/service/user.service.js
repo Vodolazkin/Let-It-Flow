@@ -108,5 +108,30 @@ async function refresh(refreshToken) {
 }
 
 
+async function access(accessToken) {
+  // проверяем токен
+  if (!accessToken) {
+    // throw ApiError.UnaurhorizedError();
+    return null
+  }
+  // валидируем (проверяем) токен
+  const userData = validateAccessToken(accessToken);
+  // отправляем токен в функцию, которая найдет его в бд
+  const currentUser = await User.findOne({
+    where: {
+      email: userData.email,
+    },
+  });
+  
+  // генерируем новую dto
+  const userToken = userObj(currentUser);
+  // генерируем пару токенов
 
-module.exports = { login, logout, refresh, signup };
+  return {
+    user: userToken,
+  };
+}
+
+
+
+module.exports = { login, logout, refresh, signup, access };

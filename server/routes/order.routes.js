@@ -14,10 +14,12 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/delivery', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { time, date, street, house, apartment, user_id } = req.body;
+    console.log(time, date, street, house, apartment, user_id);
     const user = await User.findOne({ where: { id: user_id } })
+    // const cartOrder = await Cart.findAll({where: { user_id: id }})
     const order = await Order.create({ 
       delivery_date: date,
       delivery_time: time,

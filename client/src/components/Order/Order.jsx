@@ -6,23 +6,23 @@ import { useSelector } from 'react-redux';
 function Order() {
 
   const user = useSelector((state) => state.user)
-  const [state, setState] = useState()
+  const [order, setOrder] = useState()
 
   useEffect(() => {
     // console.log(user.userData.user.id);
-    fetch('http://localhost:4000/order', {
+    fetch('http://localhost:4000/order/', {
       method: 'GET',
       body: JSON.stringify({ id: user.userData.user.id}),
       headers: {
         'Content-Type': 'application/json',
       }
-      .then(res => res.json())
-      .then(res => console.log(res))
     })
+    .then(res => res.json())
+    .then(res => setOrder(res))
   }, [])
   return (
     <div>
-      {/* {state.map()} */}
+      {order.map(el => <div>{el.delivery_date}</div>)}
     </div>
   );
 }
