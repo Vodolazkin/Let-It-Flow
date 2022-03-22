@@ -66,7 +66,7 @@ async function SMS() {
       const user = await User.findOne({where: {id: dateEvent[i].user_id}})
       console.log(user.phone);
       const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send'
-      user.isActiveDelivery = true
+      //user.isActiveDelivery = true
       axios({
         url,
         number: user.phone,
