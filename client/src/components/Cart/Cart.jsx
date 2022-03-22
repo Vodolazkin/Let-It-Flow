@@ -20,9 +20,9 @@ function Cart() {
 
   const [method, setMethod] = useState(false)
   const { cart } = useSelector((state) => state.cart)
-  // const { user } = useSelector((state) => state.user)
-  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
   const user = useSelector((state) => state.user)
+  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
+  // const user = useSelector((state) => state.user)
 
 
   //* Синхронизация состояния корзины и localStorage
@@ -35,7 +35,7 @@ function Cart() {
 
   //* Отправляем в бд сформированный заказ (доставка)
   const sendOrderDelivery = () => {
-    fetch('http://localhost:4000/order/delivery', {
+    fetch('http://localhost:4000/order/', {
       method: 'POST',
       body: JSON.stringify({
         time: inputTime.current.value,
@@ -43,7 +43,7 @@ function Cart() {
         street: inputStreet.current.value,
         house: inputHouse.current.value,
         apartment: inputApartment.current.value,
-        // user_id: user.userData.user.id
+        user_id: user.userData.user.id
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -129,6 +129,8 @@ function Cart() {
         <div className='nowrapper'>
           <button className="white-btn" onClick={() => deleteCart()}>Очистить корзину</button>
           <button  className="btn" onClick={() => orderFormation()}>Оплатить</button>
+          {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
+          <button  className="btn" onClick={() => sendOrderDelivery()}>Ордер</button>
         </div>
       </div>}
      </div>

@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
      type: DataTypes.DATE,
     },
     delivery_time: {
-     type: DataTypes.DATE,
+     type: DataTypes.STRING,
     },
     delivery_address: {
      type: DataTypes.STRING,

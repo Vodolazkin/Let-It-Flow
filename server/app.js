@@ -55,24 +55,32 @@ app.use('/card', cardRouter);
 
 
 // //* Функция для проверки событий и отправки смс
-setInterval(SMS, 86400)
+// setInterval(SMS, 5400)
 
 async function SMS() {
   const dateEvent = await Event.findAll()
-  console.log(dateEvent[0].user_id);
+  // console.log(dateEvent[0].user_id);
+  // console.log(dateEvent[0].title);
+  // console.log(dateEvent[0].date);
+  // console.log(dateEvent[0].user_id);
   const day = new Date()
   for (let i = 0; i < dateEvent.length; i++) {
     if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
       const user = await User.findOne({where: {id: dateEvent[i].user_id}})
       console.log(user.phone);
-      const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send'
+      const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send/'
       user.isActiveDelivery = true
       axios({
-        url,
-        number: user.phone,
-        text: `Привет, ты не забыл про ${dateEvent[1].title}? Можешь выбрать подходящий букет на нашем сайте.`,
-        sign: 'SMS Aero'
+        method: 'POST',
+        url: 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send/',
+        data: {
+          number: Number(user.phone),
+          text: `Привет, ты не забыл про ${dateEvent[i].title}? Можешь выбрать подходящий букет на нашем сайте.`,
+          sign: 'SMS Aero'
+        }
       })
+      .then(res => console.log(res))
+      // .then(res => res.json())
     }
   }
   // console.log(new Date() < new Date(date[1].date) && new Date(day.setDate(day.getDate() + 2)) >= new Date(date[1].date));
