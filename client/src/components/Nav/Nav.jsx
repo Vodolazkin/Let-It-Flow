@@ -15,7 +15,7 @@ function Nav() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, cart } = useSelector(state => state)
+  const { user, cart: {cart} } = useSelector(state => state)
 
 
   const logout = async () => {    
@@ -35,7 +35,7 @@ function Nav() {
             <div>доставка приятных впечатлений*</div>
           </div>
           <ul className="nav-list">
-            <li className="nav-item"><Link className="nav-item-link" to="/cart">Корзина</Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/cart">Корзина</Link>{cart[0].count}</li>
             <li className="nav-item"><Link className="nav-item-link" to="/order">Заказ(ы)</Link></li>
             {!user ?
             <>

@@ -9,7 +9,6 @@ export const eventReducer = (state = [], action) => {
 
     case ADD_EVENT: {
       const { payload } = action
-      console.log(state)
       return [...state, payload]
     }
     
