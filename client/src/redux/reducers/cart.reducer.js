@@ -43,7 +43,6 @@ import {
 
     //* >>>>> -1 <<<<<
     case INCREMENT_ITEM_COUNT_CART: {
-        console.log(action.payload.id);
         return {
           ...state, cart: state.cart.map(el => {
             if(el.bouquet.id === action.payload) {

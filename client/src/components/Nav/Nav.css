@@ -37,11 +37,31 @@
 }
 
 .nav-item-link {
+  position: relative;
   text-decoration: none;
   color: #292929;
   font-size: 14px;
   text-transform: uppercase;
 }
+
+.nav-item-count-cart {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgb(0 0 0 / 10%);
+  border-radius: 50%;
+  background-color: #292929;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
 
 .nav-logo-wrapper {
   padding: 20px 0;
