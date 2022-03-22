@@ -47,6 +47,7 @@
   text-align: left;
   font-size: 23px;
   line-height: 24px;
+  margin-bottom: 20px;
 }
 
 .cardPage-price {
@@ -54,4 +55,5 @@
 }
 
 .cardPage-button-wrapper {
+  max-width: 300px;
 }
