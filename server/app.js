@@ -7,6 +7,7 @@ const logger = require('morgan');
 const cors = require('cors')
 const { Event, User } = require('./db/models')
 const axios = require('axios');
+const CronJob = require('cron').CronJob
 
 const app = express();
 
@@ -18,6 +19,7 @@ const categoryRoutes = require('./routes/category.routes');
 const bouquetListMainRouter = require('./routes/bouquet_list_main.routes');
 const orderRouter = require('./routes/order.routes');
 const cardRouter = require('./routes/card.routes');
+const { job } = require('cron');
 
 //* config
 app.use(logger('dev'));
@@ -52,10 +54,11 @@ app.use('/card', cardRouter);
 // error handler
 
 //* Функция для 
-
+// let bob = new CronJob('1 * * * * *', () => console.log(123123123), null, true, 'America/Los_Angeles')
+// bob.start()
 
 // //* Функция для проверки событий и отправки смс
-// setInterval(SMS,84000)
+// setInterval(SMS, 6400)
 
 async function SMS() {
   const dateEvent = await Event.findAll()
