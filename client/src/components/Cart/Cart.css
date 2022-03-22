@@ -1,8 +1,21 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} 
+
+.cart-wrapper {
+  max-width: 500px;
+}
+
+.cart-list-wrapper {
+  max-width: 500px;
+}
+
 .cart_item-list {
   display: flex;
   flex-direction: column;
 }
-
 
 .container-delivery {
   margin: 10px;
@@ -13,4 +26,54 @@
   display: flex;
   justify-content: space-around;
   margin: 40px;
+}
+
+.cart-delivery-title {
+  margin: 0;
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+
+.cart-delivery-method-box {
+  display: flex;
+  flex-direction: row;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+.cart-delivery-method {
+  margin-right: 20px;
+}
+
+.cart-box-delivery {
+  margin-bottom: 10px;
+  max-width: 400px;
+}
+
+.cart-delivery-time {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.cart-delivery-date {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.cart-delivery-fild {
+  margin-bottom: 20px;
+}
+
+.cart-delivery-label {
+  margin-right: 20px;
+}
+
+.cart-delivery-fild-street {
+  border-style: none;
+  height: 50px;
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400; 
 }

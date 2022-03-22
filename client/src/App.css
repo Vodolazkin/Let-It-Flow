@@ -91,16 +91,16 @@ form {
   padding: 60px 0;;
 }
 
-.wrapper {
+/* .wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
+} */
+/* 
 .nowrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-}
+} */

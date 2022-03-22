@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import './Cart.css'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import Cart_item from '../Cart_item/Cart_item';
 import { clearCart, initCart } from '../../redux/actionCreate/userActionCreate'
 import { useRef } from 'react';
+
+import './Cart.css'
+
 
 
 function Cart() {
@@ -83,10 +85,10 @@ function Cart() {
 
 
   return (
-    <div className='container divider'>
-      <h2>Ваша корзина { !cart.length && 'пуста'}</h2>
-      <div className='wrapper'>
-        <div>
+    <div className='container'>
+      <h2 className='cart-header'>Ваша корзина { !cart.length && 'пуста'}</h2>
+      <div className='card-container'>
+        <div className='cart-list-wrapper'>
           <div className='cart_item-list'>
             {cart ? cart.map((elem) => <Cart_item key={elem.bouquet.id} item={elem}/>) : 'Корзина пуста'}
           </div>
@@ -94,43 +96,49 @@ function Cart() {
 
         { cart.length >= 1 &&
              
-        <div>
-             <h3>Выберите способ доставки</h3>
+        <div className='cart-wrapper'>
+             <h3 className='cart-delivery-title'>Выберите способ доставки</h3>
           {/* <select onClick={({target}) => setMethod(target.value)} name="method-delivery">
             <option value="pickup">Самовывоз</option>
             <option value="delivery">Доставка</option>
           </select> */}
-        <div className="container-method">
-          <div onClick={() => setMethod(0)}>Доставка</div>
-          <div onClick={() => setMethod(1)}>Самовывоз</div>
+        <div className="cart-delivery-method-box">
+          <div className="cart-delivery-method" onClick={() => setMethod(0)}>Доставка</div>
+          <div className="cart-delivery-method" onClick={() => setMethod(1)}>Самовывоз</div>
         </div>
           
         {method === 0 && 
-        <div className="container-delivery">
-          <input ref={inputTime} type="time" />
-          <input ref={inputDate} type="date" />
-          <div className="card-input">
-            <label htmlFor="street" className="card-input__label">Улица</label>
-            <input className='card-input__input ' ref={inputStreet} placeholder="" name="street" />
+        <div className="cart-box-delivery">
+
+          <input className="cart-delivery-time" ref={inputTime} type="time" />
+          <input className="cart-delivery-date" ref={inputDate} type="date" />
+
+          <div className="cart-delivery-fild">
+            <label htmlFor="street" className="cart-delivery-label">Улица</label>
+            <input className='cart-delivery-fild-street' id="street" ref={inputStreet} placeholder="" name="street" />
           </div>
-          <div className="card-input">
-            <label htmlFor="street" className="card-input__label">Дом</label>
-            <input className='card-input__input ' ref={inputStreet} placeholder="" name="street" />
-            <input ref={inputHouse} placeholder="" name="house" className="card-input__input" />
+
+          <div className="cart-delivery-fild">
+            <label htmlFor="house" className="cart-delivery-label">Дом</label>
+            <input className='cart-delivery-fild-house' id="house" ref={inputHouse} placeholder="" name="house" />
+            {/* <input ref={inputHouse} placeholder="" id="house" name="house" className="card-input__input" /> */}
           </div>
-          <div>
-            <label htmlFor="street">Квартира</label>
-            <input ref={inputApartment} placeholder="" name="apartment"/>
+
+          <div className="cart-delivery-fild">
+            <label htmlFor="apartment" className="cart-delivery-label">Квартира</label>
+            <input className='cart-delivery-fild-apartment' ref={inputApartment} placeholder="" id="apartment" name="apartment"/>
           </div>
         </div>
         }
-        <div>Сумма заказа</div>
-        <h3>{total}$</h3>
-        <div className='nowrapper'>
-          <button className="white-btn" onClick={() => deleteCart()}>Очистить корзину</button>
-          <button  className="btn" onClick={() => orderFormation()}>Оплатить</button>
+        <div className="cart-summ-order-title">Сумма заказа</div>
+
+        <h3 className="cart-summ-order">{total}$</h3>
+
+        <div className='cart-btns-box'>
+          <button className='cart-btn-clear' onClick={() => deleteCart()}>Очистить корзину</button>
+          <button className='cart-btn-pay' onClick={() => orderFormation()}>Оплатить</button>
           {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
-          <button  className="btn" onClick={() => sendOrderDelivery()}>Ордер</button>
+          <button  className='cart-btт-order' onClick={() => sendOrderDelivery()}>Заказать</button>
         </div>
       </div>}
      </div>
