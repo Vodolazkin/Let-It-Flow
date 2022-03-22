@@ -35,8 +35,6 @@ function Nav() {
             <div>доставка приятных впечатлений*</div>
           </div>
           <ul className="nav-list">
-            <li className="nav-item"><Link className="nav-item-link" to="/cart">Корзина</Link>{cart[0].count}</li>
-            <li className="nav-item"><Link className="nav-item-link" to="/order">Заказ(ы)</Link></li>
             {!user ?
             <>
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
@@ -57,7 +55,7 @@ function Nav() {
             </li>
             <li className="nav-item">
               <Link className="nav-item-link" to="/cart">
-                <div className="nav-item-count-cart">{cart[0].count}</div>
+                <div className="nav-item-count-cart">{cart.reduce((sum, el) => sum + el.count + sum, 0)}</div>
               <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.73828 11.4968L8.50621 27H23.8623L27.6708 11.4968H4.73828Z" stroke="#292929" stroke-miterlimit="10"/>
                 <path d="M10.5859 11.8779V10.6384C10.5859 7.51951 13.1148 5 16.2226 5C19.3304 5 21.8592 7.52967 21.8592 10.6384V11.8779" stroke="#292929" stroke-miterlimit="10"/>

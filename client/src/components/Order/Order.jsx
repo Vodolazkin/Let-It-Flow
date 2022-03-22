@@ -12,7 +12,7 @@ function Order() {
     // console.log(user.userData.user.id);
     fetch('http://localhost:4000/order/', {
       method: 'GET',
-      body: JSON.stringify({ id: user.userData.user.id}),
+      body: JSON.stringify({ id: user?.user.id}),
       headers: {
         'Content-Type': 'application/json',
       }
