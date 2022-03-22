@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 const { Event, User } = require('./db/models')
-const { default: axios } = require('axios');
+const axios = require('axios');
 
 const app = express();
 
@@ -66,7 +66,7 @@ async function SMS() {
   const day = new Date()
   for (let i = 0; i < dateEvent.length; i++) {
     if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
-      const user = await User.findOne({where: { id: dateEvent[i].user_id}})
+      const user = await User.findOne({where: {id: dateEvent[i].user_id}})
       console.log(user.phone);
       const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send/'
       user.isActiveDelivery = true
