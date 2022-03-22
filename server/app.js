@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 const { Event, User } = require('./db/models')
-const { default: axios } = require('axios');
+const axios = require('axios');
 
 const app = express();
 
@@ -55,14 +55,14 @@ app.use('/card', cardRouter);
 
 
 // //* Функция для проверки событий и отправки смс
-// setInterval(SMS, 86400)
+setInterval(SMS, 86400)
 
 async function SMS() {
   const dateEvent = await Event.findAll()
   console.log(dateEvent[0].user_id);
   const day = new Date()
   for (let i = 0; i < dateEvent.length; i++) {
-    if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[1].date)){
+    if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
       const user = await User.findOne({where: {id: dateEvent[i].user_id}})
       console.log(user.phone);
       const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send'

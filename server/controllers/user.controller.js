@@ -1,4 +1,4 @@
-const { login, logout, refresh, signup } = require('./../service/user.service')
+const { login, logout, refresh, signup, access } = require('./../service/user.service')
 
 const userRegister = async (req, res, next) => {
   try {
@@ -6,6 +6,11 @@ const userRegister = async (req, res, next) => {
     const userData = await signup(first_name, last_name, email, phone, password);
 
     res.cookie("refreshToken", userData.refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+    });
+
+    res.cookie("accessToken", userData.accessToken, {
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
     });
@@ -34,6 +39,10 @@ const userLogin = async (req, res, next) => {
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
     });
+    res.cookie("accessToken", userData.accessToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+    });
 
     return res.json({
       userData,
@@ -58,6 +67,7 @@ const userLogout = async (req, res, next) => {
     const token = await logout(refreshToken);
     // в ответе удаляем cookie
     res.clearCookie("refreshToken");
+    res.clearCookie("accessToken");
     return res.json(token);
 
   } catch (error) {
@@ -84,5 +94,17 @@ async function userRefresh(req, res) {
   }
 }
 
+async function userAccess(req, res) {
+  try {
+    // достаем из кук токен
+    const { accessToken} = req.cookies;
+    const userData = await access(accessToken);
+    console.log('1111', userData)
+    // установим рефреш куки
+    return res.json({userData});
+  } catch (error) {
+  }
+}
 
-module.exports = { userRegister, userLogin, userLogout, userRefresh };
+
+module.exports = { userAccess, userRegister, userLogin, userLogout, userRefresh };
