@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import "./Slider.css";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
@@ -17,20 +17,16 @@ function Slider() {
   const [slideSate, setSlideState] = useState(false);
   const [slidId, setSlideStateID] = useState(0)
 
-  
+
+  setInterval()
 
   return (
     <>
       <div className="container-slider">
-    
-      {images.map((slide, id) => 
-      
-      <div onClick={() => setSlideStateID(id)} id={id} key={uuidv4()} className={slidId === id ? "slide active" : "slide"} style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover' }}>
-      </div>)}
-
+      {images.map((slide, id) => <div onClick={() => setSlideStateID(id)} id={id} key={id} className={`${(slidId === id ) ? "active" : ''} slide`} style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover' }}></div>)}
       </div>
     </>
   );
 }
 
-export default Slider;
+export default memo(Slider);
