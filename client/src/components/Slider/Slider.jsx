@@ -25,7 +25,7 @@ function Slider() {
     
       {images.map((slide, id) => 
       
-      <div onClick={() => setSlideStateID(id)} id={id} key={uuidv4()} className={slidId === id ? "slide active" : "slide"} style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover' }}>
+      <div onClick={() => setSlideStateID(id)} id={id} key={id} className={slidId === id ? "slide active" : "slide"} style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover' }}>
       </div>)}
 
       </div>

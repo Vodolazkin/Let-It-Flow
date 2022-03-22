@@ -3,9 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ButtonBuy from '../ButtonBuy/ButtonBuy';
-// import Accordion from '../Accordion/Accordion';
-
-
+import AccordionList from '../Accordion/AccordionList';
 import "./CardPage.css"
 
 function CardPage() {
@@ -37,9 +35,9 @@ function CardPage() {
               <p className="cardPage-title">{cardR.title}</p>
               <p className="cardPage-price">{cardR.price} руб.</p>
               <p className='cardPage-description-title'>Описание</p>
-              {/* <Accordion /> */}
               <h4 className="cardPage-description">{cardR.description}</h4>
-              <button className='cardPage-description-instruction'>Инструкция свежести</button>
+              <p className='cardPage-description-instruction'>Инструкция свежести</p>
+              <AccordionList />
               <div className="cardPage-button-wrapper">
               <ButtonBuy key={bouquet.id} bouquet={bouquet} />
               </div>

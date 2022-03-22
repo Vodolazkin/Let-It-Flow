@@ -55,7 +55,7 @@ app.use('/card', cardRouter);
 
 
 // //* Функция для проверки событий и отправки смс
-// setInterval(SMS, 5400)
+// setInterval(SMS, 6400)
 
 async function SMS() {
   const dateEvent = await Event.findAll()
