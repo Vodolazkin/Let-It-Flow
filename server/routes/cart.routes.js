@@ -1,11 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const { Cart } = require('../db/models')
+const { Cart, Bouquet } = require('../db/models')
 
 router.get('/', async (req, res) => {
   try {
-    const carts = await Cart.findAll({ where: { user_id: 2}})
-    res.json({ carts })
+    // const carts = await Cart.findAll({ where: { 
+    //   user_id: 2, 
+    //   isActive: true,
+    //   include: [{ 
+    //     model: Bouquet,
+    //     where: {
+    //       id: bouquet_id
+    //     }
+    //    }]
+    // }})
+    const carts = await Cart.findAll({ where: { 
+      user_id: 2, 
+      isActive: true,
+    }})
+    res.json(carts)
   } catch (error) {
     res.status(401)
     .json({ message: error.message})

@@ -115,12 +115,12 @@ function Cart() {
           </div>
           <div className="card-input">
             <label htmlFor="street" className="card-input__label">Дом</label>
-            <input className='card-input__input ' ref={inputStreet} placeholder="" name="street" />
+            {/* <input className='card-input__input ' ref={inputStreet} placeholder="" name="street" /> */}
             <input ref={inputHouse} placeholder="" name="house" className="card-input__input" />
           </div>
           <div>
             <label htmlFor="street">Квартира</label>
-            <input ref={inputApartment} placeholder="" name="apartment"/>
+            <input ref={inputApartment} placeholder="" name="apartment" className="card-input__input"/>
           </div>
         </div>
         }

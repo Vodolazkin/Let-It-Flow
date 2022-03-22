@@ -4,9 +4,11 @@ const { Order, User } = require('../db/models')
 
 router.get('/', async (req, res) => {
   try {
-    const { id } = req.body
+    console.log(123);
+    // const { id } = req.body
     const order = await Order.findAll({ where: { user_id: 1 } })
-    res.json({ order })
+    console.log('dd',order);
+    res.json(order)
   } catch (error) {
     res.status(401)
     .json({ message: error.message})

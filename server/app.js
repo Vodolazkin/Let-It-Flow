@@ -54,7 +54,7 @@ app.use('/card', cardRouter);
 // error handler
 
 //* Функция для 
-// let bob = new CronJob('1 * * * * *', () => console.log(123123123), null, true, 'America/Los_Angeles')
+// let bob = new CronJob('* * * * * *', () => console.log(123123123), null, true, 'America/Los_Angeles')
 // bob.start()
 
 // //* Функция для проверки событий и отправки смс
@@ -69,7 +69,7 @@ async function SMS() {
   const day = new Date()
   for (let i = 0; i < dateEvent.length; i++) {
     if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
-      const user = await User.findOne({where: {id: dateEvent[i].user_id}})
+      const user = await User.findOne({ where: { id: dateEvent[i].user_id }})
       console.log(user.phone);
       const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send/'
       user.isActiveDelivery = true
