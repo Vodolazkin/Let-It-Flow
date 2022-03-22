@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 const { Event, User } = require('./db/models')
-const { default: axios } = require('axios');
+const axios = require('axios');
 
 const app = express();
 
