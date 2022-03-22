@@ -18,7 +18,6 @@ function Slider() {
   const [slidId, setSlideStateID] = useState(0)
 
 
-  // setInterval()
 
   return (
     <>
