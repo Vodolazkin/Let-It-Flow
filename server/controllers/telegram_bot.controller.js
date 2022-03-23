@@ -1,20 +1,29 @@
-const res = require('express/lib/response');
-const { Telegraf } = require('telegraf')
 require('dotenv').config();
+const { Telegraf } = require('telegraf')
 const { Order } = require('../db/models')
+const {Op} = require('sequelize');
 
 
 const bot = new Telegraf('5215524973:AAEQA2soYwrljKcAd-iptd97lt2-CcAteEk')
 bot.start((ctx) => ctx.reply(`Привет, ${ctx.message.from.first_name}!`))
-// bot.start((ctx) => console.log(ctx))
-bot.help((ctx) => ctx.reply('Send me a sticker'))
-bot.on('text', async() => {
- 
- const data = Order.findAll()
-//  .then((res) => res.json())
- .then((res) => console.log(res))
- 
+bot.on('text', async(ctx) => {
+const day = new Date()
+const order = await Order.findAll({ 
+   where: {
+     delivery_date: {
+       [Op.between]: [new Date(), new Date(day.setDate(day.getDate() + 1))]   
+   }
+}})
+const formatOrder = `
+дата доставки: ${(order[0].delivery_date).slice(0, 10)}
+время доставки: ${order[0].delivery_time}
+`
+ctx.reply(formatOrder)
 })
 
 
 bot.launch()
+// улица: ${order[0][0].}
+// дом: ${order[0][0].}
+// квартира: ${order[0][0].}
+// 

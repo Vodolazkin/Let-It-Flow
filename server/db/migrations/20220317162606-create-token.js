@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       refresh_tokes: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(3000)
       },
       user_id: {
         type: Sequelize.INTEGER,
