@@ -4,8 +4,9 @@ const { Order, User } = require('../db/models')
 
 router.get('/', async (req, res) => {
   try {
+    console.log('123',req.body);
     const { id } = req.body
-    const order = await Order.findAll({ where: { user_id: 1 } })
+    const order = await Order.findAll({ where: { user_id: id } })
     res.json(order)
   } catch (error) {
     res.status(401)
@@ -25,8 +26,9 @@ router.post('/', async (req, res) => {
     //   delivery_method: 'delivery',
     //   user_id
     // })
+   const newDate = new Date(Date.parse(date) - 10800000)
     const order = await Order.create({ 
-      delivery_date: date,
+      delivery_date: newDate,
       delivery_time: time,
       delivery_street: street,
       delivery_house: house,

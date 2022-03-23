@@ -43,12 +43,13 @@ function Cart() {
         street: inputStreet.current.value,
         house: inputHouse.current.value,
         apartment: inputApartment.current.value,
-        user_id: user.userData.user.id
+        user_id: user.user.id
       }),
       headers: {
         'Content-Type': 'application/json',
       }
     })
+    // console.log(user.user.id);
   }
   const sendOrderPickup = () => {
     fetch('http://localhost:4000/order/pickup', {
