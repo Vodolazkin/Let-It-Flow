@@ -30,4 +30,3 @@ order.map((order) => ctx.reply(`
 
 bot.launch()
 
-//.slice(0, 10)
