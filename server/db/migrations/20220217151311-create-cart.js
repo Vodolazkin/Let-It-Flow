@@ -22,6 +22,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: true
       },
+      uuid: {
+        type: Sequelize.STRING,
+        defaultValue: '-'
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {
