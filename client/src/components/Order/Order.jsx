@@ -20,13 +20,9 @@ function Order() {
     //     'Content-Type': 'application/json',
     //   }
     // })
-    // console.log(user)
+    console.log(user)
     //**? Сервер возвращает заказы по id (hardcode id)
-    axios({
-      method: 'POST',
-      url: 'http://localhost:4000/order/',
-      body: { id: user?.user.id }
-    })
+    axios(`http://localhost:4000/order/${user?.user.id}`)
     // .then(({data}) => console.log('эээ',data))
     .then(({data}) => setOrder(data))
 

@@ -32,6 +32,8 @@ useEffect(()=> {
 }, [slidId])
 
 
+
+
   return (
     <>
       <div className="container-slider">
@@ -42,3 +44,4 @@ useEffect(()=> {
 }
 
 export default memo(Slider);
+

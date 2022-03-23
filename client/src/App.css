@@ -91,12 +91,12 @@ form {
   padding: 60px 0;;
 }
 
-.wrapper {
+/* .wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-}
+} */
 
 .nowrapper {
   display: flex;
@@ -107,4 +107,8 @@ form {
 
 .error {
   color: #be3535;
+}
+
+input {
+  outline: none;
 }

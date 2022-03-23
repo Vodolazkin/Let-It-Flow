@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router()
 const { Order, User } = require('../db/models')
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    console.log('123',req.body);
-    const { id } = req.body
+    console.log('------------------------',req.params);
+    const { id } = req.params
     const order = await Order.findAll({ where: { user_id: id } })
     res.json(order)
   } catch (error) {
@@ -18,6 +18,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { time, date, street, house, apartment, user_id } = req.body;
+    // console.log(req.body);
     const user = await User.findOne({ where: { id: user_id } })
     // const order = await Order.create({ 
     //   delivery_date: date,
