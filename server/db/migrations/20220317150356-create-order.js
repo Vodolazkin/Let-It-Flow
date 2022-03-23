@@ -11,11 +11,17 @@ module.exports = {
       delivery_date: {
         type: Sequelize.DATE
       },
-      delivery_time: {
-        type: Sequelize.STRING
+      delivery_street: {
+        type: Sequelize.STRING,
+        defaultValue: '-'
       },
-      delivery_address: {
-        type: Sequelize.STRING
+      delivery_house: {
+        type: Sequelize.STRING,
+        defaultValue: '-'
+      },
+      delivery_apartment: {
+       type: Sequelize.STRING,
+       defaultValue: '-'
       },
       delivery_method: {
         type: Sequelize.STRING

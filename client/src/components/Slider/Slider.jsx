@@ -7,18 +7,32 @@ import Slide1 from './../../img/Slide1.webp';
 import Slide2 from "./../../img/Slide2.webp";
 import Slide3 from "./../../img/Slide3.webp";
 import Slide4 from "./../../img/Slide4.webp";
+import { useEffect } from "react";
 
 
 function Slider() {
+  const [slidId, setSlideStateID] = useState(0)
+  const [slideSate, setSlideState] = useState(false);
 
   const images = [{id: 1, image: Slide1}, {id: 2, image: Slide2}, {id: 3, image: Slide3}, {id: 4,image: Slide4} ];
 
+useEffect(()=> {
+  let timeoutId =setTimeout(() => {
+    if(slidId < 3) {
+      setSlideStateID((prev) => prev + 1)
+    } else {
+      setSlideStateID(0)
+    }
+  }, 6000)
 
-  const [slideSate, setSlideState] = useState(false);
-  const [slidId, setSlideStateID] = useState(0)
+  return () => {
+    clearTimeout(timeoutId)
+  }
+
+}, [slidId])
 
 
-  // setInterval()
+
 
   return (
     <>
@@ -30,3 +44,4 @@ function Slider() {
 }
 
 export default memo(Slider);
+
