@@ -71,8 +71,8 @@ async function SMS() {
     if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
       const user = await User.findOne({ where: { id: dateEvent[i].user_id }})
       console.log(user.phone);
-      const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send/'
-      user.isActiveDelivery = true
+      const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send'
+      //user.isActiveDelivery = true
       axios({
         method: 'POST',
         url: 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send/',
