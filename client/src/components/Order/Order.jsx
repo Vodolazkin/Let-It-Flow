@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { axiosWithConfig } from '../../utils/axios';
 import React from 'react';
 import OrderList from './OrderList/OrderList'
 import CartOrderList from './CartOrderList/CartOrderList';
@@ -23,6 +24,7 @@ function Order() {
     console.log(user)
     //**? Сервер возвращает заказы по id (hardcode id)
     axios(`http://localhost:4000/order/${user?.user.id}`)
+    // axiosWithConfig.post(`order/`, {id: user?.user.id})
     // .then(({data}) => console.log('эээ',data))
     .then(({data}) => setOrder(data))
 

@@ -4,7 +4,7 @@ const { Order, User } = require('../db/models')
 
 router.get('/:id', async (req, res) => {
   try {
-    console.log('------------------------',req.params);
+    console.log('------------------------',req.body);
     const { id } = req.params
     const order = await Order.findAll({ where: { user_id: id } })
     res.json(order)
@@ -18,7 +18,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { time, date, street, house, apartment, user_id } = req.body;
-    // console.log(req.body);
+    console.log(req.body);
     const user = await User.findOne({ where: { id: user_id } })
     // const order = await Order.create({ 
     //   delivery_date: date,
@@ -30,7 +30,6 @@ router.post('/', async (req, res) => {
    const newDate = new Date(Date.parse(date) - 10800000)
     const order = await Order.create({ 
       delivery_date: newDate,
-      delivery_time: time,
       delivery_street: street,
       delivery_house: house,
       delivery_apartment: apartment,

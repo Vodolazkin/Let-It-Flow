@@ -18,9 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     delivery_date: {
      type: DataTypes.DATE,
     },
-    delivery_time: {
-     type: DataTypes.STRING,
-    },
     delivery_street: {
       type: DataTypes.STRING,
       defaultValue: '-'
