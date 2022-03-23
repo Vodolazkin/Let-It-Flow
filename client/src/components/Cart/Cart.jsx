@@ -51,7 +51,7 @@ function Cart() {
         'Content-Type': 'application/json',
       }
     })
-
+    // console.log(user.user.id);
   }
   const sendOrderPickup = () => {
     fetch('http://localhost:4000/order/pickup', {
