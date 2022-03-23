@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import "./Profile.css";
 import axios from 'axios';
 import { initEvents, addEvent } from '../../../redux/actionCreate/eventActionCreate';
-import { config } from '../../../utils/index'
+
 
 export default function Profile() {
 
@@ -17,14 +17,15 @@ export default function Profile() {
   //   navigate('/signup')
   // }
   
-  const { user: {userData: { user }}, events } = useSelector(state => state)
+  const { user, events } = useSelector(state => state)
+  console.log(user)
   
   const [title, setTitle] = useState()
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    axios(`http://localhost:4000/profile/${user.id}`)
+    axios(`http://localhost:4000/profile/${user?.user.id}`)
     .then(({data}) => {
       dispatch(initEvents(data))
     })
@@ -55,16 +56,18 @@ export default function Profile() {
   })
  
 
-
   return (
     <div className="container divider">
       <div className="nowrapper">
         <div>
-          <h2>Привет, {user && user.first_name} {user && user.last_name}</h2>
+        {user && (
+        <h2>Привет, {user.user.first_name} {user.user.last_name}</h2>
+      )}
             <div>
             <h3>Контакты</h3>
-            <p>{user && user.email}</p>
-            {/* <p>{user.phone}</p> */}
+            {user && (
+        <p>{user.user.email}</p>
+      )}
             </div>
           <p>В своем личном кабинете ты можешь отметить дни, в которые ты бы хотел получать букеты цветов</p>
           <form onSubmit={handleSubmit}>
