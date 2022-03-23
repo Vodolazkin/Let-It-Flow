@@ -45,12 +45,13 @@ function Cart() {
         street: inputStreet.current.value,
         house: inputHouse.current.value,
         apartment: inputApartment.current.value,
-        user_id: user.userData.user.id
+        user_id: user.user.id
       }),
       headers: {
         'Content-Type': 'application/json',
       }
     })
+
   }
   const sendOrderPickup = () => {
     fetch('http://localhost:4000/order/pickup', {
@@ -75,7 +76,7 @@ function Cart() {
   const orderFormation = () => {
     cart.map(item => fetch('http://localhost:4000/cart', {
       method: 'POST',
-      body: JSON.stringify({ item, id: user.userData.user.id }),
+      body: JSON.stringify({ item, id: user.user.id }),
       // body: JSON.stringify({ item, id: user.userData.user.id }),
       headers: {
         'Content-Type': 'application/json',
@@ -90,8 +91,10 @@ function Cart() {
       <div className='card-container'>
         <div className='cart-list-wrapper'>
           <div className='cart_item-list'>
-            {cart ? cart.map((elem) => <Cart_item key={elem.bouquet.id} item={elem}/>) : 'Корзина пуста'}
+            {cart ? cart.map((elem) =>
+             <Cart_item key={elem.bouquet.id} item={elem}/>) : 'Корзина пуста'}
           </div>
+          {cart.length > 0 && <button className='cart-btn-clear' onClick={() => deleteCart()}>Очистить корзину</button>}
         </div>
 
         { cart.length >= 1 &&
@@ -109,24 +112,24 @@ function Cart() {
           
         {method === 0 && 
         <div className="cart-box-delivery">
-
-          <input className="cart-delivery-time" ref={inputTime} type="time" />
-          <input className="cart-delivery-date" ref={inputDate} type="date" />
+          <div className="cart-delivery-time-date">
+          <input className="cart-delivery-time" ref={inputTime} type="time" autoComplete='off'/>
+          <input className="cart-delivery-date" ref={inputDate} type="date" autoComplete='off'/>
+          </div>
 
           <div className="cart-delivery-fild">
             <label htmlFor="street" className="cart-delivery-label">Улица</label>
-            <input className='cart-delivery-fild-street' id="street" ref={inputStreet} placeholder="" name="street" />
+            <input className='cart-delivery-fild-street' id="street" ref={inputStreet} placeholder="" name="street" autoComplete='off'/>
           </div>
 
           <div className="cart-delivery-fild">
             <label htmlFor="house" className="cart-delivery-label">Дом</label>
-            <input className='cart-delivery-fild-house' id="house" ref={inputHouse} placeholder="" name="house" />
-            {/* <input ref={inputHouse} placeholder="" id="house" name="house" className="card-input__input" /> */}
+            <input className='cart-delivery-fild-house' id="house" ref={inputHouse} placeholder="" name="house" autoComplete='off'/>
           </div>
 
           <div className="cart-delivery-fild">
             <label htmlFor="apartment" className="cart-delivery-label">Квартира</label>
-            <input className='cart-delivery-fild-apartment' ref={inputApartment} placeholder="" id="apartment" name="apartment"/>
+            <input className='cart-delivery-fild-apartment' ref={inputApartment} placeholder="" id="apartment" name="apartment" autoComplete='off'/>
           </div>
         </div>
         }
@@ -135,10 +138,9 @@ function Cart() {
         <h3 className="cart-summ-order">{total}$</h3>
 
         <div className='cart-btns-box'>
-          <button className='cart-btn-clear' onClick={() => deleteCart()}>Очистить корзину</button>
           <button className='cart-btn-pay' onClick={() => orderFormation()}>Оплатить</button>
           {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
-          <button  className='cart-btт-order' onClick={() => sendOrderDelivery()}>Заказать</button>
+          <button  className='cart-btn-order' onClick={() => sendOrderDelivery()}>Заказать</button>
         </div>
       </div>}
      </div>

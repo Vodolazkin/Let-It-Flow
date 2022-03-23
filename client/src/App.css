@@ -108,3 +108,7 @@ form {
 .error {
   color: #be3535;
 }
+
+input {
+  outline: none;
+}
