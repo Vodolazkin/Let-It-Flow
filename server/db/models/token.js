@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Token.init({
-    refresh_tokes: DataTypes.STRING,
+    refresh_tokes: DataTypes.STRING(3000),
     user_id:{
       type: DataTypes.INTEGER,
       references: {
