@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import Card from "../Card/Card"
+import './BouquetListMain.css';
 
 function BouquetListMain(props) {
+  const [allCatalog, setAllCatalog] = useState(false)
   const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
 
   const dispatch = useDispatch()
@@ -19,10 +22,16 @@ function BouquetListMain(props) {
     <>
       <div className="card-container">
         <div className="container">
-          
+        <p className='category-title'>Популярное</p>
+
           <div className='card-box'>
             {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>).slice(0,4)}
           </div>
+          {allCatalog &&
+          <div className='card-box'>
+          {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
+          </div>}
+          <button onClick={() => setAllCatalog(!allCatalog)} className='card-btn-catalog'>{allCatalog ? 'Свернуть' : 'Каталог'}</button>
         </div>
       </div>
     </>

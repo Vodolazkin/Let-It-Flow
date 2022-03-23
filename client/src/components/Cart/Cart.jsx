@@ -88,7 +88,7 @@ function Cart() {
   return (
     <div className='container'>
       <h2 className='cart-header'>Ваша корзина { !cart.length && 'пуста'}</h2>
-      <div className='card-container'>
+      <div className='cart-container'>
         <div className='cart-list-wrapper'>
           <div className='cart_item-list'>
             {cart ? cart.map((elem) =>

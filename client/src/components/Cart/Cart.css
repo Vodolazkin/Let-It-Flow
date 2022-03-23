@@ -1,4 +1,4 @@
-.card-container {
+.cart-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -43,11 +43,12 @@
 
 .cart-delivery-method {
   display: flex;
-  padding: 15px;
+  padding: 15px 30px 15px 30px;
   background-color: #e8e8e8;
   color: #292929;
   margin-right: 20px;
 }
+
 .cart-delivery-method:hover {
   background-color: #d0d0d0;;
 }
@@ -145,7 +146,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 15px 30px 15px 30px;
   background-color: #3f3f3f;
   color: #ffffff;
   margin-right: 20px;
