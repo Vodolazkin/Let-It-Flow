@@ -24,7 +24,11 @@ export default function Login() {
     })
     .then(({ data }) => {
 			dispatch(login(data))
-			navigate('/');
+      if (data.user.admin) {
+        navigate('/adminboard');
+      } else {
+        navigate('/');
+      }
 		})
     .catch(console.error());
 	};
