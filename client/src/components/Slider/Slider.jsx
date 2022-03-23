@@ -25,6 +25,8 @@ function Slider() {
   const [slideSate, setSlideState] = useState(false);
   const [slidId, setSlideStateID] = useState(0)
 
+
+
   return (
     <>
       <div className="container-slider">
@@ -35,3 +37,4 @@ function Slider() {
 }
 
 export default memo(Slider);
+

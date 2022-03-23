@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { time, date, street, house, apartment, user_id } = req.body;
+    console.log(req.body);
     const user = await User.findOne({ where: { id: user_id } })
     // const order = await Order.create({ 
     //   delivery_date: date,
