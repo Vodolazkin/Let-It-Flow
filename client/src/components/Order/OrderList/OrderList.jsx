@@ -1,7 +1,7 @@
 import React from 'react';
 
 function OrderList({ order }) {
-  console.log(order);
+  // console.log(order);
   return (
     <div>
       <div>Дата доставки: {(order.delivery_date).slice(0,10)}</div>

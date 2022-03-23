@@ -12,7 +12,7 @@ function BouquetListMain(props) {
    .then(res => res.json())
    .then(data => dispatch({ type: 'INIT_BOUQUETS', payload: data}))
    .catch(err=>console.log(err));
-},[dispatch])
+},[])
   
  
   return (

@@ -21,7 +21,7 @@ function Order() {
     //     'Content-Type': 'application/json',
     //   }
     // })
-
+    console.log(user)
     //**? Сервер возвращает заказы по id (hardcode id)
     axios('http://localhost:4000/order/')
     // .then(({data}) => console.log('эээ',data))
@@ -30,7 +30,17 @@ function Order() {
     //**? Сервер возвращает корзину по id (hardcode id)
     axios('http://localhost:4000/cart/')
     .then(({data}) => setOrderCart(data))
+    
     // .then(({data}) => console.log(data))
+    // fetch('http://localhost:4000/order/', {
+    //   method: 'GET',
+    //   body: JSON.stringify({ id: user?.user.id}),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   }
+    // })
+    // .then(res => res.json())
+    // .then(res => setOrder(res))
   }, [])
 
   return (

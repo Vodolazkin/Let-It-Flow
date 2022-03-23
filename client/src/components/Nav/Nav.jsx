@@ -44,7 +44,6 @@ function Nav() {
             </>
             :
             <>
-            {/* <li className="nav-item"><Link className="nav-item-link" to="/order">Заказ(ы)</Link></li> */}
             <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
             <li className="nav-item">
               <Link className="nav-item-link" to="/profile">
