@@ -40,7 +40,6 @@ function Cart() {
     fetch('http://localhost:4000/order/', {
       method: 'POST',
       body: JSON.stringify({
-        time: inputTime.current.value,
         date: inputDate.current.value,
         street: inputStreet.current.value,
         house: inputHouse.current.value,
@@ -113,8 +112,8 @@ function Cart() {
         {method === 0 && 
         <div className="cart-box-delivery">
           <div className="cart-delivery-time-date">
-          <input className="cart-delivery-time" ref={inputTime} type="time" autoComplete='off'/>
-          <input className="cart-delivery-date" ref={inputDate} type="date" autoComplete='off'/>
+          {/* <input className="cart-delivery-time" ref={inputTime} type="time" autoComplete='off'/> */}
+          <input className="cart-delivery-date" ref={inputDate} type="datetime-local" autoComplete='off'/>
           </div>
 
           <div className="cart-delivery-fild">
