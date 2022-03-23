@@ -97,10 +97,14 @@ form {
   flex-wrap: wrap;
   justify-content: space-between;
 } */
-/* 
+
 .nowrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-} */
+}
+
+.error {
+  color: #be3535;
+}

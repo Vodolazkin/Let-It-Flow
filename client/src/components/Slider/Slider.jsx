@@ -14,6 +14,14 @@ function Slider() {
   const images = [{id: 1, image: Slide1}, {id: 2, image: Slide2}, {id: 3, image: Slide3}, {id: 4,image: Slide4} ];
 
 
+  // setInterval(() => {
+  //   if(slidId < 3) {
+  //     setSlideStateID(slidId + 1)
+  //   } else {
+  //     setSlideStateID(slidId - 3)
+  //   }
+  // }, 4000)
+
   const [slideSate, setSlideState] = useState(false);
   const [slidId, setSlideStateID] = useState(0)
 
@@ -29,3 +37,4 @@ function Slider() {
 }
 
 export default memo(Slider);
+

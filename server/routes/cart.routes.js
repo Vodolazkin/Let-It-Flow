@@ -1,11 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const { Cart } = require('../db/models')
+const { Cart, Bouquet } = require('../db/models')
 
 router.get('/', async (req, res) => {
   try {
-    const carts = await Cart.findAll({ where: { user_id: 2}})
-    res.json({ carts })
+    // const carts = await Cart.findAll({ where: { 
+    //   user_id: 2, 
+    //   isActive: true,
+    //   through: [{ 
+    //     model: Bouquet,
+    //     where: { id: 1 },
+    //     // attributes: [bouquet_id]
+    //    }]
+    // }})
+    const carts = await Cart.findAll({ where: { 
+      user_id: 1, 
+      isActive: true,
+    }})
+    res.json(carts)
   } catch (error) {
     res.status(401)
     .json({ message: error.message})
@@ -13,12 +25,23 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.post('/bouquet', async (req, res) => {
+  try {
+    console.log('666', req.body);
+    const { id } = req.body
+    const bouquet = await Bouquet.findOne({ where : { id }})
+    res.json({ bouquet })
+  } catch (error) {
+    res.status(401)
+    .json({ message: error.message})
+    .end() 
+  }
+})
+
 router.post('/', async (req, res) => {
   try {
     const { item, id } = req.body
-    console.log(req.body);
     const recordCartItem = await Cart.create({ bouquet_id: item.bouquet.id, count: item.count, user_id: id })
-    console.log('000',recordCartItem);
     return res.json({recordCartItem})
   } catch (error) {
     res.status(401)

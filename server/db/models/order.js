@@ -21,8 +21,17 @@ module.exports = (sequelize, DataTypes) => {
     delivery_time: {
      type: DataTypes.STRING,
     },
-    delivery_address: {
+    delivery_street: {
+      type: DataTypes.STRING,
+      defaultValue: '-'
+    },
+    delivery_house: {
+      type: DataTypes.STRING,
+      defaultValue: '-'
+    },
+    delivery_apartment: {
      type: DataTypes.STRING,
+     defaultValue: '-'
     },
     delivery_method: {
      type: DataTypes.STRING,
