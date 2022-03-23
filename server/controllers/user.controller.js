@@ -15,11 +15,7 @@ const userRegister = async (req, res, next) => {
       httpOnly: true,
     });
 
-    return res.json({
-      userData,
-      success: true,
-      message: "Регистрация прошла успешно",
-    })
+    return res.json(userData)
     
   } catch (error) {
     res.status(401)
@@ -44,11 +40,7 @@ const userLogin = async (req, res, next) => {
       httpOnly: true,
     });
 
-    return res.json({
-      userData,
-      success: true,
-      message: "Авторизация прошла успешно",
-    })
+    return res.json(userData)
     
   } catch (error) {
     res.status(401)
@@ -68,6 +60,7 @@ const userLogout = async (req, res, next) => {
     // в ответе удаляем cookie
     res.clearCookie("refreshToken");
     res.clearCookie("accessToken");
+    console.log(refreshToken)
     return res.json(token);
 
   } catch (error) {
@@ -101,7 +94,7 @@ async function userAccess(req, res) {
     const userData = await access(accessToken);
     console.log('1111', userData)
     // установим рефреш куки
-    return res.json({userData});
+    return res.json(userData);
   } catch (error) {
   }
 }

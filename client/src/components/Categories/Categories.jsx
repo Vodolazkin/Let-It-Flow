@@ -17,7 +17,7 @@ function Categories(props) {
       payload: result
     }))
     .catch(err => console.log(err))
-  },[dispatch])
+  },[])
   
   return (
     <>
