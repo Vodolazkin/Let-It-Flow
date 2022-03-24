@@ -16,11 +16,14 @@ const order = await Order.findAll({
        [Op.between]: [(new Date()), nearestMidnight],
       //  delivery_method : 'delivery'
    }
+   
 }
+
 })
+console.log(order,'jhhh');
 order.map((order) => ctx.reply(`
 Дата доставки: ${(JSON.stringify(order.delivery_date)).slice(1 ,11)}
-Время доставки: ${order.delivery_time}
+Время доставки: ${(JSON.stringify(order.delivery_date)).slice(12,17)}
 Улица: ${order.delivery_street}
 Дом: ${order.delivery_house}
 Квартира: ${order.delivery_apartment} `))
