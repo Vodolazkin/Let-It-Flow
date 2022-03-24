@@ -10,7 +10,7 @@ function ModalOrder({handleClose, setOpen, bouquet}) {
   const [title, setTitle] = useState(bouquet.title)
   const [price, setPrice] = useState(bouquet.price)
   const [description, setDescription] = useState(bouquet.description)
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState('/img/nabor_dlya_vazi/12.webp');
 
   const onChange = e => {
     setFile(e.target.files[0]);

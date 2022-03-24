@@ -47,31 +47,29 @@ router.post('/',  async (req, res) => {
 
 
 router.post('/edit/:id',  async (req, res) => {
+  const { id } = req.params;
+  const bouquet = await Bouquet.findOne({
+    where: { id }
+  })
 
+let uploadPath
   if (req.files === null) {
-    return res.status(400).json({ msg: 'No file uploaded' });
-  }
- 
-  const sampleFile = req.files.file;
+    uploadPath = bouquet.img
+  } else {
+    const sampleFile = req.files.file;
+    uploadPath = '/img/' + sampleFile.name;
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send('No files were uploaded.');
+    }
+    sampleFile.mv('public/img/'+sampleFile.name, function(err) {
+      if (err)
+        console.log(err);
+    });
 
-  
-  let uploadPath = '/img/' + sampleFile.name;
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send('No files were uploaded.');
   }
-  sampleFile.mv('public/img/'+sampleFile.name, function(err) {
-    if (err)
-      console.log(err);
-  });
 
   try {
-    const { id } = req.params;
     const { title, description, price, category_id } = req.body;
-    console.log(title, description, price, category_id)
- 
-    const bouquet = await Bouquet.findOne({
-      where: { id }
-    })
 
     bouquet.title = title
     bouquet.description = description

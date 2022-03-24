@@ -38,7 +38,7 @@ export function bouquetsReducer(state = [], action) {
             id: action.payload.id,
             title: action.payload.title, 
             description: action.payload.description,
-            image: action.payload.img,
+            img: action.payload.img,
             price: action.payload.price,
             category_id: action.payload.category_id,
           }
