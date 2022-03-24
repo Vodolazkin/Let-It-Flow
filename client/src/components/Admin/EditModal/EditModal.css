@@ -17,7 +17,7 @@
 .modal-order-dialog {
   width: 100%;
   max-width: 550px;
-  min-height: 250px;
+  min-height: 550px;
   background: white;
   position: relative;
   margin: 0 20px;
@@ -36,17 +36,11 @@
 }
 
 .modal-order-text {
-  font-size: 30px;
-}
-
-.modal-order-thanks {
-  font-size: 30px;
-  color:rgba(104, 104, 104, 0.19);
-  font-style: italic;
+  font-size: 40px;
 }
 
 .modal-order-close {
   position: absolute;
-  right: 30px;
-  top: 30px;
+  right: 50px;
+  top: 50px;
 }

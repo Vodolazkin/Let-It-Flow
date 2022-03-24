@@ -12,7 +12,7 @@ function ModalOrder({handleClose, setOpen}) {
             </button>
           </div>
         <p className='modal-order-thanks'>Благодарим что выбрали нас! </p>
-        <p className='modal-order-text'>В ближайшее впемя с Вами свжется наш менеджер</p>
+        <p className='modal-order-text'>Заказ оформлен!</p>
         </div>
       </div> 
       </div>
