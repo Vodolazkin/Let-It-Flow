@@ -62,6 +62,7 @@ function Nav() {
               </svg>
               </Link>
             </li>
+            {user.user.admin && <li className="nav-item"><Link className="nav-item-link" to="/adminboard">Админка</Link></li>}
             <li className="nav-item"><Link className="nav-item-link" to="/" onClick={logout}>Выход</Link></li>
             </>
             }

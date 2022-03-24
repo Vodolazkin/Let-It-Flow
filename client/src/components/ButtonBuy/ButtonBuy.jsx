@@ -7,21 +7,17 @@ import { addItemToCart } from '../../redux/actionCreate/userActionCreate'
 
 function ButtonBuy({ bouquet }) {
 
+  const [count, setCount] = useState(1)
   const dispatch = useDispatch()
   const inputValue = useRef()
-  const cart = useSelector((state) => state.cart)
-  const [count, setCount] = useState(1)
-  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
-
+ 
   const handleCart = () => {
-
     dispatch(addItemToCart({
        bouquet,
        count : +inputValue.current.value
       }
     ))
   }
-
 
   return (
     <div>
