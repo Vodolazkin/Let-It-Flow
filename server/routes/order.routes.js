@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
     const user = await User.findOne({ where: { id: user_id } })
     const newDate = new Date(Date.parse(date) - 10800000)
     const order = await Order.create({ 
-      delivery_date: newDate,
+      delivery_date: date,
       delivery_street: street,
       delivery_house: house,
       delivery_apartment: apartment,
