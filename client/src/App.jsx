@@ -32,6 +32,26 @@ function App() {
     })
   }, [])
 
+
+  // useEffect(() => {
+  //    fetch('http://localhost:4000/bouquets')
+  //     .then(res => res.json())
+  //     .then(data => dispatch({ type: 'INIT_BOUQUETS', payload: data}))
+  //     .catch(err=>console.log(err));
+  //   }, [])
+
+  //   useEffect(() => {
+  //     fetch('http://localhost:4000/categories')
+  //     .then((res) => res.json())
+  //     .then(result => dispatch({
+  //       type: 'INIT_CATEGORIES',
+  //       payload: result
+  //     }))
+  //     .catch(err => console.log(err))
+  //   },[])
+    
+
+
   return (
     <BrowserRouter>
 
