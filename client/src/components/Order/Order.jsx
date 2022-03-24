@@ -54,7 +54,6 @@ function Order() {
       <br />
         <>------------------------------------------</>
         {orderCart?.map(el => <CartOrderList cart={el} />)}
-        
       </div>
 
       <div>
