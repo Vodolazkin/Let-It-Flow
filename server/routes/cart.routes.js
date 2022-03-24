@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Cart, Bouquet } = require('../db/models')
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     // const carts = await Cart.findAll({ where: { 
     //   user_id: 2, 
@@ -13,8 +13,10 @@ router.get('/', async (req, res) => {
     //     // attributes: [bouquet_id]
     //    }]
     // }})
+    // console.log(req.body);
+    const { id } = req.params
     const carts = await Cart.findAll({ where: { 
-      user_id: 1, 
+      user_id: id, 
       isActive: true,
     }})
     res.json(carts)
