@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import Cart_item from '../Cart_item/Cart_item';
 import { clearCart, initCart } from '../../redux/actionCreate/userActionCreate'
 import { useRef } from 'react';
-
+import ModalOrder from '../Modal/ModalOrder'
+// import ModalBuy from '../Modal/ModalBuy';
 import './Cart.css'
-
+import '../Modal/ModalOrder.css'
 
 
 function Cart() {
@@ -19,6 +20,13 @@ function Cart() {
   const inputStreet = useRef();
   const inputHouse = useRef();
   const inputApartment = useRef();
+
+  // const [visible, setVisible] = useState(false);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   const [method, setMethod] = useState(false)
   const { cart } = useSelector((state) => state.cart)
@@ -37,7 +45,8 @@ function Cart() {
 
   //* Отправляем в бд сформированный заказ (доставка)
   const sendOrderDelivery = () => {
-    fetch('http://localhost:4000/order/', {
+      handleOpen()
+      fetch('http://localhost:4000/order/', {
       method: 'POST',
       body: JSON.stringify({
         date: inputDate.current.value,
@@ -50,6 +59,8 @@ function Cart() {
         'Content-Type': 'application/json',
       }
     })
+    
+  
     // console.log(user.user.id);
   }
   const sendOrderPickup = () => {
@@ -73,6 +84,7 @@ function Cart() {
 
   //* заполняем таблицу Cart, по каждому айтему в корзине
   const orderFormation = () => {
+    handleOpen()
     cart.map(item => fetch('http://localhost:4000/cart', {
       method: 'POST',
       body: JSON.stringify({ item, id: user.user.id }),
@@ -137,9 +149,11 @@ function Cart() {
         <h3 className="cart-summ-order">{total}$</h3>
 
         <div className='cart-btns-box'>
+          {/* {open ? <ModalBuy handleClose={handleClose} setOpen={setOpen}/> : <></>} */}
           <button className='cart-btn-pay' onClick={() => orderFormation()}>Оплатить</button>
           {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
-          <button  className='cart-btn-order' onClick={() => sendOrderDelivery()}>Заказать</button>
+          {open ? <ModalOrder handleClose={handleClose} setOpen={setOpen}/> : <></>}
+          <button  className='cart-btn-order' onClick={sendOrderDelivery}>Заказать</button>
         </div>
       </div>}
      </div>
