@@ -12,6 +12,9 @@ import './Cart.css'
 
 function Cart() {
 
+  const { bouquets, user, cart: {cart} } = useSelector((state) => state)
+  const [method, setMethod] = useState(false)
+
   const dispatch = useDispatch();
 
   const inputTime = useRef();
@@ -19,13 +22,6 @@ function Cart() {
   const inputStreet = useRef();
   const inputHouse = useRef();
   const inputApartment = useRef();
-
-  const [method, setMethod] = useState(false)
-  const { cart } = useSelector((state) => state.cart)
-  const user = useSelector((state) => state.user)
-  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
-  // const user = useSelector((state) => state.user)
-
 
   //* Синхронизация состояния корзины и localStorage
   useEffect(() => {

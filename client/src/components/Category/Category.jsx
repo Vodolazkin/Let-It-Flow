@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import Card from "../Card/Card"
 
-function Category(props) {
-const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
-const { categoriesR } = useSelector((state) => state.categoriesR)
+function Category() {
 
-
+const { bouquets, categories } = useSelector((state) => state)
 const dispatch = useDispatch()
 const { id } = useParams()
 
@@ -19,21 +17,14 @@ useEffect(() =>{
 },[dispatch])
 
 
-const category = categoriesR.find((el) => el.id == id);
-
-
-//  useEffect(() =>{
-//   fetch(`http://localhost:4000/categories/${id}`)
-//   .then(data => console.log(data));
-//  },[])
-
+const category = categories.find((el) => el.id == id);
 
   return (
     <div className='category-container'>
       <div className='container'>
         <h1>{category.name}</h1>
         <div className='category-box'>
-        { bouquetsRe && bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
+        { bouquets && bouquets.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
         </div>
      </div>
     </div>

@@ -72,5 +72,22 @@ router.post('/edit/:id',  async (req, res) => {
   }
 });
 
+router.delete('/:id',  async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const bouquet = await Bouquet.destroy({
+      where: { id }
+    })
+    return res.json(bouquet)
+    
+  } catch (error) {
+    res.status(401)
+      .json({
+        message: error.message,
+      }).end();
+  }
+});
+
 
 module.exports = router;
