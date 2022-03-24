@@ -52,14 +52,15 @@ function Order() {
       <div>
       Ваши заказы:
       <br />
-        <>------------------------------------------</>
-        {orderCart?.map(el => <CartOrderList cart={el} />)}
-        
-      </div>
 
-      <div>
         <>------------------------------------------</>
-        {order?.map(el => <OrderList order={el} />)}
+        {order?.map(el => (
+          <div className='cart-order-list'>
+            <OrderList order={el} cart={orderCart.filter(cart => cart.uuid === el.uuid)} />
+
+          </div>
+      )
+        )}
       </div>
     </div>
   );

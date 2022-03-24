@@ -6,6 +6,10 @@
   
 }
 
+.exit {
+  padding-left: 70px;
+}
+
 .nav-wrapper {
   display: flex;
   flex-direction: row;

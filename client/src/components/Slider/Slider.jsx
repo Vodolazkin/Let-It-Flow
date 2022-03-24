@@ -17,7 +17,7 @@ function Slider() {
   const images = [{id: 1, image: Slide1}, {id: 2, image: Slide2}, {id: 3, image: Slide3}, {id: 4,image: Slide4} ];
 
 useEffect(()=> {
-  let timeoutId =setTimeout(() => {
+  let timeoutId = setTimeout(() => {
     if(slidId < 3) {
       setSlideStateID((prev) => prev + 1)
     } else {

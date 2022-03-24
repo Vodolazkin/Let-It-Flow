@@ -7,6 +7,7 @@ import BouquetListMain from '../BouquetListMain/BouquetListMain'
 
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react';
+import Footer from '../Footer/Footer';
 
 function Main(props) {
 

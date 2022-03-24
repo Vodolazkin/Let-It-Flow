@@ -1,27 +1,16 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { addBouquet } from './../../../redux/actionCreate/bouquetActionCreate'
-import AdminCard from '../AdminCard/AdminCard'
+import { updateBouquet } from '../../../redux/actionCreate/bouquetActionCreate'
 
-function AddCard(props) {
-
-  const [title, setTitle] = useState()
-  const [price, setPrice] = useState()
-  const [file, setFile] = useState('');
+function ModalOrder({handleClose, setOpen, bouquet}) {
 
   const { categories } = useSelector((state) => state)
   const dispatch = useDispatch()
-  
-  useEffect(() => {
-    fetch('http://localhost:4000/categories')
-    .then((res) => res.json())
-    .then(result => dispatch({
-      type: 'INIT_CATEGORIES',
-      payload: result
-    }))
-    .catch(err => console.log(err))
-  },[])
+  const [title, setTitle] = useState(bouquet.title)
+  const [price, setPrice] = useState(bouquet.price)
+  const [description, setDescription] = useState(bouquet.description)
+  const [file, setFile] = useState('/img/nabor_dlya_vazi/12.webp');
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -33,28 +22,42 @@ function AddCard(props) {
     const formData = new FormData(event.target);
     formData.append('file', file);
 
-    axios.post('http://localhost:4000/bouquets', formData, {
+    axios.post(`http://localhost:4000/bouquets/edit/${bouquet.id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }}).then(({ data }) => {
-       dispatch(addBouquet(data))
+        console.log(data)
+       dispatch(updateBouquet(data))
     })
     .catch(console.error());
     setTitle('')
     setPrice('')
 	};
-
   return (
     <div>
-          <h2>Привет, Админ</h2>
-          <form onSubmit={handleSubmit}>
+    <div className='modal-order'>
+        <div className='modal-order-dialog'>
+          <div className='modal-order-close'>
+            <button className='modal-order-button' onClick={handleClose}>
+              <svg width="55px" height="54px" viewBox="0 0 55 54">
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Cancel" transform="translate(0.000000, -1.000000)" fill="#000000">
+                        <rect id="Rectangle-path" transform="translate(27.961245, 28.014445) rotate(45.000000) translate(-27.961245, -28.014445) " x="-8.78840257" y="26.5144594" width="73.4992951" height="2.99997123"></rect>
+                        <rect id="Rectangle-path" transform="translate(27.890535, 28.014445) rotate(45.000000) translate(-27.890535, -28.014445) " x="26.3905494" y="-8.73520257" width="2.99997123" height="73.4992951"></rect>
+                    </g>
+                </g>
+              </svg>
+            </button>
+          </div>
+        <p className='modal-order-text'>Редактировать {bouquet.title}</p>
+        <form onSubmit={handleSubmit}>
             <div className="card-input">
               <label className="card-input__label">Название</label>
               <input value={title} onChange={(e) => setTitle(e.target.value)} className="card-input__input"  type="text" name="title" required />
             </div>
             <div className="card-input">
               <label className="card-input__label">Описание</label>
-              <textarea type="text" name="description" id="" className="card-input__input"></textarea>
+              <textarea value={description} onChange={(e) => setDescription(e.target.value)} type="text" name="description" id="" className="card-input__input"></textarea>
             </div>
             <div className="card-input">
               <label className="card-input__label">Стоимость</label>
@@ -75,7 +78,9 @@ function AddCard(props) {
             <button className="btn">Добавить букет</button>
           </form>
         </div>
+      </div> 
+      </div>
   );
 }
 
-export default AddCard;
+export default ModalOrder;
