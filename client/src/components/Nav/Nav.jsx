@@ -38,7 +38,7 @@ function Nav() {
             <li className="nav-item"><Link className="nav-item-link" to="/order"><img width="35px" src="https://img.icons8.com/external-itim2101-lineal-itim2101/64/000000/external-order-shopping-and-ecommerce-itim2101-lineal-itim2101.png"/></Link></li>
             {!user ?
             <>
-            <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
+            {/* <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li> */}
             <li className="nav-item"><Link className="nav-item-link" to="/login">Вход в личный кабинет</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/signup">Регистрация</Link></li>
             </>
