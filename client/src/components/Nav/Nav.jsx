@@ -27,8 +27,16 @@ function Nav() {
 
   return (
     <>
+
       <nav className="nav-container">
+        <div className="line"></div>
         <div className="container">
+        <div className="nav-top-container"> 
+             <div className="nav-top-content">
+                <div className="nav-top-city-number">Санкт-Петербург</div>
+                <div className="nav-top-city-number">+7(812) 123-45-67</div>
+              </div>
+            </div>
           <div className="nav-wrapper">
           <div className="nav-logo-wrapper">
             <Link to="/" className="nav-logo">Let It Flow</Link>
@@ -56,7 +64,7 @@ function Nav() {
               </Link>
             </li>
             {user.user.admin && <li className="nav-item"><Link className="nav-item-link" to="/adminboard">Админка</Link></li>}
-            <li className="nav-item"><Link className="nav-item-link" to="/" onClick={logout}>Выход</Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/" onClick={logout}><img className="exit" width="32px" src="https://img.icons8.com/ios/50/000000/exit.png"/></Link></li>
             </>
             }
           </ul>

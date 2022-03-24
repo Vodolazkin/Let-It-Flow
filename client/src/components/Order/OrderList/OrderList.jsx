@@ -1,9 +1,14 @@
 import React from 'react';
 import './OrderList.css'
+import CartOrderList from '../CartOrderList/CartOrderList';
 
-function OrderList({ order }) {
+
+function OrderList({ order, cart }) {
+
+
   // console.log(order);
   return (
+    <>
     <div>
       <div>Номер заказа: <span className='uuid'>{order.uuid.slice(-5)}</span></div>
       <div>Дата доставки: {(order.delivery_date).slice(0,10)}</div>
@@ -14,6 +19,10 @@ function OrderList({ order }) {
       <div>Квартира: {order.delivery_apartment}</div>
       <>------------------------------------------</>
     </div>
+    {cart.map(el => <CartOrderList cart={el}  />)}
+    
+    </>
+
   );
 }
 
