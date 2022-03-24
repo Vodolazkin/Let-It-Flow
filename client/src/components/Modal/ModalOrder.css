@@ -39,6 +39,12 @@
   font-size: 40px;
 }
 
+.modal-order-thanks {
+  font-size: 30px;
+  color:rgba(104, 104, 104, 0.19);
+  font-style: ;
+}
+
 .modal-order-close {
   position: absolute;
   right: 50px;

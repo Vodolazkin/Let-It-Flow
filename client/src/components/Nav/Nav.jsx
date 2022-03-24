@@ -38,14 +38,12 @@ function Nav() {
             <li className="nav-item"><Link className="nav-item-link" to="/order">Заказы</Link></li>
             {!user ?
             <>
-            <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/login">Вход в личный кабинет</Link></li>
             <li className="nav-item"><Link className="nav-item-link" to="/signup">Регистрация</Link></li>
             </>
             :
             <>
-            <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li>
-            <li className="nav-item"><Link className="nav-item-link" to="/profile">Профиль</Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/profile">Календарь</Link></li>
             <li className="nav-item">
               <Link className="nav-item-link" to="/cart">
                 <div className="nav-item-count-cart">{cart.reduce((sum, el) => sum + el.count, 0)}</div>
