@@ -30,7 +30,8 @@ router.post('/', async (req, res) => {
       uuid,
       user_id
     })
-    res.json({ order })
+    // res.json({ order })
+    res.json({ ok: true })
   } catch (error) {
     res.status(401)
     .json({ message: error.message})
