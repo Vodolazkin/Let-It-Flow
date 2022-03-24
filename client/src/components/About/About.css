@@ -1,10 +1,16 @@
 .about-content {
-  display: flex;
-  justify-content: space-between;
-}
-
-.about-content {
 display: flex;
-justify-content: centr;
+justify-content: space-between;
 align-items: center;
+padding-top: 60px;
+
+}
+/* 
+img{
+width: 600px;
+height: 600px;
+} */
+.about-content-left{
+  padding: 20px;
+  padding-left:20px;
 }
