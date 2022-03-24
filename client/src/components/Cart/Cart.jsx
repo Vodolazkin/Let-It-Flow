@@ -32,9 +32,6 @@ function Cart() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // const user = useSelector((state) => state.user)
-
-
   //* Синхронизация состояния корзины и localStorage
   useEffect(() => {
       localStorage.setItem('cart', JSON.stringify(cart))
@@ -47,6 +44,8 @@ function Cart() {
   //* Отправляем в бд сформированный заказ (доставка)
   const sendOrderDelivery = () => {
       handleOpen()
+      cartFormation()
+      
       fetch('http://localhost:4000/order/', {
       method: 'POST',
       body: JSON.stringify({
@@ -61,13 +60,18 @@ function Cart() {
         'Content-Type': 'application/json',
       }
     })
-    
-  
+    .then(res => res.json())
+    .then(res => {
+      if(res.ok) {
+        setTimeout(deleteCart, 3000)
+
+      }
+    })
     // console.log(user.user.id);
   }
 
   //* заполняем таблицу Cart, по каждому айтему в корзине
-  const orderFormation = () => {
+  const cartFormation = () => {
     // handleOpen()
 
     cart.map(item => fetch('http://localhost:4000/cart', {
@@ -82,20 +86,20 @@ function Cart() {
 
 
 
-  const sendOrderPickup = () => {
-    fetch('http://localhost:4000/order/pickup', {
-      method: 'POST',
-      body: JSON.stringify({
-        time: inputTime.current.value,
-        date: inputDate.current.value,
-        uuid: uniqId
-        // user_id: user.userData.user.id
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-  }
+  // const sendOrderPickup = () => {
+  //   fetch('http://localhost:4000/order/pickup', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       time: inputTime.current.value,
+  //       date: inputDate.current.value,
+  //       uuid: uniqId
+  //       // user_id: user.userData.user.id
+  //     }),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  // }
   
   //* Очистка корзины
   const deleteCart = () => {
@@ -115,54 +119,49 @@ function Cart() {
         </div>
 
         { cart.length >= 1 &&
-             
-        <div className='cart-wrapper'>
-             <h3 className='cart-delivery-title'>Выберите способ доставки</h3>
-          {/* <select onClick={({target}) => setMethod(target.value)} name="method-delivery">
-            <option value="pickup">Самовывоз</option>
-            <option value="delivery">Доставка</option>
-          </select> */}
-        <div className="cart-delivery-method-box">
-          <div className="cart-delivery-method" onClick={() => setMethod(0)}>Доставка</div>
-          <div className="cart-delivery-method" onClick={() => setMethod(1)}>Самовывоз</div>
-        </div>
-          
-        {method === 0 && 
-        <div className="cart-box-delivery">
-          <div className="cart-delivery-time-date">
-          {/* <input className="cart-delivery-time" ref={inputTime} type="time" autoComplete='off'/> */}
-          <input className="cart-delivery-date" ref={inputDate} value={new Date()} type="datetime-local" autoComplete='off'/>
-          </div>
+          <div className='cart-wrapper'>
+            <h3 className='cart-delivery-title'>Выберите способ доставки</h3>
+            <div className="cart-delivery-method-box">
+              <div className="cart-delivery-method" onClick={() => setMethod(0)}>Доставка</div>
+              <div className="cart-delivery-method" onClick={() => setMethod(1)}>Самовывоз</div>
+            </div>
+            
+            {method === 0 && 
+              <div className="cart-box-delivery">
+                <div className="cart-delivery-time-date">
+                <input className="cart-delivery-date" ref={inputDate} type="datetime-local" autoComplete='off'/>
+                </div>
 
-          <div className="cart-delivery-fild">
-            <label htmlFor="street" className="cart-delivery-label">Улица</label>
-            <input className='cart-delivery-fild-street' id="street" ref={inputStreet} placeholder="" name="street" autoComplete='off'/>
-          </div>
+                <div className="cart-delivery-fild">
+                  <label htmlFor="street" className="cart-delivery-label">Улица</label>
+                  <input className='cart-delivery-fild-street' id="street" ref={inputStreet} placeholder="" name="street" autoComplete='off'/>
+                </div>
 
-          <div className="cart-delivery-fild">
-            <label htmlFor="house" className="cart-delivery-label">Дом</label>
-            <input className='cart-delivery-fild-house' id="house" ref={inputHouse} placeholder="" name="house" autoComplete='off'/>
-          </div>
+                <div className="cart-delivery-fild">
+                  <label htmlFor="house" className="cart-delivery-label">Дом</label>
+                  <input className='cart-delivery-fild-house' id="house" ref={inputHouse} placeholder="" name="house" autoComplete='off'/>
+                </div>
 
-          <div className="cart-delivery-fild">
-            <label htmlFor="apartment" className="cart-delivery-label">Квартира</label>
-            <input className='cart-delivery-fild-apartment' ref={inputApartment} placeholder="" id="apartment" name="apartment" autoComplete='off'/>
+                <div className="cart-delivery-fild">
+                  <label htmlFor="apartment" className="cart-delivery-label">Квартира</label>
+                  <input className='cart-delivery-fild-apartment' ref={inputApartment} placeholder="" id="apartment" name="apartment" autoComplete='off'/>
+                </div>
+              </div>
+            }
+            <div className="cart-summ-order-title">Сумма заказа</div>
+
+            <h3 className="cart-summ-order">{total}$</h3>
+
+            <div className='cart-btns-box'>
+              {/* {open ? <ModalBuy handleClose={handleClose} setOpen={setOpen}/> : <></>} */}
+              {/* <button className='cart-btn-pay' onClick={() => cartFormation()}>Оплатить</button> */}
+              {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
+              {open ? <ModalOrder handleClose={handleClose} setOpen={setOpen}/> : <></>}
+              <button  className='cart-btn-order' onClick={() => sendOrderDelivery()}>Заказать</button>
+            </div>
           </div>
-        </div>
         }
-        <div className="cart-summ-order-title">Сумма заказа</div>
-
-        <h3 className="cart-summ-order">{total}$</h3>
-
-        <div className='cart-btns-box'>
-          {/* {open ? <ModalBuy handleClose={handleClose} setOpen={setOpen}/> : <></>} */}
-          <button className='cart-btn-pay' onClick={() => orderFormation()}>Оплатить</button>
-          {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
-          {open ? <ModalOrder handleClose={handleClose} setOpen={setOpen}/> : <></>}
-          <button  className='cart-btn-order' onClick={() => sendOrderDelivery()}>Заказать</button>
-        </div>
-      </div>}
-     </div>
+      </div>
     </div>
   );
 }
