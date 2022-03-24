@@ -21,12 +21,11 @@ function Order() {
     //     'Content-Type': 'application/json',
     //   }
     // })
-    console.log(user)
     //**? Сервер возвращает заказы по id (hardcode id)
     axios(`http://localhost:4000/order/${user?.user.id}`)
+    .then(({data}) => setOrder(data))
     // axiosWithConfig.post(`order/`, {id: user?.user.id})
     // .then(({data}) => console.log('эээ',data))
-    .then(({data}) => setOrder(data))
 
     // fetch('http://localhost:4000/order/', {
     //   method: 'POST',
@@ -46,6 +45,8 @@ function Order() {
     // .then(({data}) => console.log(data))
   }, [])
 
+  console.log('1',orderCart);
+  console.log('2',orderCart);
   return (
     <div className='container-order'>
       <div>
@@ -53,6 +54,7 @@ function Order() {
       <br />
         <>------------------------------------------</>
         {orderCart?.map(el => <CartOrderList cart={el} />)}
+        
       </div>
 
       <div>

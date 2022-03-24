@@ -6,12 +6,17 @@ import Cart_item from '../Cart_item/Cart_item';
 import { clearCart, initCart } from '../../redux/actionCreate/userActionCreate'
 import { useRef } from 'react';
 import ModalOrder from '../Modal/ModalOrder'
+import { v4 as uuidv4 } from "uuid"
 // import ModalBuy from '../Modal/ModalBuy';
 import './Cart.css'
 import '../Modal/ModalOrder.css'
 
 
 function Cart() {
+
+  const { bouquets, user, cart: {cart} } = useSelector((state) => state)
+  const [method, setMethod] = useState(false)
+  const [uniqId, setUniqId] = useState('')
 
   const dispatch = useDispatch();
 
@@ -27,17 +32,13 @@ function Cart() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-
-  const [method, setMethod] = useState(false)
-  const { cart } = useSelector((state) => state.cart)
-  const user = useSelector((state) => state.user)
-  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
   // const user = useSelector((state) => state.user)
 
 
   //* Синхронизация состояния корзины и localStorage
   useEffect(() => {
       localStorage.setItem('cart', JSON.stringify(cart))
+      setUniqId(uuidv4())
   }, [cart])
   
   //* Подсчет общей стоимости корзины
@@ -53,7 +54,8 @@ function Cart() {
         street: inputStreet.current.value,
         house: inputHouse.current.value,
         apartment: inputApartment.current.value,
-        user_id: user.user.id
+        user_id: user.user.id,
+        uuid: uniqId
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -63,12 +65,30 @@ function Cart() {
   
     // console.log(user.user.id);
   }
+
+  //* заполняем таблицу Cart, по каждому айтему в корзине
+  const orderFormation = () => {
+    // handleOpen()
+
+    cart.map(item => fetch('http://localhost:4000/cart', {
+      method: 'POST',
+      body: JSON.stringify({ item, id: user.user.id, uuid: uniqId}),
+      // body: JSON.stringify({ item, id: user.userData.user.id }),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }))
+  }
+
+
+
   const sendOrderPickup = () => {
     fetch('http://localhost:4000/order/pickup', {
       method: 'POST',
       body: JSON.stringify({
         time: inputTime.current.value,
         date: inputDate.current.value,
+        uuid: uniqId
         // user_id: user.userData.user.id
       }),
       headers: {
@@ -81,20 +101,6 @@ function Cart() {
   const deleteCart = () => {
     dispatch(clearCart())
   }
-
-  //* заполняем таблицу Cart, по каждому айтему в корзине
-  const orderFormation = () => {
-    handleOpen()
-    cart.map(item => fetch('http://localhost:4000/cart', {
-      method: 'POST',
-      body: JSON.stringify({ item, id: user.user.id }),
-      // body: JSON.stringify({ item, id: user.userData.user.id }),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    }))
-  }
-
 
   return (
     <div className='container'>
@@ -153,7 +159,7 @@ function Cart() {
           <button className='cart-btn-pay' onClick={() => orderFormation()}>Оплатить</button>
           {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
           {open ? <ModalOrder handleClose={handleClose} setOpen={setOpen}/> : <></>}
-          <button  className='cart-btn-order' onClick={sendOrderDelivery}>Заказать</button>
+          <button  className='cart-btn-order' onClick={() => sendOrderDelivery()}>Заказать</button>
         </div>
       </div>}
      </div>

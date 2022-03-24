@@ -6,28 +6,29 @@ import {
   INIT_BOUQUETS
 } from '../actionType/bouquetActionType'
 
-const initialState = {
-  bouquetsRe: [],
-}
 
-export function bouquetsReducer(state = initialState, action) {
+export function bouquetsReducer(state = [], action) {
   
 
   switch (action.type) {
 
     case INIT_BOUQUETS: {
-      return {...state, bouquetsRe: action.payload}
+      return [...action.payload]
     }
 
     case INIT_CATEGORY_BOUQUETS: {
-      return {...state, bouquetsRe: action.payload}
+      return {...state, bouquets: action.payload}
     }
 
     case ADD_BOUQUET:
-      return [...state.bouquetsRe, action.payload]
+      return [...state, action.payload]
 
     case DELETE_BOUQUET:
-      return { ...state, cards: state.cards.filter(el => el.id !== action.payload)}
+      const id = action.payload
+      const index = state.findIndex((bouquet) => bouquet.id === id)
+      const bouquets = [...state]
+      bouquets.splice(index, 1)
+      return [ ...bouquets ]
 
     case UPDATE_BOUQUET:
       return { ...state, cards: state.cards.map(el => {
