@@ -92,7 +92,9 @@ async function SMS() {
   // console.log(new Date(day.setDate(day.getDate() + 5))); 
 }
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('../client/build/index.html'));
+});
 
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
