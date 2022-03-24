@@ -1,3 +1,16 @@
 .uuid {
   color: blue;
 }
+
+.cart-order-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+.cart-order-list {
+  margin-bottom: 20px;
+}
