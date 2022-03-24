@@ -18,6 +18,7 @@ import axios from 'axios'
 import { login } from './redux/actionCreate/userActionCreate';
 import { useDispatch } from 'react-redux';
 import AdminBoard from './components/Admin/AdminBoard/AdminBoard';
+import About from './components/About/About'
 
 function App() {
 
@@ -31,6 +32,26 @@ function App() {
       dispatch(login(data))
     })
   }, [])
+
+
+  // useEffect(() => {
+  //    fetch('http://localhost:4000/bouquets')
+  //     .then(res => res.json())
+  //     .then(data => dispatch({ type: 'INIT_BOUQUETS', payload: data}))
+  //     .catch(err=>console.log(err));
+  //   }, [])
+
+  //   useEffect(() => {
+  //     fetch('http://localhost:4000/categories')
+  //     .then((res) => res.json())
+  //     .then(result => dispatch({
+  //       type: 'INIT_CATEGORIES',
+  //       payload: result
+  //     }))
+  //     .catch(err => console.log(err))
+  //   },[])
+    
+
 
   return (
     <BrowserRouter>
@@ -51,6 +72,7 @@ function App() {
             <Route path="/order" element={<Order />}/>
             <Route path="/card/:id" element={<CardPage />}/>
             <Route path="/adminboard" element={<AdminBoard />}/>
+            <Route path="/about" element={<About />}/>
           </Routes>
         </main>
       <footer>

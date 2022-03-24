@@ -33,12 +33,13 @@ body {
 
 main {
   flex-grow: 1;
-  padding-top: 50px;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .btn {
@@ -87,9 +88,9 @@ form {
   margin: 20px 0;
 }
 
-.divider {
-  padding: 60px 0;;
-}
+/* .divider {
+  padding: 60px 0;
+} */
 
 /* .wrapper {
   display: flex;

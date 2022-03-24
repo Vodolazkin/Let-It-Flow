@@ -18,10 +18,6 @@ export const userReducer = (state = null, action) => {
     case REFRESH_TOKEN: {
       return state
     }
-      // return {
-      //   // ...state,
-      //   // user: { ...user, accessToken: payload },
-      // };
     
     default:{
       return state

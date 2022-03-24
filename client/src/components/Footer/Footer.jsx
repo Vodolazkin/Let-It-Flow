@@ -11,9 +11,9 @@ function Footer(props) {
           </div>
           <ul className="nav-list">
           <li className="nav-item"><Link className="nav-item-link white" to="/info">Информация о компании</Link></li>
-          <li className="nav-item"><Link className="nav-item-link white" to="/logout">Выход</Link></li>
-            <li className="nav-item"><Link className="nav-item-link white" to="/login">Вход в личный кабинет</Link></li>
-            <li className="nav-item"><Link className="nav-item-link white" to="/registration">Регистрация</Link></li>
+          <li className="nav-item"><Link className="nav-item-link white" to="/logout">Контакты</Link></li>
+          <li className="nav-item"><Link className="nav-item-link white" to="/about">О магазине</Link></li>
+           
           </ul>
         </div>
         </div>

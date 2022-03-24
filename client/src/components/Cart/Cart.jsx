@@ -5,12 +5,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import Cart_item from '../Cart_item/Cart_item';
 import { clearCart, initCart } from '../../redux/actionCreate/userActionCreate'
 import { useRef } from 'react';
-import { v4 as uuidv4 } from "uuid";
+import ModalOrder from '../Modal/ModalOrder'
+import { v4 as uuidv4 } from "uuid"
+// import ModalBuy from '../Modal/ModalBuy';
 import './Cart.css'
-
+import '../Modal/ModalOrder.css'
 
 
 function Cart() {
+
+  const { bouquets, user, cart: {cart} } = useSelector((state) => state)
+  const [method, setMethod] = useState(false)
+  const [uniqId, setUniqId] = useState('')
 
   const dispatch = useDispatch();
 
@@ -20,12 +26,12 @@ function Cart() {
   const inputHouse = useRef();
   const inputApartment = useRef();
 
-  const [method, setMethod] = useState(false)
-  const [uniqId, setUniqId] = useState('')
+  // const [visible, setVisible] = useState(false);
 
-  const { cart } = useSelector((state) => state.cart)
-  const user = useSelector((state) => state.user)
-  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   // const user = useSelector((state) => state.user)
 
 
@@ -40,7 +46,8 @@ function Cart() {
 
   //* Отправляем в бд сформированный заказ (доставка)
   const sendOrderDelivery = () => {
-    fetch('http://localhost:4000/order/', {
+      handleOpen()
+      fetch('http://localhost:4000/order/', {
       method: 'POST',
       body: JSON.stringify({
         date: inputDate.current.value,
@@ -54,11 +61,15 @@ function Cart() {
         'Content-Type': 'application/json',
       }
     })
+    
+  
     // console.log(user.user.id);
   }
 
   //* заполняем таблицу Cart, по каждому айтему в корзине
   const orderFormation = () => {
+    // handleOpen()
+
     cart.map(item => fetch('http://localhost:4000/cart', {
       method: 'POST',
       body: JSON.stringify({ item, id: user.user.id, uuid: uniqId}),
@@ -68,6 +79,8 @@ function Cart() {
       }
     }))
   }
+
+
 
   const sendOrderPickup = () => {
     fetch('http://localhost:4000/order/pickup', {
@@ -88,8 +101,6 @@ function Cart() {
   const deleteCart = () => {
     dispatch(clearCart())
   }
-
-
 
   return (
     <div className='container'>
@@ -120,7 +131,7 @@ function Cart() {
         <div className="cart-box-delivery">
           <div className="cart-delivery-time-date">
           {/* <input className="cart-delivery-time" ref={inputTime} type="time" autoComplete='off'/> */}
-          <input className="cart-delivery-date" ref={inputDate} type="datetime-local" autoComplete='off'/>
+          <input className="cart-delivery-date" ref={inputDate} value={new Date()} type="datetime-local" autoComplete='off'/>
           </div>
 
           <div className="cart-delivery-fild">
@@ -144,8 +155,10 @@ function Cart() {
         <h3 className="cart-summ-order">{total}$</h3>
 
         <div className='cart-btns-box'>
+          {/* {open ? <ModalBuy handleClose={handleClose} setOpen={setOpen}/> : <></>} */}
           <button className='cart-btn-pay' onClick={() => orderFormation()}>Оплатить</button>
           {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
+          {open ? <ModalOrder handleClose={handleClose} setOpen={setOpen}/> : <></>}
           <button  className='cart-btn-order' onClick={() => sendOrderDelivery()}>Заказать</button>
         </div>
       </div>}

@@ -14,12 +14,11 @@ const app = express();
 
 //* Импорт роутов
 const indexRouter = require('./routes/index.routes');
-// const usersRouter = require('./routes/user.routes');
 const cartRouter = require('./routes/cart.routes');
 const categoryRoutes = require('./routes/category.routes');
 const bouquetsRouter = require('./routes/bouquets.routes');
 const orderRouter = require('./routes/order.routes');
-const cardRouter = require('./routes/card.routes');
+// const cardRouter = require('./routes/card.routes');
 const { job } = require('cron');
 
 //* config
@@ -40,12 +39,11 @@ app.options('*', cors(corsConfig));
 
 //* use routes
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/categories', categoryRoutes);
 app.use('/bouquets', bouquetsRouter);
 app.use('/order', orderRouter);
-app.use('/card', cardRouter);
+// app.use('/card', cardRouter);
 
 
 // // catch 404 and forward to error handler

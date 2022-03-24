@@ -6,7 +6,7 @@ import './BouquetListMain.css';
 
 function BouquetListMain(props) {
   const [allCatalog, setAllCatalog] = useState(false)
-  const { bouquetsRe } = useSelector((state) => state.bouquetsRe)
+  const { bouquets } = useSelector((state) => state)
 
   const dispatch = useDispatch()
   
@@ -23,13 +23,13 @@ function BouquetListMain(props) {
       <div className="card-container">
         <div className="container">
         <p className='category-title'>Популярное</p>
-          {!allCatalog && 
-          <div className='card-box'>
-            {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>).slice(0,4)}
+          {!allCatalog &&  <div className='card-box'>
+            {bouquets && bouquets.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>).slice(0,4)}
           </div>}
+          
           {allCatalog &&
           <div className='card-box'>
-          {bouquetsRe.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
+          {bouquets && bouquets.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
           </div>}
           <button onClick={() => setAllCatalog(!allCatalog)} className='card-btn-catalog'>{allCatalog ? 'Свернуть' : 'Каталог'}</button>
         </div>
