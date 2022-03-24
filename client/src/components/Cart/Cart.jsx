@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Cart_item from '../Cart_item/Cart_item';
 import { clearCart, initCart } from '../../redux/actionCreate/userActionCreate'
 import { useRef } from 'react';
-
+import { v4 as uuidv4 } from "uuid";
 import './Cart.css'
 
 
@@ -14,6 +14,7 @@ function Cart() {
 
   const { bouquets, user, cart: {cart} } = useSelector((state) => state)
   const [method, setMethod] = useState(false)
+  const [uniqId, setUniqId] = useState('')
 
   const dispatch = useDispatch();
 
@@ -23,9 +24,11 @@ function Cart() {
   const inputHouse = useRef();
   const inputApartment = useRef();
 
+
   //* Синхронизация состояния корзины и localStorage
   useEffect(() => {
       localStorage.setItem('cart', JSON.stringify(cart))
+      setUniqId(uuidv4())
   }, [cart])
   
   //* Подсчет общей стоимости корзины
@@ -40,7 +43,8 @@ function Cart() {
         street: inputStreet.current.value,
         house: inputHouse.current.value,
         apartment: inputApartment.current.value,
-        user_id: user.user.id
+        user_id: user.user.id,
+        uuid: uniqId
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -48,12 +52,26 @@ function Cart() {
     })
     // console.log(user.user.id);
   }
+
+  //* заполняем таблицу Cart, по каждому айтему в корзине
+  const orderFormation = () => {
+    cart.map(item => fetch('http://localhost:4000/cart', {
+      method: 'POST',
+      body: JSON.stringify({ item, id: user.user.id, uuid: uniqId}),
+      // body: JSON.stringify({ item, id: user.userData.user.id }),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }))
+  }
+
   const sendOrderPickup = () => {
     fetch('http://localhost:4000/order/pickup', {
       method: 'POST',
       body: JSON.stringify({
         time: inputTime.current.value,
         date: inputDate.current.value,
+        uuid: uniqId
         // user_id: user.userData.user.id
       }),
       headers: {
@@ -67,17 +85,6 @@ function Cart() {
     dispatch(clearCart())
   }
 
-  //* заполняем таблицу Cart, по каждому айтему в корзине
-  const orderFormation = () => {
-    cart.map(item => fetch('http://localhost:4000/cart', {
-      method: 'POST',
-      body: JSON.stringify({ item, id: user.user.id }),
-      // body: JSON.stringify({ item, id: user.userData.user.id }),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    }))
-  }
 
 
   return (

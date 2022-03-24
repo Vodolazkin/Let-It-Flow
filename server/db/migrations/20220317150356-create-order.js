@@ -26,6 +26,10 @@ module.exports = {
       delivery_method: {
         type: Sequelize.STRING
       },
+      uuid: {
+        type: Sequelize.STRING,
+        defaultValue: '-'
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {
