@@ -56,7 +56,7 @@ function Nav() {
               </Link>
             </li>
             {user.user.admin && <li className="nav-item"><Link className="nav-item-link" to="/adminboard">Админка</Link></li>}
-            <li className="nav-item"><Link className="nav-item-link" to="/" onClick={logout}>Выход</Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/" onClick={logout}><img className="exit" width="32px" src="https://img.icons8.com/ios/50/000000/exit.png"/></Link></li>
             </>
             }
           </ul>
