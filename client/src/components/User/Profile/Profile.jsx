@@ -57,9 +57,9 @@ export default function Profile() {
  
 
   return (
-    <div className="container divider">
-      <div className="nowrapper">
-        <div>
+    <div className="container">
+      <div className="profile-container">
+        <div className="profile-form-date">
         {user && (
         <h2>Привет, {user.user.first_name} {user.user.last_name}</h2>
       )}
@@ -82,7 +82,7 @@ export default function Profile() {
             <button className="btn">Записать дату</button>
           </form>
         </div>
-        <div className="calendar">
+        <div className="profile-calendar">
         <Calendar events={newEvents} />
         </div>
       </div>
