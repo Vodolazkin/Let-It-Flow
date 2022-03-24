@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import axios from 'axios'
 import { login } from './redux/actionCreate/userActionCreate';
 import { useDispatch } from 'react-redux';
+import AdminBoard from './components/Admin/AdminBoard/AdminBoard';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
             <Route path="/profile" element={<Profile />}/>
             <Route path="/order" element={<Order />}/>
             <Route path="/card/:id" element={<CardPage />}/>
+            <Route path="/adminboard" element={<AdminBoard />}/>
           </Routes>
         </main>
       <footer>

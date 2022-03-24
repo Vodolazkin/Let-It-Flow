@@ -33,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
     delivery_method: {
      type: DataTypes.STRING,
     },
+    uuid: {
+      type: DataTypes.STRING,
+      defaultValue: '-'
+    },
     user_id: {
      type: DataTypes.INTEGER,
      references: {

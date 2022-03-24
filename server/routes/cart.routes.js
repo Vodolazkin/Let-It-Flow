@@ -40,8 +40,8 @@ router.post('/bouquet', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { item, id } = req.body
-    const recordCartItem = await Cart.create({ bouquet_id: item.bouquet.id, count: item.count, user_id: id })
+    const { item, id, uuid } = req.body
+    const recordCartItem = await Cart.create({ bouquet_id: item.bouquet.id, count: item.count, uuid, user_id: id,  })
     return res.json({recordCartItem})
   } catch (error) {
     res.status(401)

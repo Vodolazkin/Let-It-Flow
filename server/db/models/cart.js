@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
      type: DataTypes.BOOLEAN,
      defaultValue: true
     },
+    uuid: {
+      type: DataTypes.STRING,
+      defaultValue: '-'
+    },
     user_id: {
      type: DataTypes.INTEGER,
      references: {

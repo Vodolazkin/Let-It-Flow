@@ -8,6 +8,7 @@ const cors = require('cors')
 const { Event, User } = require('./db/models')
 const axios = require('axios');
 const CronJob = require('cron').CronJob
+const fileUpload = require('express-fileupload');
 
 const app = express();
 
@@ -16,7 +17,7 @@ const indexRouter = require('./routes/index.routes');
 // const usersRouter = require('./routes/user.routes');
 const cartRouter = require('./routes/cart.routes');
 const categoryRoutes = require('./routes/category.routes');
-const bouquetListMainRouter = require('./routes/bouquet_list_main.routes');
+const bouquetsRouter = require('./routes/bouquets.routes');
 const orderRouter = require('./routes/order.routes');
 const cardRouter = require('./routes/card.routes');
 const { job } = require('cron');
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 
 const corsConfig = {
   origin: true,
@@ -41,7 +43,7 @@ app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/categories', categoryRoutes);
-app.use('/bouquets', bouquetListMainRouter);
+app.use('/bouquets', bouquetsRouter);
 app.use('/order', orderRouter);
 app.use('/card', cardRouter);
 
