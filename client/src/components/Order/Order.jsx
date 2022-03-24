@@ -39,7 +39,7 @@ function Order() {
     // .then(res => console.log(res))
 
     //**? Сервер возвращает корзину по id (hardcode id)
-    axios('http://localhost:4000/cart/')
+    axios(`http://localhost:4000/cart/${user?.user.id}`)
     .then(({data}) => setOrderCart(data))
     
     // .then(({data}) => console.log(data))
