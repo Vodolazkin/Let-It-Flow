@@ -131,7 +131,7 @@ function Cart() {
         <div className="cart-box-delivery">
           <div className="cart-delivery-time-date">
           {/* <input className="cart-delivery-time" ref={inputTime} type="time" autoComplete='off'/> */}
-          <input className="cart-delivery-date" ref={inputDate} value={new Date()} type="datetime-local" autoComplete='off'/>
+          <input className="cart-delivery-date" ref={inputDate} type="datetime-local" autoComplete='off'/>
           </div>
 
           <div className="cart-delivery-fild">
