@@ -23,10 +23,10 @@ function BouquetListMain(props) {
       <div className="card-container">
         <div className="container">
         <p className='category-title'>Популярное</p>
-
-          <div className='card-box'>
+          {!allCatalog &&  <div className='card-box'>
             {bouquets && bouquets.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>).slice(0,4)}
-          </div>
+          </div>}
+          
           {allCatalog &&
           <div className='card-box'>
           {bouquets && bouquets.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
