@@ -31,21 +31,21 @@ export function bouquetsReducer(state = [], action) {
       return [ ...bouquets ]
 
     case UPDATE_BOUQUET:
-      return { ...state, cards: state.cards.map(el => {
+      return [...state.map(el => {
         if (el.id === action.payload.id) {
           return {
             ...el, 
             id: action.payload.id,
             title: action.payload.title, 
             description: action.payload.description,
-            image: action.payload.image,
+            image: action.payload.img,
             price: action.payload.price,
             category_id: action.payload.category_id,
           }
         } else {
           return el
         }
-      })}
+      })]
 
     default: {
       return state
