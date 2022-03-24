@@ -31,9 +31,9 @@ export default function AdminCard({ bouquet }) {
         <div className='cart-item-card--name'>{bouquet.title}</div>
         <div className='cart-item-card--price'>{bouquet.price}$</div>
         
-        <div className='box-counter-delete'>
-          <button className="cart-item-btn" onClick={() => openModal(bouquet.id)}>Редактировать</button>
-          <button className="cart-item-btn" key={bouquet.id} onClick={() => deleteHandler(bouquet.id)}>Удалить</button>
+        <div className='box-counter'>
+          <button className="cart-itemAdmin-btn" onClick={() => openModal(bouquet.id)}>Редактировать</button>
+          <button className="cart-itemAdmin-btn" key={bouquet.id} onClick={() => deleteHandler(bouquet.id)}>Удалить</button>
         </div>
       </div>
 
