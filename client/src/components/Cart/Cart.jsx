@@ -149,7 +149,7 @@ function Cart() {
             }
             <div className="cart-summ-order-title">Сумма заказа</div>
 
-            <h3 className="cart-summ-order">{total}$</h3>
+            <h3 className="cart-summ-order">{total} руб.</h3>
 
             <div className='cart-btns-box'>
               {/* {open ? <ModalBuy handleClose={handleClose} setOpen={setOpen}/> : <></>} */}

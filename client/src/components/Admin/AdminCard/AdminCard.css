@@ -8,7 +8,7 @@
 
 .cartAdmin-item-card-img-box {
   height: 140px;
-  width: 40%;
+  width: 140px;
   position: relative;
 }
 
@@ -64,7 +64,19 @@
   outline: none;
 }
 /*  */
-.box-counter-delete {
+.box-counter {
   display: flex;
   flex-direction: row;
+  margin-top: 30px;
+}
+
+.cart-itemAdmin-btn {
+  padding-right: 10px;
+  padding-left: 0;
+  font-weight: 400;
+}
+.card-boxAdmin {
+  display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
