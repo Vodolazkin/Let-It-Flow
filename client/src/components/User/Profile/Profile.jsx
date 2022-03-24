@@ -37,7 +37,7 @@ export default function Profile() {
   	const payload = {
 			date: event.target.date.value,
 			title: event.target.title.value,
-      user_id: user.id,
+      user_id: user.user.id,
 		};
 
     axios.post('http://localhost:4000/profile/event', payload)
