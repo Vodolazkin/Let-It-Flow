@@ -63,8 +63,7 @@ function Cart() {
     .then(res => res.json())
     .then(res => {
       if(res.ok) {
-        setTimeout(deleteCart, 3000)
-
+       setTimeout(deleteCart, 3000)
       }
     })
     // console.log(user.user.id);
