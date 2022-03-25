@@ -6,21 +6,22 @@ const {Op} = require('sequelize');
 
 const bot = new Telegraf('5215524973:AAEQA2soYwrljKcAd-iptd97lt2-CcAteEk')
 bot.start((ctx) => ctx.reply(`Привет, ${ctx.message.from.first_name}!`))
-bot.on('text', async(ctx) => {
+bot.on('text', async (ctx) => {
 const day = new Date();
 const tomorrow = new Date(day.setDate(day.getDate() + 1));
 const nearestMidnight = new Date(tomorrow.setHours(0,0,0,0));
-const order = await Order.findAll({ 
-   where: {
-     delivery_date: {
-       [Op.between]: [(new Date()), nearestMidnight],
-      //  delivery_method : 'delivery'
-   }
-   
-}
+console.log(nearestMidnight,'завтра с 00:00');
+// console.log(new Date(day.setDate(day.getDate())),'сейчас');
+console.log(new Date(),'сейчас');
 
+const order = await Order.findAll({ 
+  where: {
+    delivery_date: {
+      // [Op.between]: [(new Date()), nearestMidnight],
+      [Op.between]: [new Date(), nearestMidnight],
+    } 
+  }
 })
-console.log(order,'jhhh');
 order.map((order) => ctx.reply(`
 Дата доставки: ${(JSON.stringify(order.delivery_date)).slice(1 ,11)}
 Время доставки: ${(JSON.stringify(order.delivery_date)).slice(12,17)}

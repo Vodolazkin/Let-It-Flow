@@ -4,7 +4,7 @@ const { Event } = require('../db/models');
 const eventPost = async (req, res) => {
   try {
     const { date, title, user_id } = req.body;
- 
+    // const newDate = new Date(date.getTime() + 10800000)
     const event = await Event.create({ date, title, user_id });
     return res.json(event)
     

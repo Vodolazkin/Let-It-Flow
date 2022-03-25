@@ -17,7 +17,7 @@ function Card({ bouquet }) {
   // const handleOpenError = () => setError(true);
 
   if(switchBtn) {
-    setTimeout(() => setSwitchBtn(false), 2000)
+    setTimeout(() => setSwitchBtn(false), 1500)
   }
 
   // const modalBuy = () => {
