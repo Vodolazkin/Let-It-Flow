@@ -5,13 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../redux/actionCreate/userActionCreate'
 // import "./ButtonBuy.css";
 
-function ButtonBuy({ bouquet }) {
+function ButtonBuy({ bouquet, setSwitchBtn }) {
 
   const [count, setCount] = useState(1)
+  
   const dispatch = useDispatch()
   const inputValue = useRef()
- 
+  
+
   const handleCart = () => {
+    setSwitchBtn((prev) => !prev)
     dispatch(addItemToCart({
        bouquet,
        count : +inputValue.current.value
