@@ -70,9 +70,10 @@
   opacity:0;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width:768px) {
   .container-slider {
-    flex-direction:row;
+    /* box-sizing: border-box; */
+    flex-direction: row;
     max-height: 500px;
   }
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 import './CardOrderList.css'
 
 function CartOrderList({cart}) {
@@ -21,8 +22,15 @@ useEffect(() => {
 }, [])
 
   return (
-    <div>
-      <div><p>Заказ: <span className='uuid'>{cart?.uuid.slice(-5)}</span></p> {bouquet.title} <br /><img width="100" src={`http://localhost:4000/${bouquet.img}`} alt="dsa" /><br /> колличество : {cart.count}</div>
+    <div className='order-bouquet'>
+      <div className='order-bouquet-box'>
+        <p className='order-bouquet-number'>Заказ: <span className='uuid'>{cart?.uuid.slice(-5)}</span></p> 
+        <p className='order-bouquet-title'>{bouquet.title}</p>
+        <Link to={`/card/${bouquet.id}`}>
+          <img width="100" src={`http://localhost:4000/${bouquet.img}`} alt="dsa" />
+        </Link>
+        <p className='order-bouquet-count'>{cart.count} шт.</p>
+      </div>
     </div>
   );
 }

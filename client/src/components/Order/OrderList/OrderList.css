@@ -1,18 +1,25 @@
-.uuid {
-  color: blue;
+.order-item .uuid {
+  font-size: 30px;
 }
 
-.order-title {
-  font-family: 'Jost', sans-serif;
-  font-size: 36px;
+.order-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 40px;
 }
 
-.cart-order-item {
-  padding-left: 40px;
-  min-width: 280px;
-  max-width: 350px;
+.order-item {
+  padding-bottom: 5px;
 }
 
-.cart-order-item-el {
-  
+.order-bouquet-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-bouquet-title {
+  max-width: 100px;
+  min-height: 50px;
+  word-wrap: break-word;
 }
