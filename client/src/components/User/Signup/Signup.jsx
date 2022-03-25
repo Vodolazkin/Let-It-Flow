@@ -72,7 +72,7 @@ function Signup() {
         <label htmlFor="phone" className="card-input__label">Телефон</label>
         <input {...register("phone", {
                 required: true,
-              })} name="phone" type="phone" id="password" className="card-input__input" />
+              })} name="phone" type="text" id="password" className="card-input__input" />
         </div>
       <button className="btn">Зарегистрироваться</button>
     </form>
