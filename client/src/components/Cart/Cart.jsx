@@ -6,6 +6,7 @@ import Cart_item from '../Cart_item/Cart_item';
 import { clearCart, initCart } from '../../redux/actionCreate/userActionCreate'
 import { useRef } from 'react';
 import ModalOrder from '../Modal/ModalOrder'
+import ModalError from '../Modal/ModalError';
 import { v4 as uuidv4 } from "uuid"
 // import ModalBuy from '../Modal/ModalBuy';
 import './Cart.css'
@@ -17,6 +18,8 @@ function Cart() {
   const { bouquets, user, cart: {cart} } = useSelector((state) => state)
   const [method, setMethod] = useState(false)
   const [uniqId, setUniqId] = useState('')
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -28,9 +31,10 @@ function Cart() {
 
   // const [visible, setVisible] = useState(false);
 
-  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+  const handleOpenError = () => setError(true);
   const handleClose = () => setOpen(false);
+  const handleCloseError = () => setError(false);
 
   //* Синхронизация состояния корзины и localStorage
   useEffect(() => {
@@ -43,17 +47,16 @@ function Cart() {
 
   //* Отправляем в бд сформированный заказ (доставка)
   const sendOrderDelivery = () => {
-      handleOpen()
-      cartFormation()
-      
-      fetch('http://localhost:4000/order/', {
+    cartFormation()
+    
+    fetch('http://localhost:4000/order/', {
       method: 'POST',
       body: JSON.stringify({
-        date: inputDate.current.value,
-        street: inputStreet.current.value,
-        house: inputHouse.current.value,
-        apartment: inputApartment.current.value,
-        user_id: user.user.id,
+        date: inputDate?.current.value,
+        street: inputStreet?.current.value,
+        house: inputHouse?.current.value,
+        apartment: inputApartment?.current.value,
+        user_id: user?.user.id,
         uuid: uniqId
       }),
       headers: {
@@ -63,7 +66,11 @@ function Cart() {
     .then(res => res.json())
     .then(res => {
       if(res.ok) {
-       setTimeout(deleteCart, 3000)
+        setTimeout(deleteCart, 3000)
+        handleOpen()
+      } else {
+        console.log('error');
+        handleOpenError()
       }
     })
     // console.log(user.user.id);
@@ -75,7 +82,7 @@ function Cart() {
 
     cart.map(item => fetch('http://localhost:4000/cart', {
       method: 'POST',
-      body: JSON.stringify({ item, id: user.user.id, uuid: uniqId}),
+      body: JSON.stringify({ item, id: user?.user.id, uuid: uniqId}),
       // body: JSON.stringify({ item, id: user.userData.user.id }),
       headers: {
         'Content-Type': 'application/json',
@@ -156,6 +163,7 @@ function Cart() {
               {/* <button className='cart-btn-pay' onClick={() => cartFormation()}>Оплатить</button> */}
               {/* <button  className="btn" onClick={() => console.log(user.userData.user.id)}>Ордер</button> */}
               {open ? <ModalOrder handleClose={handleClose} setOpen={setOpen}/> : <></>}
+              {error ? <ModalError handleClose={handleCloseError} setError={setError}/> : <></>}
               <button  className='cart-btn-order' onClick={() => sendOrderDelivery()}>Заказать</button>
             </div>
           </div>
