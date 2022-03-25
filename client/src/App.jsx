@@ -16,7 +16,7 @@ import CardPage from './components/CardPage/CardPage';
 import { useEffect } from 'react';
 import axios from 'axios'
 import { login } from './redux/actionCreate/userActionCreate';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AdminBoard from './components/Admin/AdminBoard/AdminBoard';
 import About from './components/About/About'
 
@@ -32,6 +32,13 @@ function App() {
       dispatch(login(data))
     })
   }, [])
+
+  const { user } = useSelector((state) => state);
+  console.log(user);
+
+
+
+
 
 
   // useEffect(() => {
@@ -69,7 +76,7 @@ function App() {
             <Route path="/cart" element={<Cart />}/>
             <Route path="/categories/:id" element={<Category />}/>
             <Route path="/profile" element={<Profile />}/>
-            <Route path="/order" element={<Order />}/>
+            <Route path="/order" element={<Order user={user}/>}/>
             <Route path="/card/:id" element={<CardPage />}/>
             <Route path="/adminboard" element={<AdminBoard />}/>
             <Route path="/about" element={<About />}/>
