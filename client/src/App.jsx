@@ -34,7 +34,7 @@ function App() {
   }, [])
 
   const { user } = useSelector((state) => state);
-  console.log(user);
+  // console.log(user);
 
 
 

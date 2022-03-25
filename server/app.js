@@ -30,7 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 const corsConfig = {
-  origin: true,
+  // origin: true,
+  origin: ['http://localhost:3000', 'https://let-it-flow-project.herokuapp.com/'],
   credentials: true,
 };
 
@@ -58,7 +59,7 @@ app.use('/order', orderRouter);
 // bob.start()
 
 // //* Функция для проверки событий и отправки смс
-// setInterval(SMS, 5000)
+// setInterval(SMS, 3335000)
 
 async function SMS() {
   const dateEvent = await Event.findAll()

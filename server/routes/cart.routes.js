@@ -43,6 +43,7 @@ router.post('/bouquet', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { item, id, uuid } = req.body
+    // console.log('cart', req.body);
     const recordCartItem = await Cart.create({ bouquet_id: item.bouquet.id, count: item.count, uuid, user_id: id,  })
     return res.json({recordCartItem})
   } catch (error) {
