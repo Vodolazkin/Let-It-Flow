@@ -1,6 +1,6 @@
 .card-container {
   padding-bottom: 40px;
-  border-bottom: 1px solid #292929;
+  border-bottom: 1px solid #c0c0c0;
 }
 
 .card-wrapper {
@@ -136,4 +136,25 @@
   height: 44px;
   text-transform: uppercase;
   font-weight: 300;
+}
+
+.card-btns:hover {
+  opacity: 0.7;
+}
+
+.card-btns:active {
+  opacity: 1;
+}
+
+@media(max-width: 768px) {
+
+  .card-wrapper {
+    border: 1px solid rgba(41,41,41,0.4);
+    box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+    padding: 19px;
+  }
+  
+  .card-wrapper .card-button-wrapper {
+    display: flex;
+  }
 }

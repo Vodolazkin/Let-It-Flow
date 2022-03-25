@@ -135,22 +135,22 @@ function Cart() {
             {method === 0 && 
               <div className="cart-box-delivery">
                 <div className="cart-delivery-time-date">
-                <input className="cart-delivery-date" ref={inputDate} type="datetime-local" autoComplete='off'/>
+                <input className="cart-delivery-date" ref={inputDate} type="datetime-local" autoComplete='off' required />
                 </div>
 
                 <div className="cart-delivery-fild">
                   <label htmlFor="street" className="cart-delivery-label">Улица</label>
-                  <input className='cart-delivery-fild-street' id="street" ref={inputStreet} placeholder="" name="street" autoComplete='off'/>
+                  <input className='cart-delivery-fild-street' id="street" ref={inputStreet} placeholder="" name="street" autoComplete='off' required/>
                 </div>
 
                 <div className="cart-delivery-fild">
                   <label htmlFor="house" className="cart-delivery-label">Дом</label>
-                  <input className='cart-delivery-fild-house' id="house" ref={inputHouse} placeholder="" name="house" autoComplete='off'/>
+                  <input className='cart-delivery-fild-house' id="house" ref={inputHouse} placeholder="" name="house" autoComplete='off' required/>
                 </div>
 
                 <div className="cart-delivery-fild">
                   <label htmlFor="apartment" className="cart-delivery-label">Квартира</label>
-                  <input className='cart-delivery-fild-apartment' ref={inputApartment} placeholder="" id="apartment" name="apartment" autoComplete='off'/>
+                  <input className='cart-delivery-fild-apartment' ref={inputApartment} placeholder="" id="apartment" name="apartment" autoComplete='off' required/>
                 </div>
               </div>
             }

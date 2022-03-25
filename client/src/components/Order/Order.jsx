@@ -8,13 +8,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import './Order.css'
 import { login } from '../../redux/actionCreate/userActionCreate';
 
-function Order() {
+function Order({user}) {
   
   const [order, setOrder] = useState([])
   const [orderCart, setOrderCart] = useState([])
-  const { user } = useSelector((state) => state)
- 
-
 
   useEffect(() => {
     // fetch('http://localhost:4000/order/', {
@@ -47,23 +44,18 @@ function Order() {
     .then(({data}) => setOrderCart(data))
     
     // .then(({data}) => console.log(data))
-  }, [])
+  }, [user])
 
   // console.log('1',orderCart);
   // console.log('2',orderCart);
   return (
-    <div className='container-order'>
-      <div>
-     <div className='order-title'>Ваши заказы:</div>
-      <br />
+    <div className='container-orders'>
+      <div className='orders-title'>Ваши заказы</div>
         {order && order?.map(el => (
-          <div className='cart-order-list'>
+          <div className='orders'>
             <OrderList order={el} cart={orderCart.filter(cart => cart?.uuid === el?.uuid)} />
-
           </div>
-      )
-        )}
-      </div>
+        ))}
     </div>
   );
 }
