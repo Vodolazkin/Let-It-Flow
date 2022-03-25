@@ -59,7 +59,7 @@ app.use('/order', orderRouter);
 // bob.start()
 
 // //* Функция для проверки событий и отправки смс
-// setInterval(SMS, 3335000)
+// setInterval(SMS, 20000)
 
 async function SMS() {
   const dateEvent = await Event.findAll()
@@ -88,6 +88,7 @@ async function SMS() {
           sign: 'SMS Aero'
         }
       })
+      
       .then(res => console.log(res))
       .then(res => res.json())
     }
