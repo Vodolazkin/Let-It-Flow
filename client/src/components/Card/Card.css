@@ -152,9 +152,14 @@
     border: 1px solid rgba(41,41,41,0.4);
     box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     padding: 19px;
+    margin-right: 20px;
   }
   
   .card-wrapper .card-button-wrapper {
     display: flex;
+  }
+
+  .card-box {
+    justify-content: center;
   }
 }
