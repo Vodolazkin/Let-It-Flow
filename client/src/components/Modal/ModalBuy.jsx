@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ModalBuy({handleClose, setOpen}) {
+function ModalBuy({handleCloseError, setError}) {
   return (
     <div>
     <div className='modal-order'>
         <div className='modal-order-dialog'>
           <div className='modal-order-close'>
-            <button className='modal-order-button' onClick={handleClose}>
+            <button className='modal-order-button' onClick={handleCloseError}>
               <svg width="55px" height="54px" viewBox="0 0 55 54">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="Cancel" transform="translate(0.000000, -1.000000)" fill="#000000">
