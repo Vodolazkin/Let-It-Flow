@@ -16,6 +16,10 @@ const { id } = useParams()
 //   .catch(err=>console.log(err));
 // },[dispatch])
 
+// useEffect(() => {
+//   dispatch({ type: 'INIT'})
+// }, [])
+
 
 const category = categories.find((el) => el.id == id);
 const bouquetsArray = bouquets.filter((bouquet) => bouquet.category_id == id)
@@ -23,7 +27,7 @@ const bouquetsArray = bouquets.filter((bouquet) => bouquet.category_id == id)
   return (
     <div className='category-container'>
       <div className='container'>
-        <h1>{category.name}</h1>
+        <h1>{category?.name}</h1>
         <div className='category-box'>
         { bouquetsArray && bouquetsArray.map((bouquet) => <Card key={bouquet.id} bouquet={bouquet}/>)}
         </div>
