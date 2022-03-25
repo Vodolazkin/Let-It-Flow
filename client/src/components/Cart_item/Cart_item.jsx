@@ -43,7 +43,7 @@ function Cart_item({ item }) {
 
       <div className='cart-item-card-content'>
         <div className='cart-item-card--name'>{item.bouquet.title}</div>
-        <div className='cart-item-card--price'>{item.bouquet.price}$</div>
+        <div className='cart-item-card--price'>{item.bouquet.price} руб.</div>
         <div className='cart-item-card--id'>id товара: {item.bouquet.id}</div>
 
 

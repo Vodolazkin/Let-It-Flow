@@ -10,12 +10,12 @@ function About(props) {
            <p>- это история о любви к цветам, ко всему прекрасному. Это желание нести эту красоту в массы, сделать ее доступной для каждого. Проект создавался с осознанием того, что стильный красивый букет не обязательно должен стоить дорого.</p>
          </div>
          <div className="about-content-right">
-            <img src="http://localhost:4000/img/img_about/about1.jpg" alt="about-img" />
+            <img src="http://localhost:4000/img/img_about/about1.jpg" width="600px" height="600px" alt="about-img" />
           </div>
       </div>
-      <div className="about-content-centr">
+      <div className="about-content">
         <div className="about-content-left">
-            <img src="http://localhost:4000/img/img_about/2.jpg" alt="about-img" />
+            <img src="http://localhost:4000/img/img_about/2.jpg" width="600px" height="600px" alt="about-img" />
 </div>
 <div className="about-content-right">
           <h4>Идеальный букет для нас</h4>
@@ -29,11 +29,11 @@ function About(props) {
           <h4>Наша команда</h4>
           <p>- это союз творческих людей, любящих свое дело. Порушив изначально классическую концепцию букета и собрав её заново в собственном формате, наши флористы раз за разом удивляют заказчиков в Москве и Санкт-Петербурге. Свежие и стильные букеты и композиции, удобная оплата и отлаженная доставка - все это Вы легко найдете на нашем сайте. Мы работаем каждый день, чтобы радовать вас и ваших близких.</p>
         </div>
-      </div>
-<div className="about-content-right">
-            <img src="http://localhost:4000/img/img_about/3.jpg" alt="about-img" />
-</div>
       
+<div className="about-content-right">
+            <img src="http://localhost:4000/img/img_about/3.jpg" width="600px" height="600px" alt="about-img" />
+</div>
+      </div>
    </div>
   );
 }

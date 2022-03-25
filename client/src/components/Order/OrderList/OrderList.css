@@ -1,3 +1,18 @@
 .uuid {
   color: blue;
 }
+
+.order-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 36px;
+}
+
+.cart-order-item {
+  padding-left: 40px;
+  min-width: 280px;
+  max-width: 350px;
+}
+
+.cart-order-item-el {
+  
+}

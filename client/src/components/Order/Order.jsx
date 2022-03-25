@@ -4,14 +4,17 @@ import React from 'react';
 import OrderList from './OrderList/OrderList'
 import CartOrderList from './CartOrderList/CartOrderList';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './Order.css'
+import { login } from '../../redux/actionCreate/userActionCreate';
 
 function Order() {
-
-  const user = useSelector((state) => state.user)
+  
   const [order, setOrder] = useState([])
   const [orderCart, setOrderCart] = useState([])
+  const { user } = useSelector((state) => state)
+ 
+
 
   useEffect(() => {
     // fetch('http://localhost:4000/order/', {
@@ -24,6 +27,7 @@ function Order() {
     //**? Сервер возвращает заказы по id (hardcode id)
     axios(`http://localhost:4000/order/${user?.user.id}`)
     .then(({data}) => setOrder(data))
+
     // axiosWithConfig.post(`order/`, {id: user?.user.id})
     // .then(({data}) => console.log('эээ',data))
 
@@ -39,24 +43,22 @@ function Order() {
     // .then(res => console.log(res))
 
     //**? Сервер возвращает корзину по id (hardcode id)
-    axios('http://localhost:4000/cart/')
+    axios(`http://localhost:4000/cart/${user?.user.id}`)
     .then(({data}) => setOrderCart(data))
     
     // .then(({data}) => console.log(data))
   }, [])
 
-  console.log('1',orderCart);
-  console.log('2',orderCart);
+  // console.log('1',orderCart);
+  // console.log('2',orderCart);
   return (
     <div className='container-order'>
       <div>
-      Ваши заказы:
+     <div className='order-title'>Ваши заказы:</div>
       <br />
-
-        <>------------------------------------------</>
-        {order?.map(el => (
+        {order && order?.map(el => (
           <div className='cart-order-list'>
-            <OrderList order={el} cart={orderCart.filter(cart => cart.uuid === el.uuid)} />
+            <OrderList order={el} cart={orderCart.filter(cart => cart?.uuid === el?.uuid)} />
 
           </div>
       )

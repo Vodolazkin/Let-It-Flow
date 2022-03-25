@@ -19,12 +19,10 @@ useEffect(() => {
   .then(res => setBouquet(res.bouquet))
 
 }, [])
-console.log(bouquet);
 
   return (
     <div>
-      <div><p>Заказ: <span className='uuid'>{cart.uuid.slice(-5)}</span></p> {bouquet.title} <br /><img width="100" src={`http://localhost:4000/${bouquet.img}`} alt="dsa" /><br /> колличество : {cart.count}</div>
-      <>-----------------</>
+      <div><p>Заказ: <span className='uuid'>{cart?.uuid.slice(-5)}</span></p> {bouquet.title} <br /><img width="100" src={`http://localhost:4000/${bouquet.img}`} alt="dsa" /><br /> колличество : {cart.count}</div>
     </div>
   );
 }

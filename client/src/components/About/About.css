@@ -1,10 +1,12 @@
 .about-content {
-  display: flex;
-  justify-content: space-between;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-top: 60px;
+
 }
 
-.about-content {
-display: flex;
-justify-content: centr;
-align-items: center;
+.about-content-left{
+  padding: 20px;
+  padding-left:20px;
 }

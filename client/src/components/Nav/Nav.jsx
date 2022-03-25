@@ -43,7 +43,8 @@ function Nav() {
             <div>доставка приятных впечатлений*</div>
           </div>
           <ul className="nav-list">
-            <li className="nav-item"><Link className="nav-item-link" to="/order"><img width="35px" src="https://img.icons8.com/external-itim2101-lineal-itim2101/64/000000/external-order-shopping-and-ecommerce-itim2101-lineal-itim2101.png"/></Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/order">Заказы</Link></li>
+            {/* <img width="35px" src="https://img.icons8.com/external-itim2101-lineal-itim2101/64/000000/external-order-shopping-and-ecommerce-itim2101-lineal-itim2101.png"/> */}
             {!user ?
             <>
             {/* <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li> */}
@@ -53,7 +54,8 @@ function Nav() {
             :
             <>
             {/* <li className="nav-item"><Link className="nav-item-link" to="/info">Информация о компании</Link></li> */}
-            <li className="nav-item"><Link className="nav-item-link" to="/profile"><img width="35px" src="https://img.icons8.com/ios/50/000000/calendar--v1.png"/></Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/profile">Календарь</Link></li>
+            {/* <img width="35px" src="https://img.icons8.com/ios/50/000000/calendar--v1.png"/> */}
             <li className="nav-item">
               <Link className="nav-item-link" to="/cart">
                 <div className="nav-item-count-cart">{cart.reduce((sum, el) => sum + el.count, 0)}</div>
@@ -64,7 +66,8 @@ function Nav() {
               </Link>
             </li>
             {user.user.admin && <li className="nav-item"><Link className="nav-item-link" to="/adminboard">Админка</Link></li>}
-            <li className="nav-item"><Link className="nav-item-link" to="/" onClick={logout}><img className="exit" width="32px" src="https://img.icons8.com/ios/50/000000/exit.png"/></Link></li>
+            <li className="nav-item"><Link className="nav-item-link" to="/" onClick={logout}>Выход</Link></li>
+            {/* <img className="exit" width="32px" src="https://img.icons8.com/ios/50/000000/exit.png"/> */}
             </>
             }
           </ul>

@@ -9,18 +9,16 @@ function OrderList({ order, cart }) {
   // console.log(order);
   return (
     <>
-    <div>
-      <div>Номер заказа: <span className='uuid'>{order.uuid.slice(-5)}</span></div>
-      <div>Дата доставки: {(order.delivery_date).slice(0,10)}</div>
-      <div>Время: {order.delivery_time}</div>
-      <div>Адрес:</div>
-      <div>Улица: {order.delivery_street}</div>
-      <div>Дом: {order.delivery_house}</div>
-      <div>Квартира: {order.delivery_apartment}</div>
-      <>------------------------------------------</>
-    </div>
+    <ul className="cart-order-item">
+      <li className="cart-order-item-el">Номер заказа: <span className='uuid'>{order?.uuid.slice(-5)}</span></li>
+      <li className="cart-order-item-el">Дата доставки: {(order.delivery_date).slice(0,10)}</li>
+      <li className="cart-order-item-el">Время: {order.delivery_time}</li>
+      <li className="cart-order-item-el">Адрес:</li>
+      <li className="cart-order-item-el">Улица: {order.delivery_street}</li>
+      <li className="cart-order-item-el">Дом: {order.delivery_house}</li>
+      <li className="cart-order-item-el">Квартира: {order.delivery_apartment}</li>
+    </ul>
     {cart.map(el => <CartOrderList cart={el}  />)}
-    
     </>
 
   );
