@@ -121,3 +121,10 @@ input {
   overflow-y: scroll;
   scrollbar-width: auto;
 }
+
+@media(max-width: 768px) {
+  .divider {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

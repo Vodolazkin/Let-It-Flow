@@ -62,9 +62,9 @@
   text-transform: uppercase;
 }
 
-  .nav-item-text-cart {
-    display: none;
-  }
+.nav-item-text-cart {
+  display: none;
+}
 
 
 .nav-logo-wrapper {
@@ -171,5 +171,9 @@
 
   .nav-item:hover {
     background-color: #e8e8e8;
+  }
+
+  .nav-logo-wrapper {
+    padding: 20px;
   }
 }
