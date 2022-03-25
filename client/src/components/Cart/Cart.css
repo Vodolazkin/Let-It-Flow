@@ -12,6 +12,7 @@
 
 .cart-list-wrapper {
   margin-right: 30px;
+  margin-bottom: 30px;
 }
 
 .cart_item-list {
@@ -176,4 +177,11 @@
 
 .cart-btn-order:hover {
   background-color: #111111;
+}
+
+@media(max-width: 768px) {
+  .cart-wrapper {
+    box-sizing: border-box;
+    padding: 20px;
+  }
 }
