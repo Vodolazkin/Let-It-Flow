@@ -47,7 +47,6 @@ function Cart() {
 
   //* Отправляем в бд сформированный заказ (доставка)
   const sendOrderDelivery = () => {
-    cartFormation()
     
     fetch('http://localhost:4000/order/', {
       method: 'POST',
@@ -66,6 +65,7 @@ function Cart() {
     .then(res => res.json())
     .then(res => {
       if(res.ok) {
+        cartFormation()
         setTimeout(deleteCart, 3000)
         handleOpen()
       } else {
