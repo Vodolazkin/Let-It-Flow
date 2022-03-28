@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
-app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(process.env.PWD, 'build')))
 
 const corsConfig = {
   origin: true,
