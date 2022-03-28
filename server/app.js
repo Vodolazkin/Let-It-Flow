@@ -11,6 +11,8 @@ const CronJob = require('cron').CronJob
 const fileUpload = require('express-fileupload');
 
 const app = express();
+const PORT = process.env.PORT || 4000
+
 
 //* Импорт роутов
 const indexRouter = require('./routes/index.routes');
@@ -112,14 +114,19 @@ app.get('*', (req, res) => {
 // }
 
 
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
+
+app.listen(PORT, () => {
+  console.log(`use port ${PORT}`);
+})
+
 
 module.exports = app;
