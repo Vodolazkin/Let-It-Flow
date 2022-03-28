@@ -30,8 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 const corsConfig = {
-  // origin: true,
-  origin: ['http://localhost:3000', 'https://let-it-flow-project.herokuapp.com/'],
+  origin: true,
+  // origin: ['http://localhost:3000', 'https://let-it-flow-project.herokuapp.com/'],
   credentials: true,
 };
 
