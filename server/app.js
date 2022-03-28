@@ -62,51 +62,52 @@ app.use('/order', orderRouter);
 // //* Функция для проверки событий и отправки смс
 // setInterval(SMS, 40000)
 
-async function SMS() {
-  const dateEvent = await Event.findAll()
-  // console.log(dateEvent[0].user_id);
-  // console.log(dateEvent[0].title);
-  // console.log(dateEvent[0].date);
-  // console.log(dateEvent[0].user_id);
-  const day = new Date()
-  // console.log(dateEvent[2].user_id);
-  try {
-    for (let i = 0; i < dateEvent.length; i++) {
-      const day = new Date();
-      const tomorrow = new Date(day.setDate(day.getDate()));
-      // if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
-        if(new Date(tomorrow.setHours(0,0,0,0)) < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
+// async function SMS() {
+//   const dateEvent = await Event.findAll()
+//   // console.log(dateEvent[0].user_id);
+//   // console.log(dateEvent[0].title);
+//   // console.log(dateEvent[0].date);
+//   // console.log(dateEvent[0].user_id);
+//   const day = new Date()
+//   // console.log(dateEvent[2].user_id);
+//   try {
+//     for (let i = 0; i < dateEvent.length; i++) {
+//       const day = new Date();
+//       const tomorrow = new Date(day.setDate(day.getDate()));
+//       // if(new Date() < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
+//         if(new Date(tomorrow.setHours(0,0,0,0)) < new Date(dateEvent[i].date) && new Date(day.setDate(day.getDate() + 1)) >= new Date(dateEvent[i].date)){
   
-        const user = await User.findOne({ where: { id: dateEvent[i].user_id }})
-        console.log(Number(user.phone));
-        const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send'
-        // user.isActiveDelivery = true
-        axios({
-          method: 'POST',
-          url: 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send/',
-          data: {
-            number: Number(user.phone),
-            text: `Привет, ты не забыл про ${dateEvent[i].title}? Можешь выбрать подходящий букет на нашем сайте.`,
-            sign: 'SMS Aero'
-          }
-        })
+//         const user = await User.findOne({ where: { id: dateEvent[i].user_id }})
+//         console.log(Number(user.phone));
+//         const url = 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send'
+//         // user.isActiveDelivery = true
+//         axios({
+//           method: 'POST',
+//           url: 'https://jiva108jiva@gmail.com:muCc3bNoPXqnFd1fGAUYtyiYzCB@gate.smsaero.ru/v2/sms/send/',
+//           data: {
+//             number: Number(user.phone),
+//             text: `Привет, ты не забыл про ${dateEvent[i].title}? Можешь выбрать подходящий букет на нашем сайте.`,
+//             sign: 'SMS Aero'
+//           }
+//         })
   
-        .then(res => console.log(res))
-        .then(res => res.json())
-      }
-    }
+//         .then(res => console.log(res))
+//         .then(res => res.json())
+//       }
+//     }
     
-  } catch (error) {
-    console.log('error');
-  }
-  // console.log(new Date() < new Date(date[1].date) && new Date(day.setDate(day.getDate() + 2)) >= new Date(date[1].date));
-  // console.log(day.getDate());
-  // console.log(day.setDate(day.getDate() + 2));
-  // console.log(new Date(day.setDate(day.getDate() + 5))); 
-}
+//   } catch (error) {
+//     console.log('error');
+//   }
+//   // console.log(new Date() < new Date(date[1].date) && new Date(day.setDate(day.getDate() + 2)) >= new Date(date[1].date));
+//   // console.log(day.getDate());
+//   // console.log(day.setDate(day.getDate() + 2));
+//   // console.log(new Date(day.setDate(day.getDate() + 5))); 
+// }
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve('../client/build/index.html'));
+  // res.sendFile(path.resolve('../client/build/index.html'));
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 
 app.use(function(err, req, res, next) {
