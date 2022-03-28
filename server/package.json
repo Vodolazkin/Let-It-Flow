@@ -25,6 +25,7 @@
     "telegraf": "^4.7.0"
   },
   "devDependencies": {
+    "husky": "^4.3.8",
     "nodemon": "^2.0.15",
     "sequelize-cli": "^6.4.1"
   }
