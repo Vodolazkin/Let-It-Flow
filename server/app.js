@@ -48,8 +48,9 @@ app.use('/order', orderRouter);
 // app.use('/card', cardRouter);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve('../client/build/index.html'));
-  // res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  // res.sendFile(path.resolve('../client/build/index.html'));
+  // res.sendFile(path.resolve('../client/build/index.html'));
+  res.sendFile(path.resolve(__dirname, 'build'));
 });
 
 // // catch 404 and forward to error handler
