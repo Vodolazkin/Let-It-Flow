@@ -29,7 +29,7 @@ export default function AdminCard({ bouquet }) {
       {open ? <EditModal bouquet={bouquet} handleClose={handleClose} setOpen={setOpen}/> : <></>}
       <div className='cart-item-card-content'>
         <div className='cart-item-card--name'>{bouquet.title}</div>
-        <div className='cart-item-card--price'>{bouquet.price}$</div>
+        <div className='cart-item-card--price'>{bouquet.price} руб</div>
         
         <div className='box-counter'>
           <button className="cart-itemAdmin-btn" onClick={() => openModal(bouquet.id)}>Редактировать</button>
