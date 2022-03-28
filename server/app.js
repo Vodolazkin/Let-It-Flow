@@ -47,6 +47,10 @@ app.use('/bouquets', bouquetsRouter);
 app.use('/order', orderRouter);
 // app.use('/card', cardRouter);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('../client/build/index.html'));
+  // res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+});
 
 // // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -105,10 +109,6 @@ app.use('/order', orderRouter);
 //   // console.log(new Date(day.setDate(day.getDate() + 5))); 
 // }
 
-app.get('*', (req, res) => {
-  // res.sendFile(path.resolve('../client/build/index.html'));
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
 
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

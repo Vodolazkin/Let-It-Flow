@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Vodolazkin/Let-It-Flow#readme",
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "husky": "^7.0.4"
   }
 }
