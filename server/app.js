@@ -29,6 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.resolve('../client/build')));
 app.use(fileUpload());
 // app.use(express.static(path.resolve(__dirname, 'build')))
 
@@ -50,10 +51,9 @@ app.use('/bouquets', bouquetsRouter);
 app.use('/order', orderRouter);
 // app.use('/card', cardRouter);
 
-app.use(express.static(path.resolve('../client/build')));
 app.get('*', (req, res) => {
-  // res.sendFile(path.resolve('../client/build/index.html'));
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  res.sendFile(path.resolve('../client/build/index.html'));
+  // res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 
 
