@@ -1,7 +1,6 @@
 # Let-It-Flow
 
-Начало работы
-После клонирования репозитория запустите следующую команду из корня проекта:
+
 Главная страница
 <img width="1440" alt="front let-it-flow" src="https://user-images.githubusercontent.com/96245666/160631369-331ba769-b524-4602-beae-4409b266df1e.png"><img width="1381" alt="popular let-it-flow" src="https://user-images.githubusercontent.com/96245666/160631677-51881176-436d-4d5b-99f8-8464925b9add.png">
 <br>
@@ -17,7 +16,7 @@
 <img width="1422" alt="admit let-it-flow" src="https://user-images.githubusercontent.com/96245666/160632034-9ac4536e-3b76-449d-a550-29593473d98b.png">
 
 
-Команды для старта:
+После клонирования репозитория запустите следующие команды из корня проекта:
 
  cd client
  npm install
