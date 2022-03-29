@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
-app.use(express.static(path.resolve(__dirname, 'build')))
+// app.use(express.static(path.resolve(__dirname, 'build')))
 
 const corsConfig = {
   origin: true,
@@ -50,11 +50,11 @@ app.use('/bouquets', bouquetsRouter);
 app.use('/order', orderRouter);
 // app.use('/card', cardRouter);
 
+app.use(express.static(path.resolve('../client/build')));
 app.get('*', (req, res) => {
-  // res.sendFile(path.resolve('../client/build/index.html'));
   res.sendFile(path.resolve('../client/build/index.html'));
-  // res.sendFile(path.resolve(__dirname, 'build'));
 });
+
 
 // // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
