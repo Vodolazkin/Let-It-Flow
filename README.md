@@ -18,9 +18,9 @@
 
 После клонирования репозитория запустите следующие команды из корня проекта:
 
- cd client /n
- npm install /n
- npm start /n
+ cd client <br>
+ npm install <br>
+ npm start <br>
  
  cd server
  npx sequelize db:create
