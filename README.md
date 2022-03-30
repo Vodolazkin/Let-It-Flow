@@ -22,10 +22,10 @@
  npm install <br>
  npm start <br>
  
- cd server
- npx sequelize db:create
- npx sequelize db:migrate
- npx sequelize db:seed:all
+ cd server <br>
+ npx sequelize db:create <br>
+ npx sequelize db:migrate <br>
+ npx sequelize db:seed:all <br>
  npm start
  
  
