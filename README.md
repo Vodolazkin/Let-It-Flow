@@ -1,7 +1,7 @@
 # Let-It-Flow
 
 
-<b><hr>Главная страница</hr> <br>
+<b><hr>Главная страница<hr> <br>
 <img width="1440" alt="front let-it-flow" src="https://user-images.githubusercontent.com/96245666/160631369-331ba769-b524-4602-beae-4409b266df1e.png"><img width="1381" alt="popular let-it-flow" src="https://user-images.githubusercontent.com/96245666/160631677-51881176-436d-4d5b-99f8-8464925b9add.png">
 <br>
 <hr>Корзина магазина</hr> <br>
