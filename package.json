@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd client && npm install && npm run build",
-    "start": "npm run build && cd server && npm install && npx sequelize db:migrate && npm start"
+    "start": "cd client && npm run build && cd .. && cd server && npm install && npx sequelize db:migrate && npm start"
   },
   "repository": {
     "type": "git",
