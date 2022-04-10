@@ -18,14 +18,14 @@
 
 После клонирования репозитория откройте два терминала и запустите следующие команды из корня проекта:
 
- В первом терминале:
+ В первом терминале: <br>
  cd client <br>
  npm install <br>
  npm start <br>
  
  <hr>
  
- Во втором:
+ Во втором: <br>
  cd server <br>
  npm install <br>
  npx sequelize db:create <br>
