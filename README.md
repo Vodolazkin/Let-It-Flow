@@ -6,7 +6,7 @@
 <br>
 <hr>Корзина магазина<hr> <br>
 <img width="1431" alt="cart let-it-flow" src="https://user-images.githubusercontent.com/96245666/160631693-8acbeacd-ab99-4966-989e-4a1b9d601b02.png">
-Корзина-доставка <br>
+<hr>Корзина-доставка<hr> <br>
 <img width="1439" alt="cart-order let-it-flow" src="https://user-images.githubusercontent.com/96245666/160631713-cc1f4fa3-fce3-4fc2-ae6a-fb27e7bd013f.png">
 <hr>Вкладка заказы<hr> <br>
 <img width="1416" alt="order let-it-flow" src="https://user-images.githubusercontent.com/96245666/160631960-bee2c137-668d-4d3b-8865-fdaf2c12789a.png">
