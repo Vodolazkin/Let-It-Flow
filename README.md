@@ -16,13 +16,18 @@
 <img width="1422" alt="admit let-it-flow" src="https://user-images.githubusercontent.com/96245666/160632034-9ac4536e-3b76-449d-a550-29593473d98b.png">
 
 
-После клонирования репозитория запустите следующие команды из корня проекта:
+После клонирования репозитория откройте два терминала и запустите следующие команды из корня проекта:
 
+ В первом терминале:
  cd client <br>
  npm install <br>
  npm start <br>
  
+ <hr>
+ 
+ Во втором:
  cd server <br>
+ npm install <br>
  npx sequelize db:create <br>
  npx sequelize db:migrate <br>
  npx sequelize db:seed:all <br>
