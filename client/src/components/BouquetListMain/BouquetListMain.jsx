@@ -11,7 +11,7 @@ function BouquetListMain(props) {
   const dispatch = useDispatch()
   
    useEffect(() =>{
-   fetch('http://localhost:4000/bouquets')
+   fetch(`${process.env.REACT_APP_API_URL}bouquets`)
    .then(res => res.json())
    .then(data => dispatch({ type: 'INIT_BOUQUETS', payload: data}))
    .catch(err=>console.log(err));

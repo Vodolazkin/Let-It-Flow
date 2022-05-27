@@ -48,7 +48,7 @@ function Cart() {
   //* Отправляем в бд сформированный заказ (доставка)
   const sendOrderDelivery = () => {
     
-    fetch('http://localhost:4000/order/', {
+    fetch(`${process.env.REACT_APP_API_URL}order/`, {
       method: 'POST',
       body: JSON.stringify({
         date: inputDate?.current.value,
@@ -73,40 +73,20 @@ function Cart() {
         handleOpenError()
       }
     })
-    // console.log(user.user.id);
   }
 
   //* заполняем таблицу Cart, по каждому айтему в корзине
   const cartFormation = () => {
-    // handleOpen()
 
-    cart.map(item => fetch('http://localhost:4000/cart', {
+    cart.map(item => fetch(`${process.env.REACT_APP_API_URL}cart`, {
       method: 'POST',
       body: JSON.stringify({ item, id: user?.user.id, uuid: uniqId}),
-      // body: JSON.stringify({ item, id: user.userData.user.id }),
       headers: {
         'Content-Type': 'application/json',
       }
     }))
   }
 
-
-
-  // const sendOrderPickup = () => {
-  //   fetch('http://localhost:4000/order/pickup', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       time: inputTime.current.value,
-  //       date: inputDate.current.value,
-  //       uuid: uniqId
-  //       // user_id: user.userData.user.id
-  //     }),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     }
-  //   })
-  // }
-  
   //* Очистка корзины
   const deleteCart = () => {
     dispatch(clearCart())
@@ -176,3 +156,19 @@ function Cart() {
 export default (Cart);
 
 
+
+
+  // const sendOrderPickup = () => {
+  //   fetch('http://localhost:4000/order/pickup', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       time: inputTime.current.value,
+  //       date: inputDate.current.value,
+  //       uuid: uniqId
+  //       // user_id: user.userData.user.id
+  //     }),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  // }

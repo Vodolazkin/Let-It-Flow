@@ -1,6 +1,5 @@
 import React, {memo} from "react";
 import "./Slider.css";
-import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 
 import Slide1 from './../../img/Slide1.webp'; 
@@ -16,23 +15,20 @@ function Slider() {
 
   const images = [{id: 1, image: Slide1}, {id: 2, image: Slide2}, {id: 3, image: Slide3}, {id: 4,image: Slide4} ];
 
-useEffect(()=> {
-  let timeoutId = setTimeout(() => {
-    if(slidId < 3) {
-      setSlideStateID((prev) => prev + 1)
-    } else {
-      setSlideStateID(0)
+  useEffect(()=> {
+    let timeoutId = setTimeout(() => {
+      if(slidId < 3) {
+        setSlideStateID((prev) => prev + 1)
+      } else {
+        setSlideStateID(0)
+      }
+    }, 6000)
+
+    return () => {
+      clearTimeout(timeoutId)
     }
-  }, 6000)
 
-  return () => {
-    clearTimeout(timeoutId)
-  }
-
-}, [slidId])
-
-
-
+  }, [slidId])
 
   return (
     <>

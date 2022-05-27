@@ -9,8 +9,6 @@ import {
   decrementItemToCart, 
   DeleteItemToCart } from '../../redux/actionCreate/userActionCreate'
 
-import ButtonBuy from '../ButtonBuy/ButtonBuy';
-
 
 function Cart_item({ item }) {
 
@@ -20,8 +18,6 @@ function Cart_item({ item }) {
   useEffect(()=> {
     setId(item.bouquet.id)
   },[])
-
-
 
   const incrementItem = (id) => {
     dispatch(incrementItemToCart(id))
@@ -38,21 +34,13 @@ function Cart_item({ item }) {
     <div className='cart-item-card'>
 
       <div className='cart-item-card-img-box'>
-        <img className='cart-item-card-img' src={`http://localhost:4000/${item.bouquet.img}`} alt="bouquet" />
+        <img className='cart-item-card-img' src={`${process.env.REACT_APP_API_URL}${item.bouquet.img}`} alt="bouquet" />
       </div>
 
       <div className='cart-item-card-content'>
         <div className='cart-item-card--name'>{item.bouquet.title}</div>
         <div className='cart-item-card--price'>{item.bouquet.price} руб.</div>
         <div className='cart-item-card--id'>id товара: {item.bouquet.id}</div>
-
-
-
-        {/* <div className='cart-item-btn-box'>
-          <button className='cart-item-btn--minus' onClick={() => decrementItem(stateId)}>-</button>
-          <input className='cart-item-btn--input' value={item.count} readonly />
-          <button className='cart-item-btn--plus' onClick={() => incrementItem(stateId)}>+</button>
-        </div> */}
         
         <div className='box-counter-delete'>
           <div data-min="1" className="counter-cart">

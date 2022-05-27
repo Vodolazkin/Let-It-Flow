@@ -7,7 +7,6 @@ router.get('/', async (req, res) => {
   res.json(card)
 })
 
-
 router.post('/',  async (req, res) => {
 
   if (req.files === null) {
@@ -15,8 +14,6 @@ router.post('/',  async (req, res) => {
   }
  
   const sampleFile = req.files.file;
-
-  
   let uploadPath = '/img/' + sampleFile.name;
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');

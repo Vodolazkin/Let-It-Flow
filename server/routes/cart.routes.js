@@ -4,16 +4,6 @@ const { Cart, Bouquet } = require('../db/models')
 
 router.get('/:id', async (req, res) => {
   try {
-    // const carts = await Cart.findAll({ where: { 
-    //   user_id: 2, 
-    //   isActive: true,
-    //   through: [{ 
-    //     model: Bouquet,
-    //     where: { id: 1 },
-    //     // attributes: [bouquet_id]
-    //    }]
-    // }})
-    // console.log(req.body);
     const { id } = req.params
     const carts = await Cart.findAll({ where: { 
       user_id: id, 
@@ -43,7 +33,6 @@ router.post('/bouquet', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { item, id, uuid } = req.body
-    // console.log('cart', req.body);
     const recordCartItem = await Cart.create({ bouquet_id: item.bouquet.id, count: item.count, uuid, user_id: id,  })
     return res.json({recordCartItem})
   } catch (error) {

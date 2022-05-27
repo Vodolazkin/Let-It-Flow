@@ -1,7 +1,7 @@
 import './Footer.css'
 import { Link } from "react-router-dom";
 
-function Footer(props) {
+function Footer() {
   return (
     <nav className="footer-container">
         <div className="container">
@@ -16,7 +16,6 @@ function Footer(props) {
               <p>+7 (812) 123-45-67</p>
             </div>
             <ul className="nav-list">
-          {/* <li className="nav-item" className="nav-item-link white" >Контакты</li> */}
           <li className="nav-item"><Link className="nav-item-link white" to="/about">О магазине</Link></li>
             </ul>
           </div>

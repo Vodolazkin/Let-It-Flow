@@ -10,7 +10,7 @@ function CartOrderList({cart}) {
   const [bouquet, setBouquet] = useState('')
 
 useEffect(() => {
-  fetch('http://localhost:4000/cart/bouquet', {
+  fetch(`${process.env.REACT_APP_API_URL}cart/bouquet`, {
     method: 'POST',
     body: JSON.stringify({ id : cart.bouquet_id }),
     headers: {
@@ -27,7 +27,7 @@ useEffect(() => {
         <p className='order-bouquet-number'>Заказ: <span className='uuid'>{cart?.uuid.slice(-5)}</span></p> 
         <p className='order-bouquet-title'>{bouquet.title}</p>
         <Link to={`/card/${bouquet.id}`}>
-          <img width="100" src={`http://localhost:4000/${bouquet.img}`} alt="dsa" />
+          <img width="100" src={`${process.env.REACT_APP_API_URL}${bouquet.img}`} alt="dsa" />
         </Link>
         <p className='order-bouquet-count'>{cart.count} шт.</p>
       </div>

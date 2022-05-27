@@ -10,7 +10,7 @@ function Categories(props) {
   const { categories } = useSelector(state => state);
   
   useEffect(() => {
-    fetch('http://localhost:4000/categories')
+    fetch(`${process.env.REACT_APP_API_URL}categories`)
     .then((res) => res.json())
     .then(result => dispatch({
       type: 'INIT_CATEGORIES',
@@ -27,7 +27,7 @@ function Categories(props) {
             { categories && categories.map((category) =>
             <Link key={uuidv4()} className='category-link' to={`/categories/${category.id}`}>
               <div className="category-cart-wrapper">
-                  <img className='category-img' width="30" height="30" src={`http://localhost:4000${category.icon}`} alt="icons" />
+                  <img className='category-img' width="30" height="30" src={`${process.env.REACT_APP_API_URL}${category.icon}`} alt="icons" />
                   <h3 className='category-name'>{category.name}</h3>
               </div>
             </Link>

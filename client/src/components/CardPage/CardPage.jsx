@@ -9,13 +9,13 @@ function CardPage() {
   const { id } = useParams();
   const { bouquets } = useSelector((state) => state)
   const bouquet = bouquets.find((el) => el.id == id);
- 
+
   return (
     <div className='card-container'>
       <div className='container'>
           <div className="cardPage-wrapper">
             <div className="cardPage-box-img">
-              <img className="cardPage-img" width="100%" height="100%" src={`http://localhost:4000/${bouquet?.img}`} alt="b-main"></img>
+              <img className="cardPage-img" width="100%" height="100%" src={`${process.env.REACT_APP_API_URL}${bouquet?.img}`} alt="b-main"></img>
             </div>
             <div className="cardPage-info-content">
               <p className="cardPage-title">{bouquet?.title}</p>

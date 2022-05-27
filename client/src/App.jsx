@@ -2,7 +2,6 @@ import './App.css'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Nav from "./components/Nav/Nav";
 import Main from "./components/Main/Main";
-// import Slider from './components/Slider/Slider';
 import Login from './components/User/Login/Login';
 import Remind from './components/User/Remind/Remind';
 import Footer from './components/Footer/Footer';
@@ -23,6 +22,7 @@ import About from './components/About/About'
 function App() {
 
   const dispatch = useDispatch()
+  const { user } = useSelector((state) => state);
 
   useEffect(() => {
     axios('http://localhost:4000/access',{
@@ -32,32 +32,6 @@ function App() {
       dispatch(login(data))
     })
   }, [])
-
-  const { user } = useSelector((state) => state);
-  // console.log(user);
-
-
-
-
-
-
-  // useEffect(() => {
-  //    fetch('http://localhost:4000/bouquets')
-  //     .then(res => res.json())
-  //     .then(data => dispatch({ type: 'INIT_BOUQUETS', payload: data}))
-  //     .catch(err=>console.log(err));
-  //   }, [])
-
-  //   useEffect(() => {
-  //     fetch('http://localhost:4000/categories')
-  //     .then((res) => res.json())
-  //     .then(result => dispatch({
-  //       type: 'INIT_CATEGORIES',
-  //       payload: result
-  //     }))
-  //     .catch(err => console.log(err))
-  //   },[])
-    
 
 
   return (
