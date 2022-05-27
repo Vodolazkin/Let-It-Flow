@@ -10,9 +10,7 @@ import { initEvents, addEvent } from '../../../redux/actionCreate/eventActionCre
 export default function Profile() {
   
   const { user, events } = useSelector(state => state)
-  
   const [title, setTitle] = useState()
-
   const dispatch = useDispatch()
 
   useEffect(() => {
