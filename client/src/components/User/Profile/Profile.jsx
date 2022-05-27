@@ -8,24 +8,15 @@ import { initEvents, addEvent } from '../../../redux/actionCreate/eventActionCre
 
 
 export default function Profile() {
-
-  // const state = useSelector(state => state)
-  // const navigate = useNavigate()
-  // console.log(state)
-
-  // if (state.user === null) {
-  //   navigate('/signup')
-  // }
   
   const { user, events } = useSelector(state => state)
-  console.log(user)
   
   const [title, setTitle] = useState()
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    axios(`http://localhost:4000/profile/${user?.user.id}`)
+    axios(`${process.env.REACT_APP_API_URL}profile/${user?.user.id}`)
     .then(({data}) => {
       dispatch(initEvents(data))
     })
@@ -40,7 +31,7 @@ export default function Profile() {
       user_id: user.user.id,
 		};
 
-    axios.post('http://localhost:4000/profile/event', payload)
+    axios.post(`${process.env.REACT_APP_API_URL}profile/event`, payload)
     .then(({data}) => {
       dispatch(addEvent(data))
     })

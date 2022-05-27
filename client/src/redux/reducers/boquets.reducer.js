@@ -9,7 +9,6 @@ import {
 
 export function bouquetsReducer(state = [], action) {
   
-
   switch (action.type) {
 
     case INIT_BOUQUETS: {
