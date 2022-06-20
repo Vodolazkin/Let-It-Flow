@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd client && npm install && npm run build",
-    "start": "cd server && npm install && npx sequelize db:migrate && npx sequelize db:seed:all && npm start"
+    "start": "cd client && npm run build && cd .. && cd server && npm install && npx sequelize db:migrate && npm start"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
   "homepage": "https://github.com/Vodolazkin/Let-It-Flow#readme",
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "husky": "^7.0.4",
+    "serve": "^13.0.2"
   }
 }
